@@ -451,6 +451,51 @@ code span.ot { color: #007020; }
 ## [1] "都不是"
 ## [1] 8
 ## [1] "都不是"</code></pre>
+<p>練習一下:
+載入「正部級資料練習用」，印出「李克強」資料中，2022年11月1日以後的講話。
+&gt; 時間格式:<a href="https://bookdown.org/jefflinmd38/r4biost/lubridate.html" class="uri">https://bookdown.org/jefflinmd38/r4biost/lubridate.html</a></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
+<pre><code>## Warning: 套件 'readr' 是用 R 版本 4.2.2 來建造的</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb66-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/user/Desktop/2023_R與言教學/正部級資料練習用.csv"</span>)</span></code></pre></div>
+<pre><code>## New names:
+## Rows: 2561 Columns: 8
+## ── Column specification
+## ──────────────────────────────────────────────────────── Delimiter: "," chr
+## (5): Name, title, url, sitename, Content dbl (2): ...1, Unnamed: 0 dttm (1):
+## pubtime
+## ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+## Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## • `` -&gt; `...1`</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(data)</span>
+<span id="cb68-2"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data<span class="sc">$</span>pubtime)</span></code></pre></div>
+<pre><code>##  POSIXct[1:2561], format: "2022-11-23 19:40:18" "2022-11-22 19:46:15" "2022-11-22 14:52:15" ...</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## Warning: 套件 'dplyr' 是用 R 版本 4.2.2 來建造的</code></pre>
+<pre><code>## 
+## 載入套件：'dplyr'
+## 
+## 下列物件被遮斷自 'package:stats':
+## 
+##     filter, lag
+## 
+## 下列物件被遮斷自 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-1" aria-hidden="true" tabindex="-1"></a>newData <span class="ot">&lt;-</span> data<span class="sc">%&gt;%</span><span class="fu">filter</span>(Name <span class="sc">==</span> <span class="st">"李克強"</span>)</span>
+<span id="cb73-2"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-2" aria-hidden="true" tabindex="-1"></a>newData <span class="ot">&lt;-</span> data<span class="sc">%&gt;%</span><span class="fu">filter</span>(Name <span class="sc">==</span> <span class="st">"李克強"</span>)<span class="sc">%&gt;%</span><span class="fu">filter</span>(pubtime <span class="sc">&gt;=</span> <span class="fu">as.POSIXct</span>(<span class="st">"2022-11-01"</span>))</span>
+<span id="cb73-3"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(newData)</span>
+<span id="cb73-4"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-6"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-6" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Li <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>)</span>
+<span id="cb73-7"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-8"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(data))){</span>
+<span id="cb73-9"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(data<span class="sc">$</span>Name[i] <span class="sc">==</span> <span class="st">"李克強"</span> <span class="sc">&amp;</span> data<span class="sc">$</span>pubtime[i] <span class="sc">&gt;=</span> <span class="fu">as.POSIXct</span>(<span class="st">"2022-11-01"</span>)){</span>
+<span id="cb73-10"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-10" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>Li[i] <span class="ot">&lt;-</span> <span class="st">"1"</span></span>
+<span id="cb73-11"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-11" aria-hidden="true" tabindex="-1"></a>  }<span class="cf">else</span>{</span>
+<span id="cb73-12"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-12" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>Li[i] <span class="ot">&lt;-</span> <span class="st">"0"</span></span>
+<span id="cb73-13"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb73-14"><a href="file:///C:/Users/user/Desktop/2023_R%E8%88%87%E8%A8%80%E6%95%99%E5%AD%B8/20230306-R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-%E4%BA%8C-.html#cb73-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </section>
 
