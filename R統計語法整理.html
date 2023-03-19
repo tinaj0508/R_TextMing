@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        R統計語法整理 - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{background-color:#eaffea;color:#55a532}.hljs-deletion{background-color:#ffecec;color:#bd2c00}.hljs-link{text-decoration:underline}.markdown-body{word-wrap:break-word;font-size:16px;line-height:1.5}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body hr{background-color:#e7e7e7;border:0;height:.25em;margin:24px 0;padding:0}.markdown-body blockquote{border-left:.25em solid #ddd;color:#777;font-size:16px;padding:0 1em}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{background-color:#fcfcfc;border:1px solid;border-color:#ccc #ccc #bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb;color:#555;display:inline-block;font-size:11px;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{border-bottom:1px solid #eee;padding-bottom:.3em}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{color:#777;font-size:.85em}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:700;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table{display:block;overflow:auto;width:100%;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{border:1px solid #ddd;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{background-color:#fff;box-sizing:initial;max-width:100%}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:initial;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #ddd;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:#0000000a;border-radius:3px;font-size:85%;margin:0;padding:.2em 0}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{content:"\00a0";letter-spacing:-.2em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{background:#0000;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{background-color:#f7f7f7;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f8f8f8;border-top:0;font-weight:700}.news .alert .markdown-body blockquote{border:0;padding:0 0 0 40px}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{cursor:default!important;float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle}.markdown-body{max-width:758px;overflow:visible!important;padding-bottom:40px;padding-top:40px;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{border-right:3px solid #6ce26c!important;box-sizing:initial;color:#afafaf!important;cursor:default;display:inline-block;min-width:20px;padding:0 8px 0 0;position:relative;text-align:right;z-index:4}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-bottom:none;border-left:none;border-top:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-collapse:inherit!important;border-spacing:0}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{margin-bottom:unset;overflow:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{background-color:inherit;border-radius:0;overflow:visible;text-align:center;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{height:100%;max-width:100%}.markdown-body pre>code.wrap{word-wrap:break-word;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:contain;cursor:pointer;display:table;overflow:hidden;text-align:center}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{object-fit:contain;width:100%;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{height:100%;left:0;position:absolute;top:0;width:100%}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{color:#fff;height:auto;left:50%;opacity:.3;position:absolute;top:50%;transform:translate(-50%,-50%);transition:opacity .2s;width:auto;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.figma{display:table;padding-bottom:56.25%;position:relative;width:100%}.figma iframe{border:1px solid #eee;bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.markmap-container{height:300px}.markmap-container>svg{height:100%;width:100%}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{color:#777;margin:25px auto -25px;max-width:760px;position:relative;z-index:2}.toc .invisable-node{list-style-type:none}.ui-toc{bottom:20px;position:fixed;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{border-bottom-left-radius:0;border-top-left-radius:0;height:40px;padding:10px 4px}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{color:#fff;opacity:1;transition:opacity .2s}.ui-toc-label:focus{background-color:#ccc;color:#000;opacity:.3}.ui-toc-label:hover{background-color:#ccc;opacity:1;transition:opacity .2s}.ui-toc-dropdown{margin-bottom:20px;margin-top:20px;max-height:70vh;max-width:45vw;overflow:auto;padding-left:10px;padding-right:10px;text-align:inherit;width:25vw}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{letter-spacing:.0029em;padding-right:0}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{color:#767676;display:block;font-size:13px;font-weight:500;padding:4px 20px}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{background-color:initial;border-left:1px solid #000;color:#000;padding-left:19px;text-decoration:none}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{border-left:none;border-right:1px solid #000;padding-right:19px}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{background-color:initial;border-left:2px solid #000;color:#000;font-weight:700;padding-left:18px}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{border-left:none;border-right:2px solid #000;padding-right:18px}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:30px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{font-size:12px;font-weight:400;padding-bottom:1px;padding-left:40px;padding-top:1px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{font-weight:500;padding-left:28px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{font-weight:500;padding-left:38px}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{max-height:70vh;max-width:15vw;overflow:auto;position:fixed;top:0}.back-to-top,.expand-toggle,.go-to-bottom{color:#999;display:block;font-size:12px;font-weight:500;margin-left:10px;margin-top:10px;padding:4px 10px}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{background-position:50%;background-repeat:no-repeat;background-size:cover;border-radius:50%;display:block;height:20px;margin-bottom:2px;margin-right:5px;margin-top:2px;width:20px}.ui-user-icon.small{display:inline-block;height:18px;margin:0 0 .2em;vertical-align:middle;width:18px}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;padding-left:22px;text-decoration:none}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}.inline-spoiler-section{cursor:pointer}.inline-spoiler-section .spoiler-text{background-color:#333;border-radius:2px}.inline-spoiler-section .spoiler-text>*{opacity:0}.inline-spoiler-section .spoiler-img{filter:blur(10px)}.inline-spoiler-section.raw{background-color:#333;border-radius:2px}.inline-spoiler-section.raw>*{opacity:0}.inline-spoiler-section.unveil{cursor:auto}.inline-spoiler-section.unveil .spoiler-text{background-color:#3333331a}.inline-spoiler-section.unveil .spoiler-text>*{opacity:1}.inline-spoiler-section.unveil .spoiler-img{filter:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{color:#222;position:relative;z-index:1}.markdown-body.slides:before{background-color:currentColor;bottom:0;box-shadow:0 0 0 50vw;content:"";display:block;left:0;position:absolute;right:0;top:0;z-index:-1}.markdown-body.slides section[data-markdown]{background-color:#fff;margin-bottom:1.5em;position:relative;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{left:1em;max-height:100%;overflow:hidden;position:absolute;right:1em;top:50%;transform:translateY(-50%)}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{border:3px solid #777;content:"";height:1.5em;position:absolute;right:1em;top:-1.5em}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}svg{text-shadow:none}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-inner comment-enabled" data-hard-breaks="true"><h1 id="R統計語法整理" data-id="R統計語法整理"><a class="anchor hidden-xs" href="#R統計語法整理" title="R統計語法整理"><span class="octicon octicon-link"></span></a><span>R統計語法整理</span></h1><blockquote>
+<p><span>整理自黃紀老師「社會科學統計方法」PPT以及實習課楊光助教之講義</span></p>
+</blockquote><blockquote>
+<p><span>以下統計分析之前，都需要先導入資料，並針對資料變數進行處理，例如第一章第1點Recode Varibles</span></p>
+</blockquote><blockquote>
+<p><span>除了第一章第1點Recode Varibles中的varible是跟資料檔有關，其餘統計語法中大部分的變數名，都以「VARIBLE」表示。</span></p>
+</blockquote><p><img src="https://i.imgur.com/xZq9ftW.png" alt="" loading="lazy"><br>
+<span>圖片:黃紀老師上課PPT</span></p><p><img src="https://i.imgur.com/EGqIzqQ.png" alt="" loading="lazy"><br>
+<span>圖片:黃紀老師上課PPT</span></p><h2 id="一、描述統計一descriptive-statistics-I" data-id="一、描述統計一descriptive-statistics-I"><a class="anchor hidden-xs" href="#一、描述統計一descriptive-statistics-I" title="一、描述統計一descriptive-statistics-I"><span class="octicon octicon-link"></span></a><span>一、描述統計(一)(descriptive statistics I)</span></h2><h3 id="1-Recode-Varibles" data-id="1-Recode-Varibles"><a class="anchor hidden-xs" href="#1-Recode-Varibles" title="1-Recode-Varibles"><span class="octicon octicon-link"></span></a><span>1. Recode Varibles</span></h3><h4 id="1-1-連續變數Continuous-varibles" data-id="1-1-連續變數Continuous-varibles"><a class="anchor hidden-xs" href="#1-1-連續變數Continuous-varibles" title="1-1-連續變數Continuous-varibles"><span class="octicon octicon-link"></span></a><span>1-1. 連續變數(Continuous varibles)</span></h4><pre><code>##  Install packages: haven, DescTools, &amp; moments
+install.packages("haven")
+install.packages("DescTools") #for MeanAD 計算變數之平均偏差
+install.packages("moments") #for measure of skewness and measure of kurtosis 計算變數的偏度與峰度
+</code></pre><pre><code>##  Import TEDS2020 #以TEDS資料做示範
+library(haven)
+teds2020 &lt;- read_sav("W2/TEDS2020_Q.sav")
+#View(TEDS2020_Q)
+dim(teds2020) #檢視資料
+attach(teds2020) #鎖定資料
+
+#   example1: S1a-birth year
+str(S1a) #檢查變數資料型態
+table(S1a) #以列表方式檢查變數
+
+nS1a &lt;- S1a #重新命名變數
+nS1a[S1a == 95] &lt;- NA #將變數中某些特徵取代為NA值
+table(nS1a)
+nage &lt;- 109 - nS1a
+table(nage)
+
+agegroup &lt;- c(NA) 
+agegroup[nage &gt;= 20 &amp; nage &lt;= 29] &lt;- 1 
+agegroup[nage &gt;= 30 &amp; nage &lt;= 39] &lt;- 2
+agegroup[nage &gt;= 40 &amp; nage &lt;= 49] &lt;- 3
+agegroup[nage &gt;= 50 &amp; nage &lt;= 59] &lt;- 4
+agegroup[nage &gt;= 60] &lt;- 5
+table(agegroup)
+table(age)
+
+comment(agegroup) &lt;- "age group" #定義變數及數值
+agegroup &lt;- factor(agegroup, levels = c(1, 2, 3, 4, 5), 
+                   labels = c("20-29", "30-39", "40-49", "50-59", "over60"))
+class(agegroup)
+table(agegroup)
+
+#   example2: K2c-preference for Tsai
+class(K2c)
+table(K2c)
+nK2c &lt;- K2c
+nK2c[K2c &gt;= 95] &lt;- NA
+table(nK2c)
+
+</code></pre><h4 id="1-2-類別變數Categorical-variables" data-id="1-2-類別變數Categorical-variables"><a class="anchor hidden-xs" href="#1-2-類別變數Categorical-variables" title="1-2-類別變數Categorical-variables"><span class="octicon octicon-link"></span></a><span>1-2. 類別變數(Categorical variables)</span></h4><pre><code>#   example: B1-political interest
+class(VARIBLE)
+table(VARIBLE)
+VARIBLE &lt;- c(NA)
+#變成二變項
+VARIBLE[VARIBLE1 == 1 | VARIBLE2 == 2] &lt;- 1
+VARIBLE[VARIBLE1 == 3 | VARIBLE2 == 4] &lt;- 0
+VARIBLE[VARIBLE1 &gt;= 96] &lt;- NA
+table(VARIBLE)
+comment(VARIBLE) &lt;- "political interest"
+polin &lt;- factor(VARIBLE, levels = c(1,0), 
+                labels = c("yes", "no"))
+class(VARIBLE)
+table(VARIBLE)
+</code></pre><h3 id="2-描述統計Descriptive-Statistics" data-id="2-描述統計Descriptive-Statistics"><a class="anchor hidden-xs" href="#2-描述統計Descriptive-Statistics" title="2-描述統計Descriptive-Statistics"><span class="octicon octicon-link"></span></a><span>2. 描述統計(Descriptive Statistics)</span></h3><h4 id="2-1-Summary-statistics" data-id="2-1-Summary-statistics"><a class="anchor hidden-xs" href="#2-1-Summary-statistics" title="2-1-Summary-statistics"><span class="octicon octicon-link"></span></a><span>2-1. Summary statistics</span></h4><pre><code>#   2-1-1. when there is no missing value
+mean(VARIBLE) #mean
+mean(VARIBLE, trim = 0.04) #trimmed mean(drop 2% values at both ends)
+median(VARIBLE) #median
+var(VARIBLE) #variance
+sd(VARIBLE) #standard deviation
+range(VARIBLE) #max &amp; min
+diff(range(VARIBLE)) #range
+max(VARIBLE) - min(VARIBLE) #range
+quantile(VARIBLE) #percentage quantiles
+IQR(VARIBLE) #interquartile range
+library(DescTools); MeanAD(VARIBLE) #mean absolute deviation, MAD
+
+library(moments)
+skewness(VARIBLE) #measure of skewness
+kurtosis(VARIBLE) #measure of kurtosis
+
+#   2-1-2. 遺漏值處理
+
+#未處理遺漏值情況
+mean(VARIBLE)
+median(VARIBLE)
+sd(VARIBLE)
+var(VARIBLE)
+skewness(VARIBLE)
+kurtosis(VARIBLE)
+
+#處理遺漏值情況
+mean(na.omit(VARIBLE))
+median(na.omit(VARIBLE))
+sd(na.omit(VARIBLE))
+var(VARIBLE, na.rm = TRUE)
+
+library(moments)
+skewness(na.omit(VARIBLE))
+kurtosis(na.omit(VARIBLE))
+
+
+#總解變數給出mean median等統計值
+summary(VARIBLE)
+VARIBLE[VARIBLE &gt;= 95] &lt;- NA
+summary(VARIBLE)
+
+</code></pre><h4 id="2-2-Graphs" data-id="2-2-Graphs"><a class="anchor hidden-xs" href="#2-2-Graphs" title="2-2-Graphs"><span class="octicon octicon-link"></span></a><span>2-2. Graphs</span></h4><pre><code>
+#   2-2-1. histogram
+hist(VARIBLE)
+hist(VARIBLE, freq = TRUE)
+#
+hist(VARIBLE, freq = FALSE)
+lines(density(na.omit(VARIBLE)), lwd = 3, col = "red") #overlay density plot on histogram
+
+#   2-2-2. stem and leaf plot
+stem(VARIBLE)
+
+nteds2020 &lt;- teds2020[1:100, ] # select case #1-100
+DATA$VARIBLE &lt;- 109 - DATA$VARIBLE
+stem(DATA$VARIBLE)
+stem(DATA$VARIBLE, scale = 2)
+
+#   2-2-3. box chart
+boxplot(VARIBLE, main = "distribution of age") #vertical
+boxplot(VARIBLE, main = "distribution of age", horizontal = TRUE) #horizontal
+
+detach(DATA) #取消連接資料檔
+</code></pre><h2 id="二、描述統計二Descriptive-statistics-II" data-id="二、描述統計二Descriptive-statistics-II"><a class="anchor hidden-xs" href="#二、描述統計二Descriptive-statistics-II" title="二、描述統計二Descriptive-statistics-II"><span class="octicon octicon-link"></span></a><span>二、描述統計(二)(Descriptive statistics II)</span></h2><pre><code>##  Install packages: DescTools &amp; vcd
+install.packages("DescTools")
+install.packages("vcd")
+
+</code></pre><h3 id="1-單一類別變數之描述統計Univariate-Descriptive-Statistics" data-id="1-單一類別變數之描述統計Univariate-Descriptive-Statistics"><a class="anchor hidden-xs" href="#1-單一類別變數之描述統計Univariate-Descriptive-Statistics" title="1-單一類別變數之描述統計Univariate-Descriptive-Statistics"><span class="octicon octicon-link"></span></a><span>1. 單一類別變數之描述統計(Univariate Descriptive Statistics)</span></h3><h4 id="1-1-Summary-statistics" data-id="1-1-Summary-statistics"><a class="anchor hidden-xs" href="#1-1-Summary-statistics" title="1-1-Summary-statistics"><span class="octicon octicon-link"></span></a><span>1-1. Summary statistics</span></h4><pre><code>##  (1) 集中趨勢量數(measures of central tendency)
+#   a. 無序多分類之眾數(nominal variables: mode)
+library(DescTools)
+Mode(VARIBLE)
+Mode(na.omit(VARIBLE))
+Mode(VARIBLE, na.rm = TRUE)
+
+#   b. 有序多分類之中位數(ordinal variables: median)
+str(VARIBLE)
+table(VARIBLE)
+median(VARIBLE, na.rm = TRUE)
+VARIBLE &lt;- as.numeric(VARIBLE)
+median(VARIBLE, na.rm = TRUE)
+
+##  (2) 集中與分散程度(degree of concentration and dispersion)
+#   a. compute proportions of each category
+pk &lt;- prop.table(table(VARIBLE))
+pk
+#   b. Herfindahl-Hirschman (HH) concentration index
+HH &lt;- sum(pk^2)
+HH
+#   c. Diversity index
+D &lt;- 1 - HH
+D
+#   d. Index of qualitative variation (IQV)
+IQV &lt;- length(table(VARIBLE))/(length(table(VARIBLE))-1)*D
+IQV
+
+</code></pre><h4 id="1-2-Graphs" data-id="1-2-Graphs"><a class="anchor hidden-xs" href="#1-2-Graphs" title="1-2-Graphs"><span class="octicon octicon-link"></span></a><span>1-2. Graphs</span></h4><pre><code>
+#   (1) bar chart
+barplot(height = table(VARIBLE), 
+        main = "Distribution of Independence-Unification Views")
+#   (2) pie chart
+pie(table(VARIBLE))
+
+</code></pre><h3 id="2-雙變數描述統計Bivariate-Descriptive-Statistics" data-id="2-雙變數描述統計Bivariate-Descriptive-Statistics"><a class="anchor hidden-xs" href="#2-雙變數描述統計Bivariate-Descriptive-Statistics" title="2-雙變數描述統計Bivariate-Descriptive-Statistics"><span class="octicon octicon-link"></span></a><span>2. 雙變數描述統計(Bivariate Descriptive Statistics)</span></h3><h4 id="2-1-類別變數two-categorical-variables" data-id="2-1-類別變數two-categorical-variables"><a class="anchor hidden-xs" href="#2-1-類別變數two-categorical-variables" title="2-1-類別變數two-categorical-variables"><span class="octicon octicon-link"></span></a><span>2-1. 類別變數(two categorical variables)</span></h4><pre><code>#   3-1-1. 交叉表(cross table)
+#   method 1. use built-in function table
+table1 &lt;- table(VARIBLE1, VARIBLE2)
+table1
+addmargins(table1)
+#   method 2. use built-in function xtab
+table2 &lt;- xtabs(~ VARIBLE1 + VARIBLE2)
+table2
+addmargins(table2)
+
+#   3-1-2. 脊柱圖(spine plot)
+spineplot(table1)
+
+#   3-1-3. 馬賽克圖(mosaic plot)
+library(vcd)
+mosaic(table1, labeling = labeling_values)
+
+</code></pre><h4 id="2-2-連續變數two-continuous-variables" data-id="2-2-連續變數two-continuous-variables"><a class="anchor hidden-xs" href="#2-2-連續變數two-continuous-variables" title="2-2-連續變數two-continuous-variables"><span class="octicon octicon-link"></span></a><span>2-2. 連續變數(two continuous variables)</span></h4><pre><code># 散布圖(scatter plot)
+plot(VARIBLE1, VARIBLE2)
+</code></pre><h2 id="三、機率與微積分Probability-and-Calculus" data-id="三、機率與微積分Probability-and-Calculus"><a class="anchor hidden-xs" href="#三、機率與微積分Probability-and-Calculus" title="三、機率與微積分Probability-and-Calculus"><span class="octicon octicon-link"></span></a><span>三、機率與微積分(Probability and Calculus)</span></h2><h3 id="Part-1-Probability" data-id="Part-1-Probability"><a class="anchor hidden-xs" href="#Part-1-Probability" title="Part-1-Probability"><span class="octicon octicon-link"></span></a><span>Part 1. Probability</span></h3><h4 id="1-Basic-probability-隨機抽樣random-sampling" data-id="1-Basic-probability-隨機抽樣random-sampling"><a class="anchor hidden-xs" href="#1-Basic-probability-隨機抽樣random-sampling" title="1-Basic-probability-隨機抽樣random-sampling"><span class="octicon octicon-link"></span></a><span>1. Basic probability: 隨機抽樣(random sampling)</span></h4><pre><code>set.seed(20211102)
+sample(1:10)
+sample(1:10, size = 3) 
+sample(1:10, size = 10, replace = TRUE) #sampling with replacement 抽出後放回
+sample(1:10, size = 10, replace = FALSE) #sampling without replacement 抽出後不放迴
+sample(c("H", "T"), size = 10, replace = TRUE) #每個元素被抽中的機率相等
+sample(c("H", "T"), size = 10, prob = c(0.3, 0.7),  replace = TRUE) #每個元素被抽中的機率不等
+
+
+</code></pre><h4 id="2-機率的三位一體：Joint-marginal-and-conditional-probabilities" data-id="2-機率的三位一體：Joint-marginal-and-conditional-probabilities"><a class="anchor hidden-xs" href="#2-機率的三位一體：Joint-marginal-and-conditional-probabilities" title="2-機率的三位一體：Joint-marginal-and-conditional-probabilities"><span class="octicon octicon-link"></span></a><span>2. 機率的三位一體：Joint, marginal and conditional probabilities</span></h4><pre><code>＃放入兩種變數看交叉表與三種機率
+library(descr)
+CrossTable(VARIBLE1, VARIBLE2) 
+
+</code></pre><h3 id="Part-2-基礎微積分Basic-Calculus" data-id="Part-2-基礎微積分Basic-Calculus"><a class="anchor hidden-xs" href="#Part-2-基礎微積分Basic-Calculus" title="Part-2-基礎微積分Basic-Calculus"><span class="octicon octicon-link"></span></a><span>Part 2. 基礎微積分(Basic Calculus)</span></h3><h4 id="1-定義函數Define-the-function" data-id="1-定義函數Define-the-function"><a class="anchor hidden-xs" href="#1-定義函數Define-the-function" title="1-定義函數Define-the-function"><span class="octicon octicon-link"></span></a><span>1. 定義函數(Define the function)</span></h4><pre><code>#   method 1.
+function1 &lt;- expression(x^3 + 2*x^2 + 4*x + 8)
+function1
+#   method 2.
+function2 &lt;- function(x){x^3 + 2*x^2 + 4*x + 8}
+function2
+
+</code></pre><h4 id="2-微分Differentiation" data-id="2-微分Differentiation"><a class="anchor hidden-xs" href="#2-微分Differentiation" title="2-微分Differentiation"><span class="octicon octicon-link"></span></a><span>2. 微分(Differentiation)</span></h4><h5 id="2-1-Symbolic-analytical-differentiation" data-id="2-1-Symbolic-analytical-differentiation"><a class="anchor hidden-xs" href="#2-1-Symbolic-analytical-differentiation" title="2-1-Symbolic-analytical-differentiation"><span class="octicon octicon-link"></span></a><span>2-1. Symbolic/ analytical differentiation</span></h5><pre><code>#   method1: use built-in function D() in base R
+fx1 &lt;- expression(x^3 + 2*x^2 + 4*x + 8, "x")
+fx1 #original function
+
+df1 &lt;- D(expression(x^3 + 2*x^2 + 4*x + 8, "x"), "x")
+df1 #first-order derivative
+curve(3 * x^2 + 4 * x + 4, -2, 2)
+df2 &lt;- D(df1, "x")
+df2 #second-order derivative
+
+#   method2: use D() command from the package "Ryacas"
+library(Ryacas)
+yac_str("D(x) x^3 + 2*x^2 + 4*x + 8") #first-order derivative
+yac_str("D(x) 3*x^2+4*x+4") #second-order derivative
+#Returning strings with yac_str() 
+
+</code></pre><h5 id="2-2-Numerical-differentiation" data-id="2-2-Numerical-differentiation"><a class="anchor hidden-xs" href="#2-2-Numerical-differentiation" title="2-2-Numerical-differentiation"><span class="octicon octicon-link"></span></a><span>2-2. Numerical differentiation</span></h5><pre><code>#   method1: use built-in function deriv() in base R
+detach("package:Ryacas")  #unload package Ryacas
+f &lt;- deriv(~x^3 + 2*x^2 + 4*x + 8, "x", TRUE)
+f(3)
+
+#   method2: use package "numDeriv"
+function2 &lt;- function(x){x^3 + 2*x^2 + 4*x + 8} #define the function
+library(numDeriv)
+grad(function2, 3) #gradient=1st-order derivative
+hessian(function2, 3) #hessian=2nd-order derivative
+
+</code></pre><h4 id="3-積分Integration" data-id="3-積分Integration"><a class="anchor hidden-xs" href="#3-積分Integration" title="3-積分Integration"><span class="octicon octicon-link"></span></a><span>3. 積分(Integration)</span></h4><h5 id="3-1-symbolic-integration-use-Integrate" data-id="3-1-symbolic-integration-use-Integrate"><a class="anchor hidden-xs" href="#3-1-symbolic-integration-use-Integrate" title="3-1-symbolic-integration-use-Integrate"><span class="octicon octicon-link"></span></a><span>3-1. symbolic integration: use Integrate()</span></h5><pre><code>command from the package "Ryacas"
+library(Ryacas)
+yac_str("Integrate(x) 3*x^2 + 4*x + 4")
+
+</code></pre><h5 id="3-2-Numerical-integration-use-built-in-function-integrate-in-base-R" data-id="3-2-Numerical-integration-use-built-in-function-integrate-in-base-R"><a class="anchor hidden-xs" href="#3-2-Numerical-integration-use-built-in-function-integrate-in-base-R" title="3-2-Numerical-integration-use-built-in-function-integrate-in-base-R"><span class="octicon octicon-link"></span></a><span>3-2. Numerical integration: use built-in function integrate() in base R</span></h5><pre><code>fx2 &lt;- function(x) {3*x^2 + 4*x + 4}
+fx2
+plot(fx2, -4, 3)
+integrate(fx2, lower = 4, upper = 9)
+</code></pre><h2 id="四、隨機變數與機率分布Random-Variables-and-Probability-Distributions" data-id="四、隨機變數與機率分布Random-Variables-and-Probability-Distributions"><a class="anchor hidden-xs" href="#四、隨機變數與機率分布Random-Variables-and-Probability-Distributions" title="四、隨機變數與機率分布Random-Variables-and-Probability-Distributions"><span class="octicon octicon-link"></span></a><span>四、隨機變數與機率分布(Random Variables	and	Probability	Distributions)</span></h2><blockquote>
+<ul>
+<li><span>單變數機率分佈</span><br>
+<span>類別單變數分佈：柏努力分佈、二項分佈、泊松分佈</span><br>
+<span>連續單變數分佈：連續均勻分佈、常態分佈、卡方分佈、F分佈</span></li>
+</ul>
+</blockquote><blockquote>
+<ul>
+<li><span>雙變數機率分佈</span><br>
+<span>連續雙變數分佈：共變異數、皮爾森相關係數、散佈圖</span></li>
+</ul>
+</blockquote><pre><code>##  Install Packages
+install.packages("mosaic")
+install.packages("distrEx")
+</code></pre><h3 id="Part-A-單變數機率分布Univariate-Probability-Distributions" data-id="Part-A-單變數機率分布Univariate-Probability-Distributions"><a class="anchor hidden-xs" href="#Part-A-單變數機率分布Univariate-Probability-Distributions" title="Part-A-單變數機率分布Univariate-Probability-Distributions"><span class="octicon octicon-link"></span></a><span>Part A. 單變數機率分布(Univariate Probability Distributions)</span></h3><h4 id="1-不連續機率分布discrete-probability-distributions" data-id="1-不連續機率分布discrete-probability-distributions"><a class="anchor hidden-xs" href="#1-不連續機率分布discrete-probability-distributions" title="1-不連續機率分布discrete-probability-distributions"><span class="octicon octicon-link"></span></a><span>1. 不連續機率分布(discrete probability distributions)</span></h4><h5 id="1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05" data-id="1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05"><a class="anchor hidden-xs" href="#1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05" title="1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05"><span class="octicon octicon-link"></span></a><span>1-1. 柏努力分佈(Bernoulli distribution: casting a fair coin once) [binom(n=1,p=0.5)]</span></h5><pre><code>#   a. calculating probabilities
+dbinom(c(0, 1), size = 1, prob = 0.5) #機率pdf
+pbinom(c(0, 1), size = 1, prob = 0.5) #累積機率CDF
+cbind(0:1, dbinom(0:1, 1, 0.5), pbinom(0:1, 1, 0.5))
+
+#   b. ploting the pdf and CDF
+library(mosaic)
+plotDist("binom", params = list(1, 0.5), kind = "density", col = "red", 
+         xlim = c(-1, 3), ylim = c(0, 1.1))
+plotDist("binom", params = list(1, 0.5), kind = "cdf", col = "blue", under = TRUE)
+#   c. expected value and variance
+library(distrEx)
+X1 &lt;- Binom(size = 1, prob = 0.5) #設定分布
+
+E(X1) #期望值
+var(X1) #變異數
+sd(X1) #標準差
+
+</code></pre><h5 id="1-2-二項分布binominal-distribution-casting-a-fair-coin-twice-binomn2p05" data-id="1-2-二項分布binominal-distribution-casting-a-fair-coin-twice-binomn2p05"><a class="anchor hidden-xs" href="#1-2-二項分布binominal-distribution-casting-a-fair-coin-twice-binomn2p05" title="1-2-二項分布binominal-distribution-casting-a-fair-coin-twice-binomn2p05"><span class="octicon octicon-link"></span></a><span>1-2. 二項分布(binominal distribution: casting a fair coin twice) [binom(n=2,p=0.5)]</span></h5><pre><code>#   a. calculate probabilities
+dbinom(0, size = 2, prob = 0.5)
+dbinom(c(1,2), size = 2, prob = 0.5)
+dbinom(0:2, size = 2, prob = 0.5)
+pbinom(0:2, size = 2, prob = 0.5)
+cbind(0:2, dbinom(0:2, size = 2, prob = 0.5), pbinom(0:2, size = 2, prob = 0.5))
+
+#   b. ploting the pdf and CDF
+library(mosaic)
+plotDist("binom", params = list(2, 0.5), kind = "density", col = "red", 
+         xlim = c(-1, 3), ylim = c(0, 1.1))
+plotDist("binom", params = list(2, 0.5), kind = "cdf", col = "blue", under = TRUE)
+
+#   c. expected value and variance
+#   method1 用R套件
+X2 &lt;- Binom(size = 2, prob = 0.5)
+E(X2)
+var(X2)
+sd(X2)
+#   method2 用手算
+y &lt;- c(0, 1, 2) 
+f &lt;- c(0.25, 0.5, 0.25)
+mu &lt;- sum(y*f) 
+mu
+var2 &lt;- sum((y-mu)^2*f) 
+var2
+var &lt;- sqrt(var2) 
+var
+
+</code></pre><h5 id="1-3-泊松分布Poisson-distributionpoislambda2" data-id="1-3-泊松分布Poisson-distributionpoislambda2"><a class="anchor hidden-xs" href="#1-3-泊松分布Poisson-distributionpoislambda2" title="1-3-泊松分布Poisson-distributionpoislambda2"><span class="octicon octicon-link"></span></a><span>1-3. 泊松分布(Poisson distribution)[pois(lambda=2)]</span></h5><pre><code>#   a. calculate probabilities
+cbind(0:10, dpois(0:10, lambda = 2), ppois(0:10, lambda = 2))
+
+#   b. ploting the pdf and CDF
+library(mosaic)
+plotDist("pois", params = 2, kind = "density", 
+         xlim = c(-1, 11), ylim = c(0, 1.1), col="red")
+plotDist("pois", params = 2, kind = "cdf", col = "blue", under = TRUE)
+
+#   c. expected value and variance
+X4 &lt;- Pois(lambda = 2)
+E(X4); var(X4); sd(X4)
+
+</code></pre><h4 id="2-連續機率分布Continuous-probability-distributions" data-id="2-連續機率分布Continuous-probability-distributions"><a class="anchor hidden-xs" href="#2-連續機率分布Continuous-probability-distributions" title="2-連續機率分布Continuous-probability-distributions"><span class="octicon octicon-link"></span></a><span>2. 連續機率分布(Continuous probability distributions)</span></h4><h5 id="2-1-連續均勻分布continuous-uniform-distribution-unifa-1-b3" data-id="2-1-連續均勻分布continuous-uniform-distribution-unifa-1-b3"><a class="anchor hidden-xs" href="#2-1-連續均勻分布continuous-uniform-distribution-unifa-1-b3" title="2-1-連續均勻分布continuous-uniform-distribution-unifa-1-b3"><span class="octicon octicon-link"></span></a><span>2-1. 連續均勻分布(continuous uniform distribution) [unif(a=-1, b=3)]</span></h5><pre><code>#   a. calculate probabilities
+dunif(1, min = -1, max = 3)
+punif(3, min = -1, max = 3)
+
+#   b. ploting the pdf and CDF
+par(mfrow=c(1, 2)) #set pdf and CDF next to each other 
+curve(dunif(x, -1, 3), xlim = c(-2, 5))
+curve(punif(x, -1, 3), xlim = c(-2, 5), col = "red")
+
+</code></pre><h5 id="2-2-常態分布Normal-distributions" data-id="2-2-常態分布Normal-distributions"><a class="anchor hidden-xs" href="#2-2-常態分布Normal-distributions" title="2-2-常態分布Normal-distributions"><span class="octicon octicon-link"></span></a><span>2-2. 常態分布(Normal distributions)</span></h5><h6 id="1-一般常態分佈general-normal-distribution-xNmu10-sigma24" data-id="1-一般常態分佈general-normal-distribution-xNmu10-sigma24"><a class="anchor hidden-xs" href="#1-一般常態分佈general-normal-distribution-xNmu10-sigma24" title="1-一般常態分佈general-normal-distribution-xNmu10-sigma24"><span class="octicon octicon-link"></span></a><span>(1) 一般常態分佈(general normal distribution) [x~N(mu=10, sigma^2=4)]</span></h6><pre><code>#   ploting the pdf and CDF
+#   method1. use plotDist() command from the package "mosaic"
+library(mosaic)
+plotDist("norm", mean = 10, sd = 2, kind = "density", type = "l", col = "red") #pdf
+plotDist("norm", mean = 10, sd = 2, kind = "cdf", type = "l", col = "blue") #cdf
+#plotDist("norm", mean=10, sd=2, col="blue", type="h")
+#   method2. use built-in function curve() &amp; dnorm() in base R
+par(mfrow=c(1, 2))
+curve(dnorm(x, mean = 2, sd = 2), -10, 10, col = "blue", xlab = "x", ylab = "density")
+curve(pnorm(x, mean = 2, sd = 2), -10, 10, col = "green", xlab = "x", ylab = "probability")
+
+</code></pre><h6 id="2-標準常態分布standard-normal-distribution-zN0-1" data-id="2-標準常態分布standard-normal-distribution-zN0-1"><a class="anchor hidden-xs" href="#2-標準常態分布standard-normal-distribution-zN0-1" title="2-標準常態分布standard-normal-distribution-zN0-1"><span class="octicon octicon-link"></span></a><span>(2) 標準常態分布(standard normal distribution) [z~N(0, 1)]</span></h6><pre><code>#   a. calculate probabilities
+dnorm(0)
+pnorm(1.96)
+pnorm(1) - pnorm(-Inf); pnorm(Inf) - pnorm(1)
+#   b. ploting the pdf and CDF
+#
+library(mosaic)
+plotDist("norm", kind = "density", type = "l", col = "red") #pdf
+plotDist("norm", kind = "cdf", type = "l", col = "blue") #cdf
+#
+par(mfrow=c(1, 2))
+curve(dnorm(x), -3, 3)
+curve(pnorm(x), -3, 3, ylim = c(0, 1.1), col = "red")
+
+</code></pre><h5 id="2-3-卡方分布chi-square-distribution" data-id="2-3-卡方分布chi-square-distribution"><a class="anchor hidden-xs" href="#2-3-卡方分布chi-square-distribution" title="2-3-卡方分布chi-square-distribution"><span class="octicon octicon-link"></span></a><span>2-3. 卡方分布(chi-square distribution)</span></h5><pre><code>#   a. calculate probabilities
+dchisq(1, df = 4)
+pchisq(5, df = 4)
+
+#   b. ploting the pdf and CDF
+library(mosaic)
+plotDist("chisq", params = 4, kind = "density", groups = x &gt; 6, type = "h")
+plotDist("chisq", params = 4, kind = "cdf", type = "l")
+
+par(mfrow=c(1, 2)) #設定圖表
+curve(dchisq(x, 4), 0, 10)
+curve(pchisq(x, 4), 0, 10, col="red")
+
+</code></pre><h5 id="2-4-F分布F-distribution" data-id="2-4-F分布F-distribution"><a class="anchor hidden-xs" href="#2-4-F分布F-distribution" title="2-4-F分布F-distribution"><span class="octicon octicon-link"></span></a><span>2-4. F分布(F distribution)</span></h5><pre><code>#   a. calculate probabilities
+df(1, df1 = 3, df2 = 10)
+pf(5, df1 = 3, df2 = 10)
+
+#   b. ploting the pdf and CDF
+library(mosaic)
+plotDist("f", params=list(3, 10), kind = "density")
+plotDist("f", params=list(3, 10), kind = "cdf")
+
+par(mfrow=c(1, 2))
+curve(df(x, df1 = 3, df2 = 10), 0, 10)
+curve(pf(x, df1 = 3, df2 = 10), 0, 10, col="red")
+
+</code></pre><h3 id="Part-B-雙變數機率分布Bivariate-Distributions連續雙變數" data-id="Part-B-雙變數機率分布Bivariate-Distributions連續雙變數"><a class="anchor hidden-xs" href="#Part-B-雙變數機率分布Bivariate-Distributions連續雙變數" title="Part-B-雙變數機率分布Bivariate-Distributions連續雙變數"><span class="octicon octicon-link"></span></a><span>Part B. 雙變數機率分布(Bivariate Distributions):連續雙變數</span></h3><pre><code>#   i.e. 2004 UN data of fertility and cellphone(Agresti 2018 P.65)
+#   Importing data
+library(readr)
+fc &lt;- read_csv("/Users/lasia/Desktop/2004 UN data.csv")
+attach(fc)
+names(fc)
+head(fc)
+
+</code></pre><h4 id="1共變異數covariance" data-id="1共變異數covariance"><a class="anchor hidden-xs" href="#1共變異數covariance" title="1共變異數covariance"><span class="octicon octicon-link"></span></a><span>1.共變異數(covariance)</span></h4><pre><code>cov(fertility, cellphone)
+</code></pre><h4 id="2皮爾森相關係數correlation" data-id="2皮爾森相關係數correlation"><a class="anchor hidden-xs" href="#2皮爾森相關係數correlation" title="2皮爾森相關係數correlation"><span class="octicon octicon-link"></span></a><span>2.皮爾森相關係數(correlation)</span></h4><pre><code>#   method1
+cor(fertility,cellphone, method = "pearson")
+#   method2
+cov(fertility,cellphone)/(sd(fertility)*sd(cellphone))
+</code></pre><h4 id="3散佈圖scatterplot" data-id="3散佈圖scatterplot"><a class="anchor hidden-xs" href="#3散佈圖scatterplot" title="3散佈圖scatterplot"><span class="octicon octicon-link"></span></a><span>3.散佈圖(scatterplot)</span></h4><pre><code>par(mfrow=c(1, 1))
+plot(cellphone, fertility)
+fitline &lt;- lm(fertility~cellphone)
+abline(fitline)
+</code></pre><h2 id="五、參數估計Estimation" data-id="五、參數估計Estimation"><a class="anchor hidden-xs" href="#五、參數估計Estimation" title="五、參數估計Estimation"><span class="octicon octicon-link"></span></a><span>五、參數估計(Estimation)</span></h2><h3 id="1點估計Point-Estimation" data-id="1點估計Point-Estimation"><a class="anchor hidden-xs" href="#1點估計Point-Estimation" title="1點估計Point-Estimation"><span class="octicon octicon-link"></span></a><span>1.點估計(Point Estimation)</span></h3><h4 id="1-1mean" data-id="1-1mean"><a class="anchor hidden-xs" href="#1-1mean" title="1-1mean"><span class="octicon octicon-link"></span></a><span>1-1.mean</span></h4><pre><code>#   method1. use built-in command: mean
+est.mean &lt;- mean(VARIBLE, na.rm = TRUE)
+round(est.mean, digits = 2) 
+
+#   method2. use calculation formula of mean
+n &lt;- length(na.omit(VARIBLE))
+sigma &lt;- sum(na.omit(VARIBLE))
+meanVARIBLE &lt;- sigma/n 
+meanVARIBLE
+
+#   method3. use built-in command: t.test
+t.test(na.omit(VARIBLE), conf.level = 0.95)
+
+</code></pre><h4 id="1-2proportion-use-built-in-command-mean" data-id="1-2proportion-use-built-in-command-mean"><a class="anchor hidden-xs" href="#1-2proportion-use-built-in-command-mean" title="1-2proportion-use-built-in-command-mean"><span class="octicon octicon-link"></span></a><span>1-2.proportion. use built-in command: mean</span></h4><blockquote>
+<p><span>在估計母體比例前，需對變數重新編碼，其中感興趣一類編</span><br>
+<span>碼為1，另一類編碼為0。</span></p>
+</blockquote><pre><code>est.proportion &lt;- mean(VARIBLE, na.rm = TRUE)
+est.proportion
+</code></pre><h4 id="1-3variance" data-id="1-3variance"><a class="anchor hidden-xs" href="#1-3variance" title="1-3variance"><span class="octicon octicon-link"></span></a><span>1-3.variance</span></h4><pre><code>#   method1. use built-in command: var
+var(na.omit(VARIBLE))
+
+#   method2. use calculation formula of variance
+n.VARIBLE &lt;- length(na.omit(VARIBLE))
+est.var &lt;- sum(((na.omit(VARIBLE))-est.mean)^2)/(n.VARIBLE -1)
+est.var
+
+</code></pre><h3 id="2區間估計Interval-estimation" data-id="2區間估計Interval-estimation"><a class="anchor hidden-xs" href="#2區間估計Interval-estimation" title="2區間估計Interval-estimation"><span class="octicon octicon-link"></span></a><span>2.區間估計(Interval estimation)</span></h3><h4 id="2-1mean" data-id="2-1mean"><a class="anchor hidden-xs" href="#2-1mean" title="2-1mean"><span class="octicon octicon-link"></span></a><span>2-1.mean</span></h4><pre><code>#   method1. use built-in command: t.test
+t.test(na.omit(VARIBLE), conf.level = 0.95)
+
+#   method2. use calculation formula of confidence interval of mean
+n.VARIBLE &lt;- length(na.omit(VARIBLE))
+n.VARIBLE
+est.VARIBLE &lt;- mean(VARIBLE, na.rm = TRUE)
+est.VARIBLE
+se.VARIBLE &lt;- sd(VARIBLE, na.rm = TRUE)/sqrt(n.VARIBLE)
+se.VARIBLE
+alpha &lt;- 0.05
+ci95.VARIBLE&lt;-c(est.VARIBLE - qt(1-alpha/2, n.VARIBLE-1)*se.VARIBLE,
+            est.VARIBLE + qt(1-alpha/2, n.VARIBLE-1)*se.VARIBLE)
+##########注意!!!!跟公式相反############
+
+ci95.VARIBLE
+ci95.VARIBLE.z &lt;-c(est.VARIBLE - qnorm(1-alpha/2)*se.VARIBLE,
+               est.VARIBLE + qnorm(1-alpha/2)*se.VARIBLE)
+round(ci95.VARIBLE.z, digits = 2)
+
+</code></pre><h4 id="2-2proportion-use-built-in-command-ttest" data-id="2-2proportion-use-built-in-command-ttest"><a class="anchor hidden-xs" href="#2-2proportion-use-built-in-command-ttest" title="2-2proportion-use-built-in-command-ttest"><span class="octicon octicon-link"></span></a><span>2-2.proportion: use built-in command: t.test</span></h4><pre><code>t.test(VARIBLE, conf.level = 0.95)
+</code></pre><h4 id="2-3variance-use-calculation-formula-of-confidence-interval-of-variance" data-id="2-3variance-use-calculation-formula-of-confidence-interval-of-variance"><a class="anchor hidden-xs" href="#2-3variance-use-calculation-formula-of-confidence-interval-of-variance" title="2-3variance-use-calculation-formula-of-confidence-interval-of-variance"><span class="octicon octicon-link"></span></a><span>2-3.variance. use calculation formula of confidence interval of variance</span></h4><pre><code>n.VARIBLE &lt;- length(na.omit(VARIBLE))
+alpha &lt;- 0.05
+ci95.var.VARIBLE &lt;- c(sum(((na.omit(VARIBLE))-est.mean)^2)/qchisq(1-alpha/2, n.VARIBLE-1),
+                  sum(((na.omit(VARIBLE))-est.mean)^2)/qchisq(alpha/2, n.VARIBLE-1))
+ci95.var.VARIBLE
+
+</code></pre><h2 id="六、假設檢定Hypothesis-Testing" data-id="六、假設檢定Hypothesis-Testing"><a class="anchor hidden-xs" href="#六、假設檢定Hypothesis-Testing" title="六、假設檢定Hypothesis-Testing"><span class="octicon octicon-link"></span></a><span>六、假設檢定(Hypothesis Testing)</span></h2><h3 id="1-單一樣本檢定One-Sample-Hypothesis-Testing" data-id="1-單一樣本檢定One-Sample-Hypothesis-Testing"><a class="anchor hidden-xs" href="#1-單一樣本檢定One-Sample-Hypothesis-Testing" title="1-單一樣本檢定One-Sample-Hypothesis-Testing"><span class="octicon octicon-link"></span></a><span>1. 單一樣本檢定(One Sample Hypothesis Testing)</span></h3><blockquote>
+<ul>
+<li><span>語法說明</span><br>
+<span>alternative可放“two.sided/ greater/ less”</span><br>
+<span>mu 要放 H0設定之數值</span><br>
+<span>n為總樣本數</span><br>
+<span>x放感興趣一類的次數(母體比例檢定)，或者放變數(母體平均數檢定)</span><br>
+<span>sigmasq 要放 設定的變異數</span><br>
+<span>conf.level 要放 信心水準</span></li>
+</ul>
+</blockquote><h4 id="1-1-母體平均數檢定test-of-population-mean" data-id="1-1-母體平均數檢定test-of-population-mean"><a class="anchor hidden-xs" href="#1-1-母體平均數檢定test-of-population-mean" title="1-1-母體平均數檢定test-of-population-mean"><span class="octicon octicon-link"></span></a><span>1-1. 母體平均數檢定(test of population mean)</span></h4><h5 id="1-1-1two-tail" data-id="1-1-1two-tail"><a class="anchor hidden-xs" href="#1-1-1two-tail" title="1-1-1two-tail"><span class="octicon octicon-link"></span></a><span>1-1-1.two-tail</span></h5><pre><code>t.test(x = VARIBLE, mu = 5)
+qt(0.975, 1617)
+t.test(x = VARIBLE, mu = 5, alternative = "two.sided")
+
+t.test(x = VARIBLE, mu = 5, conf.level = 0.99)
+</code></pre><h5 id="1-1-2one-tail" data-id="1-1-2one-tail"><a class="anchor hidden-xs" href="#1-1-2one-tail" title="1-1-2one-tail"><span class="octicon octicon-link"></span></a><span>1-1-2.one-tail</span></h5><pre><code>t.test(x = VARIBLE, mu = 5, alternative = "greater")
+qt(0.95, 1617)
+t.test(x = VARIBLE, mu = 5, alternative = "less")
+</code></pre><h4 id="1-2-母體比例檢定test-of-population-proportion-" data-id="1-2-母體比例檢定test-of-population-proportion-"><a class="anchor hidden-xs" href="#1-2-母體比例檢定test-of-population-proportion-" title="1-2-母體比例檢定test-of-population-proportion-"><span class="octicon octicon-link"></span></a><span>1-2. 母體比例檢定(test of population proportion )</span></h4><h5 id="1-2-1two-tail" data-id="1-2-1two-tail"><a class="anchor hidden-xs" href="#1-2-1two-tail" title="1-2-1two-tail"><span class="octicon octicon-link"></span></a><span>1-2-1.two-tail</span></h5><pre><code>table(VARIBLE)
+length(na.omit(VARIBLE))
+prop.test(x = 852, n = 1680) 
+prop.test(x = 852, n = 1680, p = 0.5, alternative = "two.sided")
+prop.test(x = 852, n = 1680, p = 0.5, alternative = "two.sided", conf.level = 0.99)
+</code></pre><h5 id="1-2-2one-tail" data-id="1-2-2one-tail"><a class="anchor hidden-xs" href="#1-2-2one-tail" title="1-2-2one-tail"><span class="octicon octicon-link"></span></a><span>1-2-2.one-tail</span></h5><pre><code>prop.test(x = 852, n = 1680, p = 0.5, alternative = "greater")
+prop.test(x = 852, n = 1680, p = 0.5, alternative = "less")
+</code></pre><h4 id="1-3-母體變異數檢定test-of-population-variance-Fang-2018-342-ex921" data-id="1-3-母體變異數檢定test-of-population-variance-Fang-2018-342-ex921"><a class="anchor hidden-xs" href="#1-3-母體變異數檢定test-of-population-variance-Fang-2018-342-ex921" title="1-3-母體變異數檢定test-of-population-variance-Fang-2018-342-ex921"><span class="octicon octicon-link"></span></a><span>1-3. 母體變異數檢定(test of population variance) (Fang 2018, 342: ex.9.21)</span></h4><pre><code>set.seed(1221)
+x &lt;- rnorm(10, 3, 1.2)
+library(TeachingDemos)
+sigma.test(x, sigmasq = 0.81, alternative = "greater", conf.level = 0.95)
+</code></pre><h3 id="2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test" data-id="2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test"><a class="anchor hidden-xs" href="#2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test" title="2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test"><span class="octicon octicon-link"></span></a><span>2. 符合度檢定:卡方檢定(Goodness of Fit Test: Chi-Square Test)</span></h3><h4 id="2-1-適合度檢定goodness-of-fit-to-binomial-distribution" data-id="2-1-適合度檢定goodness-of-fit-to-binomial-distribution"><a class="anchor hidden-xs" href="#2-1-適合度檢定goodness-of-fit-to-binomial-distribution" title="2-1-適合度檢定goodness-of-fit-to-binomial-distribution"><span class="octicon octicon-link"></span></a><span>2-1. 適合度檢定(goodness of fit to binomial distribution)</span></h4><blockquote>
+<p><span>舉例:</span><br>
+<span>H0: 此筆資料顯示母體分布是 pi = 0.4的二項分布</span><br>
+<span>H1: 此筆資料顯示母體分布不是 pi = 0.4的二項分布</span></p>
+</blockquote><pre><code>dbinom(0:3, 3, 0.4)
+chisq.test(c(18, 47, 24, 11) , p = c(dbinom(0:3, 3, 0.4)))
+qchisq(0.95, 3)
+</code></pre><h4 id="2-2-樣本代表性檢定test-of-population-proportions" data-id="2-2-樣本代表性檢定test-of-population-proportions"><a class="anchor hidden-xs" href="#2-2-樣本代表性檢定test-of-population-proportions" title="2-2-樣本代表性檢定test-of-population-proportions"><span class="octicon octicon-link"></span></a><span>2-2. 樣本代表性檢定(test of population proportions)</span></h4><blockquote>
+<p><span>舉例:</span><br>
+<span>H0: 樣本中性別分佈符合母體</span><br>
+<span>H1: 樣本中性別分佈不符合母體</span></p>
+</blockquote><pre><code>table(VARIBLE)
+chisq.test(c(852, 828), p = c(.493, .507))
+qchisq(0.95, 1)
+</code></pre><h4 id="2-3-齊一性檢定test-of-homogeneity" data-id="2-3-齊一性檢定test-of-homogeneity"><a class="anchor hidden-xs" href="#2-3-齊一性檢定test-of-homogeneity" title="2-3-齊一性檢定test-of-homogeneity"><span class="octicon octicon-link"></span></a><span>2-3. 齊一性檢定(test of homogeneity)</span></h4><blockquote>
+<p><span>舉例:</span><br>
+<span>H0: 經過化學處理與未處理的種子發芽的比例相同</span><br>
+<span>H1: 經過化學處理與未處理的種子發芽的比例不相同</span></p>
+</blockquote><pre><code>table11.7 &lt;- as.table(rbind(c(84, 16), c(132, 18)))
+table11.7
+dimnames(table11.7) &lt;- list(treatment = c("treated", "non-treated"), 
+                            seed = c("germinated", "non-germinated"))
+addmargins(table11.7)
+chisq.test(table11.7, correct = F)
+qchisq(0.95, 29)
+chisq.test(table11.7)
+</code></pre><h4 id="2-4-獨立性檢定test-of-independencebetween-2-categorical-variables" data-id="2-4-獨立性檢定test-of-independencebetween-2-categorical-variables"><a class="anchor hidden-xs" href="#2-4-獨立性檢定test-of-independencebetween-2-categorical-variables" title="2-4-獨立性檢定test-of-independencebetween-2-categorical-variables"><span class="octicon octicon-link"></span></a><span>2-4. 獨立性檢定(test of independence)(between 2 categorical variables)</span></h4><blockquote>
+<p><span>舉例:</span><br>
+<span>H0: 性別與統獨立場統計上相互獨立</span><br>
+<span>H1: 性別與統獨立場統計上不相互獨立</span></p>
+</blockquote><pre><code>#   i.e., TEDS2020-sex &amp; unification-independence view)
+table(nsex, uiview)
+chisq.test(nsex, uiview)
+
+##  i.e., Fang (2018, 418: ex. 11.9)
+table11.9 &lt;- as.table(rbind(c(30, 45), c(70, 65)))
+table11.9
+dimnames(table11.9) &lt;- list(treatment = c("滿意", "不滿意"), 
+                            seed = c("男", "女"))
+addmargins(table11.9)
+chisq.test(table11.9, correct = F)
+qchisq(0.95, 1)
+</code></pre><h2 id="七、兩組間比較Comparison-of-Two-Groups" data-id="七、兩組間比較Comparison-of-Two-Groups"><a class="anchor hidden-xs" href="#七、兩組間比較Comparison-of-Two-Groups" title="七、兩組間比較Comparison-of-Two-Groups"><span class="octicon octicon-link"></span></a><span>七、兩組間比較(Comparison of Two Groups)</span></h2><pre><code>##  Install packages
+library("devtools")
+install_github("kosukeimai/qss-package", build_vignettes = TRUE)
+</code></pre><h3 id="1-兩組獨立樣本Comparison-of-Two-Independent-Samples" data-id="1-兩組獨立樣本Comparison-of-Two-Independent-Samples"><a class="anchor hidden-xs" href="#1-兩組獨立樣本Comparison-of-Two-Independent-Samples" title="1-兩組獨立樣本Comparison-of-Two-Independent-Samples"><span class="octicon octicon-link"></span></a><span>1. 兩組獨立樣本(Comparison of Two Independent Samples)</span></h3><h4 id="1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples" data-id="1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples"><a class="anchor hidden-xs" href="#1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples" title="1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples"><span class="octicon octicon-link"></span></a><span>1-1. 獨立樣本平均數檢定(test of means of two independent samples)</span></h4><blockquote>
+<ul>
+<li><span>t.test(欲檢定平均數的變數~分組變數,var.equal=T/F,alternative=“two.sided/greater/less”, conf.level=信心水準)</span></li>
+<li><span>var.test(第一組變數名稱,第二組變數名稱,var.equal=T/F,alternative=“two.sided/greater/less”, conf.level=信心水準)</span></li>
+<li><span>var.equal=T/F用於設定兩組樣本變異數是否相等；先用var.test()檢定兩組樣本變異數是否相等，再行檢定平均數。</span></li>
+</ul>
+</blockquote><pre><code>var.test(mp1$produce1, mp1$produce2, ratio = 1, alternative = "two.sided", conf.level = 0.95)
+t.test(mp$produce ~ mp$group, var.equal = T, paired = F, alternative = "two.sided", conf.level = 0.95)
+qt(0.975, 23)
+#
+mp_produce1 &lt;- c(44, 44, 56, 46, 47, 38, 58, 53, 49, 35, 46, 30, 41)
+mp_produce2 &lt;- c(35, 47, 55, 29, 40, 39, 32, 41, 42, 57, 51, 39)
+var.test(mp_produce1, mp_produce2, ratio = 1, alternative = "two.sided", conf.level = 0.95)
+t.test(mp_produce1, mp_produce2, var.equal = T, alternative = "two.sided", conf.level = 0.95)
+</code></pre><h4 id="1-2-獨立樣本比例檢定test-of-proportions-of-two-independent-samples" data-id="1-2-獨立樣本比例檢定test-of-proportions-of-two-independent-samples"><a class="anchor hidden-xs" href="#1-2-獨立樣本比例檢定test-of-proportions-of-two-independent-samples" title="1-2-獨立樣本比例檢定test-of-proportions-of-two-independent-samples"><span class="octicon octicon-link"></span></a><span>1-2. 獨立樣本比例檢定(test of proportions of two independent samples)</span></h4><blockquote>
+<ul>
+<li><span>fisher.test(表格名稱,alternative=“two.sided/ greater/ less”, conf.level=信心水準)</span></li>
+<li><span>prob.test(x=感興趣一類的樣本數, n=總樣本數, alternative=“two.sided/ greater/ less”, conf.level=信心水準, correct = T/ F)</span></li>
+</ul>
+</blockquote><pre><code>racetable &lt;- table(race = resume$race, call = resume$call)
+addmargins(racetable)
+racetable
+prop.test(racetable, alternative = "two.sided", conf.level = 0.95)
+</code></pre><h4 id="1-3-獨立樣本變異數檢定test-of-variances-of-two-independent-samples" data-id="1-3-獨立樣本變異數檢定test-of-variances-of-two-independent-samples"><a class="anchor hidden-xs" href="#1-3-獨立樣本變異數檢定test-of-variances-of-two-independent-samples" title="1-3-獨立樣本變異數檢定test-of-variances-of-two-independent-samples"><span class="octicon octicon-link"></span></a><span>1-3. 獨立樣本變異數檢定(test of variances of two independent samples)</span></h4><blockquote>
+<ul>
+<li><span>var.test(變數1 ,變數2,ratio=1,alternative=“two.sided/ greater/ less”, conf.level=信心水準)</span></li>
+</ul>
+</blockquote><pre><code>var.test(mp1$produce1, mp1$produce2, ratio = 1, alternative = "two.sided", conf.level = 0.95) 
+qf(0.975, 12, 11) #F檢定
+</code></pre><h3 id="2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples" data-id="2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples"><a class="anchor hidden-xs" href="#2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples" title="2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples"><span class="octicon octicon-link"></span></a><span>2. 兩組相依樣本檢定(Comparison of Two Dependent Samples)</span></h3><h4 id="2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-" data-id="2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-"><a class="anchor hidden-xs" href="#2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-" title="2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-"><span class="octicon octicon-link"></span></a><span>2-1. 相依樣本平均數檢定(test of means of two paired samples )</span></h4><blockquote>
+<ul>
+<li><span>t.test(變數1 ,變數2, paired=T, alternative=“two.sided/ greater/ less”, conf.level=信心水準)</span></li>
+</ul>
+</blockquote><pre><code>t.test(bp$pre, bp$post, paired = T, alternative = "two.sided", conf.level = 0.95)
+qt(0.975, 14)
+</code></pre><h4 id="2-2-相依樣本比例檢定test-of-proportions-of-two-dependent-samples" data-id="2-2-相依樣本比例檢定test-of-proportions-of-two-dependent-samples"><a class="anchor hidden-xs" href="#2-2-相依樣本比例檢定test-of-proportions-of-two-dependent-samples" title="2-2-相依樣本比例檢定test-of-proportions-of-two-dependent-samples"><span class="octicon octicon-link"></span></a><span>2-2. 相依樣本比例檢定(test of proportions of two dependent samples)</span></h4><blockquote>
+<ul>
+<li><span>mcnemar.test(表格名稱, correct = TRUE/FALSE)</span></li>
+</ul>
+</blockquote><pre><code>table7_10 &lt;- matrix(c(875, 9, 162, 168), nrow = 2,
+             dimnames = list("Belief in Heaven" = c("Yes", "No"),
+                             "Belief in Hell" = c("Yes", "No")))
+addmargins(table7_10)
+
+#   a. McNemar's Z Test
+z &lt;- (addmargins(table7_10)[1, 2] - addmargins(table7_10)[2, 1])/
+      sqrt(addmargins(table7_10)[2, 1] + addmargins(table7_10)[1, 2])
+z
+
+#   b. McNemar's Chi-squared Test
+mcnemar.test(table7_10, correct = FALSE)
+
+</code></pre><h2 id="八、交叉表分析Cross-Tabular-Analysis" data-id="八、交叉表分析Cross-Tabular-Analysis"><a class="anchor hidden-xs" href="#八、交叉表分析Cross-Tabular-Analysis" title="八、交叉表分析Cross-Tabular-Analysis"><span class="octicon octicon-link"></span></a><span>八、交叉表分析(Cross-Tabular Analysis)</span></h2><h3 id="A-二維交叉表Two-Way-Contingency-Tables" data-id="A-二維交叉表Two-Way-Contingency-Tables"><a class="anchor hidden-xs" href="#A-二維交叉表Two-Way-Contingency-Tables" title="A-二維交叉表Two-Way-Contingency-Tables"><span class="octicon octicon-link"></span></a><span>A. 二維交叉表(Two-Way Contingency Tables)</span></h3><h4 id="1-Contingency-Tables" data-id="1-Contingency-Tables"><a class="anchor hidden-xs" href="#1-Contingency-Tables" title="1-Contingency-Tables"><span class="octicon octicon-link"></span></a><span>1. Contingency Tables</span></h4><blockquote>
+<p><span>table(row變數, column變數)</span><br>
+<span>CrossTable(row變數, column變數) 呈現細格內次數、機率及邊緣次數</span><br>
+<span>表格名稱 &lt;- table(row變數, column變數)</span><br>
+<span>addmargins(表格名稱)</span></p>
+</blockquote><pre><code>a. create a contingency table
+t1 &lt;- table(gender, vote)
+t1
+#
+library(descr)
+CrossTable(gender, vote)
+#
+addmargins(t1)
+
+#   b. 編輯變數名稱及數值標籤
+dimnames(t1) &lt;- list(gender = c("male", "female"), 
+                     vote = c("yes", "no"))
+t1
+</code></pre><h4 id="2-獨立性分析Test-of-Independence" data-id="2-獨立性分析Test-of-Independence"><a class="anchor hidden-xs" href="#2-獨立性分析Test-of-Independence" title="2-獨立性分析Test-of-Independence"><span class="octicon octicon-link"></span></a><span>2. 獨立性分析(Test of Independence)</span></h4><pre><code>chisq.test(gender, vote)
+chisq.test(t1)
+</code></pre><h4 id="3-比例差異Difference-of-Proportions" data-id="3-比例差異Difference-of-Proportions"><a class="anchor hidden-xs" href="#3-比例差異Difference-of-Proportions" title="3-比例差異Difference-of-Proportions"><span class="octicon octicon-link"></span></a><span>3. 比例差異(Difference of Proportions)</span></h4><p><img src="https://i.imgur.com/1A9UtsD.png" alt="" loading="lazy"></p><pre><code>#   method1
+745/852 - 740/828
+
+#   method2
+prop.test(t1, correct = FALSE)
+diff &lt;- 0.8744131 - 0.8937198 
+diff
+</code></pre><h4 id="4-勝算比及其對數Odds-Ratio-and-Log-Odds-Ratio" data-id="4-勝算比及其對數Odds-Ratio-and-Log-Odds-Ratio"><a class="anchor hidden-xs" href="#4-勝算比及其對數Odds-Ratio-and-Log-Odds-Ratio" title="4-勝算比及其對數Odds-Ratio-and-Log-Odds-Ratio"><span class="octicon octicon-link"></span></a><span>4. 勝算比及其對數(Odds Ratio and Log Odds Ratio)</span></h4><pre><code>#   a. odds ratio
+library(vcd)
+loddsratio(t1, log = FALSE)
+
+#   b. log odds ratio
+library(vcd)
+loddsratio(t1, log = TRUE)
+#
+log(0.8279869)
+</code></pre><h3 id="B-多維交叉表Multi-Way-Contingency-Tables" data-id="B-多維交叉表Multi-Way-Contingency-Tables"><a class="anchor hidden-xs" href="#B-多維交叉表Multi-Way-Contingency-Tables" title="B-多維交叉表Multi-Way-Contingency-Tables"><span class="octicon octicon-link"></span></a><span>B. 多維交叉表(Multi-Way Contingency Tables)</span></h3><h4 id="1-Contingency-table" data-id="1-Contingency-table"><a class="anchor hidden-xs" href="#1-Contingency-table" title="1-Contingency-table"><span class="octicon octicon-link"></span></a><span>1. Contingency table</span></h4><blockquote>
+<p><span>有conditional/partial table，可以畫marginal table，但若只有marginal table，則無法畫出conditional/partial table。</span></p>
+</blockquote><pre><code>#   marginal table
+margintable &lt;- table(polin, vote)
+margintable
+
+#   conditional/partial tables
+partialtable &lt;- xtabs(~ polin + vote + gender)
+partialtable
+partialtable[, , 1]
+partialtable[, , 2]
+
+#   flat contingency table
+ftable(partialtable)
+
+#   marginal frequency
+margin.table(partialtable, 1) #polin
+margin.table(partialtable, 2) #vote
+margin.table(partialtable, 3) #gender
+
+#   marginal table
+margin.table(partialtable, c(1,2))
+
+#   probabilities
+ftable(prop.table(partialtable, c(1,2)))
+</code></pre><h4 id="2-Conditional-odds-ratio" data-id="2-Conditional-odds-ratio"><a class="anchor hidden-xs" href="#2-Conditional-odds-ratio" title="2-Conditional-odds-ratio"><span class="octicon octicon-link"></span></a><span>2. Conditional odds ratio</span></h4><pre><code>#   method 1 自建函數
+odds.ratio &lt;- function(x, conf.level, theta0 = 1) {
+  if (any(x == 0)) x &lt;- x + 0.5
+  theta &lt;- x[1,1]*x[2,2]/(x[1,2]*x[2,1]) 
+  SE &lt;- sqrt(sum(1/x))
+  Za2 &lt;- qnorm(0.5*(1 + conf.level)) 
+  Low &lt;- exp(log(theta) - Za2*SE) 
+  Up &lt;- exp(log(theta) - Za2*SE)
+  CI &lt;- c(Low, Up)
+  Z &lt;- (log(theta)-log(theta0))/SE
+  pv &lt;- 2*pnorm(-abs(Z))
+  list (estimator = theta, asympt.SE = SE, conf.interval = CI,
+        conf.level = conf.level, Ztest = Z, p.value = pv)
+}
+odds.ratio(partialtable[, , 1], 0.95)
+odds.ratio(partialtable[, , 2], 0.95)
+
+#   method 2
+library(vcd)
+loddsratio(partialtable[, , 1], log = FALSE)
+loddsratio(partialtable[, , 2], log = FALSE)
+</code></pre><h2 id="九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I" data-id="九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I"><a class="anchor hidden-xs" href="#九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I" title="九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I"><span class="octicon octicon-link"></span></a><span>九、連續變數相關性分析與迴歸(一)(Correlation and Linear	Regression I)</span></h2><h3 id="1-Correlation-between-two-continuous-variables" data-id="1-Correlation-between-two-continuous-variables"><a class="anchor hidden-xs" href="#1-Correlation-between-two-continuous-variables" title="1-Correlation-between-two-continuous-variables"><span class="octicon octicon-link"></span></a><span>1. Correlation between two continuous variables</span></h3><pre><code>#   covariance
+cov(food$income, food$food_exp)
+
+#   Pearson’s correlation coefficient
+cor(food$income, food$food_exp)
+
+#   scatter plot 
+plot(food$income, food$food_exp, 
+     xlim = c(0, max(food$income)),
+     ylim = c(0, max(food$food_exp)),
+     xlab = "weekly income in $100", 
+     ylab = "weekly food expenditure in $", 
+     type = "p")
+</code></pre><h3 id="2-簡單線性迴歸Simple-linear-regression" data-id="2-簡單線性迴歸Simple-linear-regression"><a class="anchor hidden-xs" href="#2-簡單線性迴歸Simple-linear-regression" title="2-簡單線性迴歸Simple-linear-regression"><span class="octicon octicon-link"></span></a><span>2. 簡單線性迴歸(Simple linear regression)</span></h3><blockquote>
+<p><span>模型名稱 &lt;- lm(依變數 ~ 自變數, data = 資料名稱)</span><br>
+<span>summary(模型名稱)</span></p>
+</blockquote><pre><code>#   run regression model
+mod1 &lt;- lm(food_exp ~ income, data = food)
+summary(mod1)
+
+#   get estimated coefficients
+coef(mod1)
+
+#   plot the scatter diagram with the regression line
+plot(food$income, food$food_exp, 
+     xlab = "weekly income in $100", 
+     ylab = "weekly food expenditure in $", 
+     type = "p")
+abline(mod1)
+</code></pre><h3 id="3-多元線性迴歸Multiple-linear-regression" data-id="3-多元線性迴歸Multiple-linear-regression"><a class="anchor hidden-xs" href="#3-多元線性迴歸Multiple-linear-regression" title="3-多元線性迴歸Multiple-linear-regression"><span class="octicon octicon-link"></span></a><span>3. 多元線性迴歸(Multiple linear regression)</span></h3><blockquote>
+<p><span>模型名稱 &lt;- lm(依變數 ~ 解釋變數1 + …… + 解釋變數k, data = 資料名稱)</span><br>
+<span>summary(模型名稱)</span></p>
+</blockquote><pre><code>#   run regression model
+mod2 &lt;- lm(HDI ~ lnGDP + fertility, data = undata)
+summary(mod2)
+
+#   get estimated coefficients
+coef(mod2)
+</code></pre><h2 id="十、線性迴歸二Linear-Regression-II" data-id="十、線性迴歸二Linear-Regression-II"><a class="anchor hidden-xs" href="#十、線性迴歸二Linear-Regression-II" title="十、線性迴歸二Linear-Regression-II"><span class="octicon octicon-link"></span></a><span>十、線性迴歸(二)(Linear	Regression II)</span></h2><h3 id="A-多元線性迴歸-Multiple-Linear-Regression" data-id="A-多元線性迴歸-Multiple-Linear-Regression"><a class="anchor hidden-xs" href="#A-多元線性迴歸-Multiple-Linear-Regression" title="A-多元線性迴歸-Multiple-Linear-Regression"><span class="octicon octicon-link"></span></a><span>A. 多元線性迴歸 (Multiple Linear Regression)</span></h3><h4 id="1-Regression-analysis" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis" title="1-Regression-analysis"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h4><pre><code>#   a. run a regression model with two continuous explanatory variables
+mod1 &lt;- lm(price ~ age + sqft, data = utown)
+summary(mod1)
+
+#   b. run a regression model with two continuous explanatory variables and one categorical explantory variable
+mod2 &lt;- lm(price ~ utown + sqft + age, data = utown)
+summary(mod2)
+
+mod3 &lt;- lm(price ~ nutown + sqft + age, data = utown)
+summary(mod3)
+
+#   c. run a regression model with an interaction term
+#   method 1
+mod4 &lt;- lm(price ~ utown * sqft + age, data = utown)
+summary(mod4)
+#   method 2
+mod5 &lt;- lm(price ~ utown + sqft + utown:sqft + age, data = utown)
+summary(mod5)
+
+</code></pre><h4 id="2-Interpretation" data-id="2-Interpretation"><a class="anchor hidden-xs" href="#2-Interpretation" title="2-Interpretation"><span class="octicon octicon-link"></span></a><span>2. Interpretation</span></h4><pre><code>#   a. coefficient
+coef(mod1)
+coef(mod2)[2]
+
+#   b. marginal effect
+#   b-1. average marginal effect (AME)
+library(margins)
+
+memod1 &lt;- margins(mod1)
+summary(memod1)
+plot(memod1)
+
+margins(mod4)
+summary(margins(mod4))
+
+summary(margins(mod1, variables = "sqft"))
+summary(margins(mod4, variables = "sqft"))
+
+#   b-2. marginal effect at means (MEM)
+margins(mod1, at = list(sqft = mean(utown$sqft), age = mean(utown$age)))
+margins(mod4, at = list(sqft = mean(utown$sqft), age = mean(utown$age)))
+
+#   b-3. marginal effect at representative cases (MER)
+margins(mod1, at = list(sqft = 25:30))
+margins(mod4, at = list(utown = c("0", "1")))
+margins(mod4, at = list(age = seq(0, 60, 10)))
+</code></pre><h4 id="3-Hypothesis-test" data-id="3-Hypothesis-test"><a class="anchor hidden-xs" href="#3-Hypothesis-test" title="3-Hypothesis-test"><span class="octicon octicon-link"></span></a><span>3. Hypothesis test</span></h4><blockquote>
+<p><span>F-test	of joint significance	</span><br>
+<span>linearHypothesis(模型名稱, c(“係數1=0”, “係數2=0”⋯⋯))</span></p>
+</blockquote><pre><code>library(car)
+linearHypothesis(mod4, c("utown1 = 0", "sqft = 0", "utown1:sqft = 0"))
+
+</code></pre><h3 id="B-線性迴歸診斷Linear-Regression-Diagnostics" data-id="B-線性迴歸診斷Linear-Regression-Diagnostics"><a class="anchor hidden-xs" href="#B-線性迴歸診斷Linear-Regression-Diagnostics" title="B-線性迴歸診斷Linear-Regression-Diagnostics"><span class="octicon octicon-link"></span></a><span>B. 線性迴歸診斷(Linear Regression Diagnostics)</span></h3><blockquote>
+<ul>
+<li><span>No influential observations or outliers</span></li>
+<li><span>Assumption 1: Linearity</span></li>
+<li><span>Assumption 3: Homoscedasticity</span></li>
+<li><span>Assumption 4: Independent error terms</span></li>
+<li><span>Assumption 5: No perfect or nearly perfect multicollinearity</span></li>
+<li><span>Assumption 6: Normality</span></li>
+</ul>
+</blockquote><h4 id="1-No-influential-observations-or-outliers" data-id="1-No-influential-observations-or-outliers"><a class="anchor hidden-xs" href="#1-No-influential-observations-or-outliers" title="1-No-influential-observations-or-outliers"><span class="octicon octicon-link"></span></a><span>1. No influential observations or outliers</span></h4><pre><code>#   1-1. graphical methods: residual plot
+#   a. residuals vs. fitted Y
+plot(residuals(utown.mod) ~ fitted(utown.mod), data = utown)
+abline(h = 0, col = "red")
+#   b. residuals vs. X
+plot(residuals(utown.mod) ~ sqft, data = utown)
+abline(h = 0, col = "red")
+
+#   1-2. formal tests
+#   a. leverage/ hat-value
+hat.value &lt;- hatvalues(utown.mod)
+head(hat.value)
+summary(hat.value)
+
+#   b. standardized residuals
+ehatstd &lt;- rstandard(utown.mod)
+summary(ehatstd)
+
+#   c. studentized residuals
+ehatstu &lt;- rstudent(utown.mod)
+summary(ehatstu)
+
+#   d. DFBETA
+dfbetak &lt;- dfbetas(utown.mod)
+summary(dfbetak)
+
+#   e. DFFITS
+dffitsi &lt;- dffits(utown.mod)
+summary(dffitsi)
+
+#   f. Cook's distance
+cooksd &lt;- cooks.distance(utown.mod)
+summary(cooksd)
+
+</code></pre><h4 id="2-Assumption-1-linearity" data-id="2-Assumption-1-linearity"><a class="anchor hidden-xs" href="#2-Assumption-1-linearity" title="2-Assumption-1-linearity"><span class="octicon octicon-link"></span></a><span>2. Assumption 1: linearity</span></h4><pre><code>#   2-1. graphical methods: residual plot
+#   a. residuals vs. fitted Y
+#   b. residuals vs. X
+
+#   2-2. formal tests: Ramsey's RESET test
+library(lmtest)
+resettest(utown.mod)
+</code></pre><h4 id="3-Assumption-3-homoscedasticity" data-id="3-Assumption-3-homoscedasticity"><a class="anchor hidden-xs" href="#3-Assumption-3-homoscedasticity" title="3-Assumption-3-homoscedasticity"><span class="octicon octicon-link"></span></a><span>3. Assumption 3: homoscedasticity</span></h4><pre><code>#   3-1. graphical methods: residual plot
+
+#   3-2. formal tests: Bruech-Pagan/ Cook-Weisberg test
+library(lmtest)
+bptest(utown.mod, studentize = FALSE)
+</code></pre><h4 id="4-Assumption-4-independent-error-terms" data-id="4-Assumption-4-independent-error-terms"><a class="anchor hidden-xs" href="#4-Assumption-4-independent-error-terms" title="4-Assumption-4-independent-error-terms"><span class="octicon octicon-link"></span></a><span>4. Assumption 4: independent error terms</span></h4><pre><code>#   4-1. graphic method: residual plot
+ehat &lt;- resid(phill.dyn)
+plot(ehat)
+abline(h = 0)
+
+#   4-2. formal test: Durbin-Watson statistic
+library(lmtest)
+dwtest(phill.dyn)
+</code></pre><h4 id="5-Assumption-5-no-perfect-or-nearly-perfect-multicollinearity" data-id="5-Assumption-5-no-perfect-or-nearly-perfect-multicollinearity"><a class="anchor hidden-xs" href="#5-Assumption-5-no-perfect-or-nearly-perfect-multicollinearity" title="5-Assumption-5-no-perfect-or-nearly-perfect-multicollinearity"><span class="octicon octicon-link"></span></a><span>5. Assumption 5: no perfect or nearly perfect multicollinearity</span></h4><pre><code>#   calculate the correlations between each two variables
+cor(rice5$larea, rice5$llabor, method = "pearson")
+cor(rice5$larea, rice5$lfert, method = "pearson")
+cor(rice5$llabor, rice5$lfert, method = "pearson")
+
+#   5-1. formal tests: Tolerance and Variance Inflation Factor
+library(olsrr)
+ols_vif_tol(rice5.mod)
+</code></pre><h4 id="6-Assumption-6-normality" data-id="6-Assumption-6-normality"><a class="anchor hidden-xs" href="#6-Assumption-6-normality" title="6-Assumption-6-normality"><span class="octicon octicon-link"></span></a><span>6. Assumption 6: normality</span></h4><pre><code>#   6-1. graphical methods
+#   a. histogram of ordinary residuals
+hist(residuals(utown.mod))
+
+#   b. quantile-quantile plot
+library(car)
+qqPlot(utown.mod, distribution = "norm")
+
+#   6-2. formal tests: Jarque-Bera test
+library(tseries)
+jarque.bera.test(utown.mod$residuals)
+</code></pre><h3 id="流程示範" data-id="流程示範"><a class="anchor hidden-xs" href="#流程示範" title="流程示範"><span class="octicon octicon-link"></span></a><span>流程示範</span></h3><h4 id="1-Import-data-file-and-recode-variables" data-id="1-Import-data-file-and-recode-variables"><a class="anchor hidden-xs" href="#1-Import-data-file-and-recode-variables" title="1-Import-data-file-and-recode-variables"><span class="octicon octicon-link"></span></a><span>1. Import data file and recode variables</span></h4><pre><code>#   a. "utown" data: No influential observations or outliers
+#                    Assumption 1: linearity
+#                    Assumption 3: homoscedasticity
+#                    Assumption 6: normality
+data("utown", package = "POE5Rdata")
+head(utown)
+str(utown)
+
+#   b. "rice5" data: Assumption 5: no perfect or nearly perfect multicollinearity
+data("rice5", package = "POE5Rdata")
+names(rice5)
+
+#   add logs to dataset
+rice5$lprod &lt;- log(rice5$prod)
+rice5$larea&lt;- log(rice5$area)
+rice5$llabor &lt;- log(rice5$labor)
+rice5$lfert &lt;- log(rice5$fert)
+
+#   c. "phillips5_aus" data: Assumption 4: independent error terms 
+data("phillips5_aus", package = "POE5Rdata")
+head(phillips5_aus)
+
+#   declare the data to be a time-series
+phill.ts &lt;- ts(phillips5_aus, 
+               start = c(1987, 1), 
+               end = c(2009, 3),
+               frequency = 4)
+inflation &lt;- phill.ts[, "inf"]
+Du &lt;- diff(phill.ts[, "u"])
+
+</code></pre><h4 id="2-Regression-analysis" data-id="2-Regression-analysis"><a class="anchor hidden-xs" href="#2-Regression-analysis" title="2-Regression-analysis"><span class="octicon octicon-link"></span></a><span>2. Regression analysis</span></h4><pre><code>utown.mod &lt;- lm(price ~ sqft + age, data = utown)
+summary(utown.mod)
+
+rice5.mod &lt;- lm(lprod ~ larea + llabor + lfert, data = rice5[rice5$year==1994, ])
+summary(rice5.mod)
+
+library(dynlm)
+phill.dyn &lt;- dynlm(inf ~ diff(u), data = phill.ts)
+summary(phill.dyn)
+
+</code></pre><h2 id="十一、時間序列分析Regression-with-Time-Series-Data" data-id="十一、時間序列分析Regression-with-Time-Series-Data"><a class="anchor hidden-xs" href="#十一、時間序列分析Regression-with-Time-Series-Data" title="十一、時間序列分析Regression-with-Time-Series-Data"><span class="octicon octicon-link"></span></a><span>十一、時間序列分析(Regression	with Time-Series Data)</span></h2><pre><code>### Pre-Analysis
+##  1. Install new packages
+install.packages("knitr")
+install.packages("dynlm")
+install.packages("broom")
+install.packages("forecast")
+##  2. Import data file and recode variables
+data("usmacro", package = "POE5Rdata")
+head(usmacro)
+
+</code></pre><h3 id="轉換資料為時間序列" data-id="轉換資料為時間序列"><a class="anchor hidden-xs" href="#轉換資料為時間序列" title="轉換資料為時間序列"><span class="octicon octicon-link"></span></a><span>轉換資料為時間序列</span></h3><blockquote>
+<ul>
+<li><span>ts(資料或變數名稱, start= , end= , frequency= )</span></li>
+<li><span>Time lag: lag(變數, -1); lag(變數, -2); ……lag(變數, -k)</span></li>
+<li><span>Time lead: lag(變數, 1); lag(變數, 2); ……lag(變數, k)</span></li>
+<li><span>Time difference: diff(變數, lag=1)</span></li>
+</ul>
+</blockquote><pre><code>is.ts(usmacro)
+usmacro.ts &lt;- ts(usmacro, start = c(1948, 1), end = c(2016, 1), frequency = 4)
+is.ts(usmacro.ts)
+head(usmacro.ts)
+u.ts &lt;- ts(usmacro$u, start = c(1948, 1), end = c(2016, 1), frequency = 4)
+g.ts &lt;- ts(usmacro$g, start = c(1948, 1), end = c(2016, 1), frequency = 4)
+
+#   time-series operators: time lag, lead, and difference
+usmacro.tab &lt;- cbind(usmacro.ts,
+                     lag(usmacro.ts[, 2], -1),
+                     lag(usmacro.ts[, 2], -2),
+                     diff(usmacro.ts[, 2], lag = 1),
+                     lag(usmacro.ts[, 4], -1),
+                     lag(usmacro.ts[, 4], -2),
+                     lag(usmacro.ts[, 4], 1))
+head(usmacro.tab)
+
+library(knitr)
+kable(head(usmacro.tab),
+      caption = "The $usmacro$ Data Set with Time-Series Operators",
+      col.names = c("dateid", "g","inf", "u","gL1","gL2", "gd","uL1","uL2","uF1"))
+
+
+##  Line plot
+#   time-series line plots
+ts.plot(usmacro.ts[, "u"], ylab = "% Unemployment Rate", xlab = NULL)
+ts.plot(usmacro.ts[, "g"], ylab = "% GDP Growth", xlab = NULL)
+
+#   2 time-series in the same line plot
+ts.plot(usmacro.ts[, "u"], usmacro.ts[, "g"], ylab = NULL, xlab = NULL, lty = c(1, 2))
+
+
+##  Autocorrelation and correlogram
+acf(usmacro.ts[, "u"], lag.max = 24, type = "correlation", plot = FALSE)
+acf(usmacro.ts[, "u"], lag.max = 24, type = "correlation")
+#pacf(usmacro.ts[, "g"], lag.max = 48)
+acf(usmacro.ts[, "g"], lag.max = 48, type = "correlation", plot = FALSE)
+acf(usmacro.ts[, "g"], lag.max = 48, type = "correlation")
+</code></pre><h3 id="Regression-with-time-series-data" data-id="Regression-with-time-series-data"><a class="anchor hidden-xs" href="#Regression-with-time-series-data" title="Regression-with-time-series-data"><span class="octicon octicon-link"></span></a><span>Regression with time-series data</span></h3><h4 id="1-Autoregressive-model-AR2-model" data-id="1-Autoregressive-model-AR2-model"><a class="anchor hidden-xs" href="#1-Autoregressive-model-AR2-model" title="1-Autoregressive-model-AR2-model"><span class="octicon octicon-link"></span></a><span>1. Autoregressive model: AR(2) model</span></h4><blockquote>
+<ul>
+<li><span>模型名稱 &lt;- dynlm(依變數 ~ L(依變數, 1:p))</span></li>
+<li><span>kable(模型名稱, captipn=“”)</span></li>
+<li><span>模型名稱 &lt;- ar(依變數, aic = FALSE, order.max=lag數, method= “ols”)</span><br>
+<span>library(forecast);</span><br>
+<span>預測值資料名稱 &lt;- data.frame(forecast(模型名稱, 預測的時間段數))</span><br>
+<span>kable(預測值資料名稱, caption=“”)</span></li>
+</ul>
+</blockquote><pre><code>u.ts &lt;- ts(usmacro$u, start = c(1948, 1),end = c(2016, 1),frequency = 4)
+library(dynlm)
+u.ar2 &lt;- dynlm(u.ts ~ L(u.ts, 1:2))
+library(broom)
+kable(tidy(u.ar2), caption =  "The AR(2) Unemployment Model", digits = 10)
+
+#   forecast intervals
+ar2u &lt;- ar(u.ts, aic = FALSE, order.max = 2, method = "ols")
+library(forecast)
+fcst &lt;- data.frame(forecast(ar2u, h = 5))
+kable(fcst, digits = 3, caption = "Unemployment forcasts with AR(2)", align = "c")
+plot(forecast(ar2u, h = 3))
+</code></pre><h4 id="2-Autoregressive-distributed-lag-model-ARDL21-model" data-id="2-Autoregressive-distributed-lag-model-ARDL21-model"><a class="anchor hidden-xs" href="#2-Autoregressive-distributed-lag-model-ARDL21-model" title="2-Autoregressive-distributed-lag-model-ARDL21-model"><span class="octicon octicon-link"></span></a><span>2. Autoregressive distributed lag model: ARDL(2,1) model</span></h4><blockquote>
+<p><span>模型名稱 &lt;- dynlm(依變數 ~ L(依變數, 1:p) + L(自變數, 1:q))</span></p>
+</blockquote><pre><code>u.ardl21 &lt;- dynlm(u.ts ~ L(u.ts, 1:2) + L(g.ts, 1))
+tidy(u.ardl21)
+
+</code></pre><h2 id="十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable" data-id="十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable"><a class="anchor hidden-xs" href="#十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable" title="十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable"><span class="octicon octicon-link"></span></a><span>十二、矩陣代數、計次依變數分析(Matrix Algebra and Poisson Regression for Count Dependent Variable)</span></h2><h3 id="Part-A-矩陣代數Matrix-Algebra" data-id="Part-A-矩陣代數Matrix-Algebra"><a class="anchor hidden-xs" href="#Part-A-矩陣代數Matrix-Algebra" title="Part-A-矩陣代數Matrix-Algebra"><span class="octicon octicon-link"></span></a><span>Part A. 矩陣代數(Matrix Algebra)</span></h3><h4 id="1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices" data-id="1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices"><a class="anchor hidden-xs" href="#1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices" title="1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices"><span class="octicon octicon-link"></span></a><span>1. Use matrix inverse to solve simultaneous equations with conformable matrices</span></h4><pre><code>### Pre-Analysis
+##  Install new packages
+install.packages("matlib")
+
+#   example: Fox (2009, pp. 10-12): Ax=b
+A &lt;- matrix(c(2, 5, 1, 3), nrow = 2, ncol = 2, byrow = TRUE); A #A is a 2x2 square matrix
+b &lt;- matrix(c(4, 5), nrow = 2, ncol = 1, byrow = TRUE); b #b is a 2x1 column vector
+
+library(matlib)
+showEqn(A, b) #show two simultaneous equations
+#plotEqn(A, b) #plot the equations
+
+tr(A) #trace
+det(A) #determinant
+R(A) #rank
+
+t(A) #transpose
+
+solve(A) #inverse matrix of A
+
+solve(A) %*% A #verify that AinvxA=I
+A %*% solve(A) #verify that AxAinv=I
+
+#all.equal(R(A), R(cbind(A, b))) #consistent?
+
+Solve(A, b, fractions = TRUE) #solve the two-equation system Ax=b
+solve(A) %*% b #another way to solve the unknowns x
+</code></pre><h4 id="2-Use-matrix-inverse-to-solve-simultaneous-equations-with-nonconformable-matrices" data-id="2-Use-matrix-inverse-to-solve-simultaneous-equations-with-nonconformable-matrices"><a class="anchor hidden-xs" href="#2-Use-matrix-inverse-to-solve-simultaneous-equations-with-nonconformable-matrices" title="2-Use-matrix-inverse-to-solve-simultaneous-equations-with-nonconformable-matrices"><span class="octicon octicon-link"></span></a><span>2. Use matrix inverse to solve simultaneous equations with nonconformable matrices</span></h4><pre><code>#   sovle equations Y=XB (where Y and X are knowns, B is unknown) with B=(X'X)-1*X'Y
+X &lt;- matrix(c(5, 7, 8, 4, 5, 5), nrow = 3, ncol = 2, byrow = TRUE); X  # X is a 3x2 matrix  
+Y &lt;- matrix(c(-11, 4, -5), nrow = 3, ncol = 1, byrow = TRUE); Y # Y is a 3x1 column vector
+B &lt;- solve(t(X) %*% X) %*% t(X) %*% Y; B # solve for the unknown B vector
+</code></pre><h3 id="Part-B-Poisson-Regression-for-Count-Dependent-Variable" data-id="Part-B-Poisson-Regression-for-Count-Dependent-Variable"><a class="anchor hidden-xs" href="#Part-B-Poisson-Regression-for-Count-Dependent-Variable" title="Part-B-Poisson-Regression-for-Count-Dependent-Variable"><span class="octicon octicon-link"></span></a><span>Part B. Poisson Regression for Count Dependent Variable</span></h3><h4 id="1-Regression-analysis1" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis1" title="1-Regression-analysis1"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h4><pre><code>### Pre-Analysis
+##  Import data file and recode variables
+data("rwm88_small", package = "POE5Rdata")
+names(rwm88_small)
+head(rwm88_small)
+
+#   Hill et al. (2018, pp. 715-716, example 16.15)
+rwm.mod &lt;- glm(docvis ~ age + female + public, family = "poisson"(link = "log"), data = rwm88_small)
+summary(rwm.mod)
+</code></pre><h4 id="2-Model-checking" data-id="2-Model-checking"><a class="anchor hidden-xs" href="#2-Model-checking" title="2-Model-checking"><span class="octicon octicon-link"></span></a><span>2. Model checking</span></h4><pre><code>rwm.data &lt;- data.frame(rwm88_small$docvis, rwm88_small$female, rwm88_small$public, rwm88_small$age)
+rwm.data &lt;- na.omit(rwm.data)
+
+rwm.mod1 &lt;- glm(rwm88_small.docvis ~ rwm88_small.age + rwm88_small.female + rwm88_small.public, family = "poisson"(link = "log"), data = rwm.data)
+summary(rwm.mod1) #unrestricted model
+
+rwm.mod2 &lt;- glm(rwm88_small.docvis ~ rwm88_small.public, family = "poisson"(link = "log"), data = rwm.data)
+summary(rwm.mod2) #restricted model
+</code></pre><h5 id="2-1-deviance-of-poisson-regression-and-LR-test-G" data-id="2-1-deviance-of-poisson-regression-and-LR-test-G"><a class="anchor hidden-xs" href="#2-1-deviance-of-poisson-regression-and-LR-test-G" title="2-1-deviance-of-poisson-regression-and-LR-test-G"><span class="octicon octicon-link"></span></a><span>2-1. deviance of poisson regression and LR test G</span></h5><pre><code>rwm.mod1$deviance
+rwm.mod2$deviance
+g2 &lt;- rwm.mod2$deviance - rwm.mod1$deviance
+g2
+</code></pre><h5 id="2-2-hypothesis-testing" data-id="2-2-hypothesis-testing"><a class="anchor hidden-xs" href="#2-2-hypothesis-testing" title="2-2-hypothesis-testing"><span class="octicon octicon-link"></span></a><span>2-2. hypothesis testing</span></h5><pre><code>#   a. likelihood ratio test of nested models
+library(lmtest)
+lrtest(rwm.mod1, rwm.mod2)
+
+#   b. Wald test
+library(lmtest)
+waldtest(rwm.mod1, rwm.mod2, test = "Chisq")
+</code></pre><h5 id="2-3-goodness-of-fit-AIC-amp-BIC" data-id="2-3-goodness-of-fit-AIC-amp-BIC"><a class="anchor hidden-xs" href="#2-3-goodness-of-fit-AIC-amp-BIC" title="2-3-goodness-of-fit-AIC-amp-BIC"><span class="octicon octicon-link"></span></a><span>2-3. goodness of fit: AIC &amp; BIC</span></h5><pre><code>AIC(rwm.mod1); AIC(rwm.mod2)
+BIC(rwm.mod1); BIC(rwm.mod2)
+</code></pre><h4 id="3-Interpretation-of-coefficient-estimate" data-id="3-Interpretation-of-coefficient-estimate"><a class="anchor hidden-xs" href="#3-Interpretation-of-coefficient-estimate" title="3-Interpretation-of-coefficient-estimate"><span class="octicon octicon-link"></span></a><span>3. Interpretation of coefficient estimate</span></h4><h5 id="3-1-marginal-effects可以用於跨模型比較" data-id="3-1-marginal-effects可以用於跨模型比較"><a class="anchor hidden-xs" href="#3-1-marginal-effects可以用於跨模型比較" title="3-1-marginal-effects可以用於跨模型比較"><span class="octicon octicon-link"></span></a><span>3-1. marginal effects(可以用於跨模型比較)</span></h5><blockquote>
+<ul>
+<li><span>AME: library(margins); summary(margins(模型名稱) )</span><br>
+<span>＊ MER: summary(margins(模型名稱, at = list(變數名稱 = 特定數值)))</span></li>
+<li><span>MEM: summary(margins(模型名稱), atmeans = TRUE)</span></li>
+</ul>
+</blockquote><pre><code>library(margins)
+
+memod &lt;- margins(rwm.mod)
+summary(memod) #AME
+plot(memod)
+
+margins(rwm.mod, at = list(age = 25)) #MER
+
+margins(rwm.mod, atmeans = TRUE) #MEM
+margins(rwm.mod, at = list(age = mean(rwm88_small$age)), 
+                            female = mean(as.numeric(rwm88_small$female)), 
+                            public = mean(as.numeric(rwm88_small$public)))
+</code></pre><h5 id="3-2-factor-and-percentage-changes-in-expected-count無法用於跨模型比較" data-id="3-2-factor-and-percentage-changes-in-expected-count無法用於跨模型比較"><a class="anchor hidden-xs" href="#3-2-factor-and-percentage-changes-in-expected-count無法用於跨模型比較" title="3-2-factor-and-percentage-changes-in-expected-count無法用於跨模型比較"><span class="octicon octicon-link"></span></a><span>3-2. factor and percentage changes in expected count(無法用於跨模型比較)</span></h5><pre><code>exp(coef(rwm.mod)) #factor changes
+100*(exp(coef(rwm.mod)) - 1) #percentage changes
+</code></pre><h2 id="十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables" data-id="十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables"><a class="anchor hidden-xs" href="#十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables" title="十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables"><span class="octicon octicon-link"></span></a><span>十三、二分類依變數分析(Logistic Regression for Binary Dependent Variables)</span></h2><blockquote>
+<p><span>二分機率單元模型與二分勝算對數模型的語法差異在於link function不同</span></p>
+</blockquote><h3 id="1-Regression-analysis2" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis2" title="1-Regression-analysis2"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h3><pre><code>install.packages("mfx")
+
+#   (1) binary logit
+logitmod &lt;- glm(vote ~ gender + nage + Edu, data = data, family = "binomial"(link = "logit"))
+summary(logitmod)
+
+#   (2) binary probit
+probitmod &lt;- glm(vote ~ gender + nage + Edu, data = data, family = "binomial"(link = "probit"))
+summary(probitmod)
+</code></pre><h3 id="2-Hypothesis-testing" data-id="2-Hypothesis-testing"><a class="anchor hidden-xs" href="#2-Hypothesis-testing" title="2-Hypothesis-testing"><span class="octicon octicon-link"></span></a><span>2. Hypothesis testing</span></h3><blockquote>
+<p><span>進行LR test前須先確認模型為套疊，且樣本一致</span></p>
+</blockquote><pre><code>#   (1) t-test and likelihood ratio (LR) test of a single coefficient
+library(lmtest)
+lrtest(logitmod, "nage")
+lrtest(logitmod, "gender")
+
+#   (2) LR test of a group of coefficients
+library(lmtest)
+lrtest(logitmod, c("gender", "nage"))
+#同時檢定兩個
+</code></pre><h3 id="3-Goodness-of-fit" data-id="3-Goodness-of-fit"><a class="anchor hidden-xs" href="#3-Goodness-of-fit" title="3-Goodness-of-fit"><span class="octicon octicon-link"></span></a><span>3. Goodness of fit</span></h3><p><img src="https://i.imgur.com/4FjvXLI.png" alt="" loading="lazy"></p><pre><code>#   (1)	classification tables
+yhat &lt;- fitted(logitmod)
+summary(yhat)
+yhat2 &lt;- c(NA)
+yhat2[yhat &lt;= 0.5] &lt;- 0
+yhat2[yhat &gt; 0.5] &lt;- 1
+table(yhat2)
+yhat2 &lt;- factor(yhat2, levels = c(0, 1), labels = c("no", "yes"))
+table(yhat2)
+
+ctable &lt;- table(yhat2, data$vote)
+ctable
+
+ctable[2,2]/sum(ctable[,2]) #sensitivity
+ctable[1,1]/sum(ctable[,1]) #specificity
+sum(diag(ctable)) / sum(ctable) #Percent of “Correct” Prediction 
+
+#   (2) pseudo-R2 statistics
+library(DescTools)
+PseudoR2(logitmod, which = "McFadden") #pseudo-R2
+PseudoR2(logitmod, which = "McFaddenAdj") #adjusted pseudo-R2
+#pseudo-R2在非線性模型中通常都比較低
+
+#   (3) AIC &amp; BIC
+AIC(logitmod)
+BIC(logitmod)
+</code></pre><h3 id="4-Interpretation-of-coefficient-estimate" data-id="4-Interpretation-of-coefficient-estimate"><a class="anchor hidden-xs" href="#4-Interpretation-of-coefficient-estimate" title="4-Interpretation-of-coefficient-estimate"><span class="octicon octicon-link"></span></a><span>4. Interpretation of coefficient estimate</span></h3><pre><code>#   (1) coefficient-based interpretations
+#   odds ratio
+exp(coef(logitmod)) #odds ratio
+round(exp(cbind(est = coef(logitmod), confint(logitmod))), 3)
+
+100*(exp(coef(logitmod)) - 1) #percent change in odds
+
+
+#   (2) predicted probabilities-based interpretation
+#   marginal effects of continuous variables
+library(margins)
+
+summary(margins(logitmod, variables = "nage")) #AME
+
+summary(margins(logitmod, variables = "nage", at = list(nage = 25))) #MER
+
+library(mfx)
+mem &lt;- logitmfx(vote ~ gender + nage + Edu, data = data, atmean = TRUE)#僅適用於logit模型
+mem #MEM
+
+#   discrete change of categorical variables
+library(margins)
+
+summary(margins(logitmod, variables = "gender"))
+summary(margins(logitmod, variables = "Edu"))
+</code></pre><h2 id="十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables" data-id="十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables"><a class="anchor hidden-xs" href="#十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables" title="十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables"><span class="octicon octicon-link"></span></a><span>十四、有序多分類依變數分析(Regression for Ordinal Dependent Variables)</span></h2><h3 id="Pre-Analysis" data-id="Pre-Analysis"><a class="anchor hidden-xs" href="#Pre-Analysis" title="Pre-Analysis"><span class="octicon octicon-link"></span></a><span>Pre-Analysis</span></h3><pre><code>##  1. Install new package
+install.packages("MASS")
+install.packages("erer")#舊的margin已經不能算了，要用新套件，但只能算MEM
+install.packages("brant")
+
+##  2. Import data and recode variables
+library(haven)
+teds2020 &lt;- read_sav("/Users/lasia/Desktop/TEDS2020_Q.sav")
+attach(teds2020)
+
+#   DV: sociotropic retrospective economic perception
+table(G1)
+srep &lt;- c(NA)
+srep[G1 == 4| G1 == 5] &lt;- 1 #worse
+srep[G1 == 3] &lt;- 2 #same
+srep[G1 == 1| G1 == 2] &lt;- 3 #better
+srep[G1 &gt;= 96] &lt;- NA
+srep &lt;- factor(srep)
+table(srep)
+
+#   IVs
+#   sex
+table(S23)
+gender &lt;- c(NA)
+gender[S23 == 2] &lt;- 0
+gender[S23 == 1] &lt;- 1
+comment(gender) &lt;- "gender"
+gender &lt;- factor(gender, levels = c(0, 1),
+                 labels = c("female", "male"))
+table(gender)
+#   age
+str(S1a)
+table(S1a)
+nS1a &lt;- S1a
+nS1a[S1a == 95] &lt;- NA
+table(nS1a)
+nage &lt;- 109 - nS1a
+table(nage)
+#   edu
+table(edu)
+Edu &lt;- edu
+Edu[edu == 1|edu == 2] &lt;- 1
+Edu[edu == 3|edu == 4] &lt;- 2
+Edu[edu == 5] &lt;- 3
+Edu[edu == 9] &lt;- NA
+Edu &lt;- factor(Edu, levels = c(1, 2, 3),
+              labels = c("low", "middle", "high"))
+table(Edu)
+
+mydata &lt;- data.frame(srep, gender, nage, Edu)
+mydata &lt;- na.omit(mydata)
+dim(mydata)
+
+</code></pre><h3 id="Ordinal-Regression-Models" data-id="Ordinal-Regression-Models"><a class="anchor hidden-xs" href="#Ordinal-Regression-Models" title="Ordinal-Regression-Models"><span class="octicon octicon-link"></span></a><span>Ordinal Regression Models</span></h3><h4 id="1-Regression-analysis3" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis3" title="1-Regression-analysis3"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h4><pre><code>#   1-1. ordered logit model
+library(MASS)
+OL &lt;-  polr(srep ~ gender + nage + Edu, data = mydata, method = "logistic")
+summary(OL)
+#報表較為精簡，不會出現p值，只能用t做初步的估算
+#下面的intercept會出現切點
+
+#   1-2. ordered probit model
+library(MASS)
+OP &lt;-  polr(srep ~ gender + nage + Edu, data = mydata, method = "probit")
+summary(OP)
+</code></pre><h4 id="2-Hypothesis-testing1" data-id="2-Hypothesis-testing"><a class="anchor hidden-xs" href="#2-Hypothesis-testing1" title="2-Hypothesis-testing1"><span class="octicon octicon-link"></span></a><span>2. Hypothesis testing</span></h4><pre><code>library(lmtest)
+lrtest(OL, "nage")
+
+#   2-2. LR test of a group of coefficients
+library(lmtest)
+lrtest(OL, c("gender", "nage"))
+</code></pre><h4 id="3-Interpretation-of-coefficient-estimate1" data-id="3-Interpretation-of-coefficient-estimate"><a class="anchor hidden-xs" href="#3-Interpretation-of-coefficient-estimate1" title="3-Interpretation-of-coefficient-estimate1"><span class="octicon octicon-link"></span></a><span>3. Interpretation of coefficient estimate</span></h4><pre><code>#   3-1. coefficient-based interpretations
+#   odds ratio
+or &lt;- round(exp(cbind(est = coef(OL), confint(OL))), digits = 3)
+or
+
+#   3-2. predicted probabilities-based interpretation
+#   marginal effect
+#   MEM #其他條件設定在平均值的情況下，相較於XXX，OOO覺得經濟狀況變好的「機率」，是....
+library(erer)
+ocME(OL, rev.dum = TRUE, digits = 3)
+</code></pre><h4 id="4-平行迴歸假定之檢定Test-of-parallel-regression-assumption" data-id="4-平行迴歸假定之檢定Test-of-parallel-regression-assumption"><a class="anchor hidden-xs" href="#4-平行迴歸假定之檢定Test-of-parallel-regression-assumption" title="4-平行迴歸假定之檢定Test-of-parallel-regression-assumption"><span class="octicon octicon-link"></span></a><span>4. 平行迴歸假定之檢定(Test of parallel regression assumption)</span></h4><pre><code>#平行回歸假定的檢定，平行回歸假定被違反，ordinal logit行不通，就要用廣義的那個(但R沒有)
+library(brant)
+brant(OL)
+</code></pre><h2 id="十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models" data-id="十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models"><a class="anchor hidden-xs" href="#十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models" title="十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models"><span class="octicon octicon-link"></span></a><span>十五、無序多分類依變數分析(Regression for Nominal Dependent Variables ；Discrete Choice Models)</span></h2><blockquote>
+<p><span>模型種類:</span></p>
+<ul>
+<li><span>Multinomial logit (MNL) model</span></li>
+<li><span>Conditional logit (CL) model</span></li>
+<li><span>Combined logit model</span></li>
+<li><span>Nested logit (NL) model</span></li>
+<li><span>Multinomial probit (MNP) model</span></li>
+<li><span>Mixed logit (MXL) model/ Random parameters logit (RPL) model</span></li>
+</ul>
+</blockquote><h3 id="Pre-Analysis1" data-id="Pre-Analysis"><a class="anchor hidden-xs" href="#Pre-Analysis1" title="Pre-Analysis1"><span class="octicon octicon-link"></span></a><span>Pre-Analysis</span></h3><pre><code>##  1. Install new package
+install.packages("mlogit")
+
+##  2. Import and check the data
+library(haven)
+wres &lt;- read_dta("C:/Users/user/Desktop/secnd_MA_lesson_2nd/sta_practice/restaurantdata.dta") #wide-form data
+lres &lt;- read_dta("C:/Users/user/Desktop/secnd_MA_lesson_2nd/sta_practice/restaurantdata1.dta") #long-form data
+names(wres)
+head(wres)
+summary(wres$choice)
+#   recode the variable "choice"
+wres$nchoice &lt;- c(NA)
+wres$nchoice[wres$choice == 1] &lt;- 1
+wres$nchoice[wres$choice == 2] &lt;- 2
+wres$nchoice[wres$choice == 3] &lt;- 3
+wres$nchoice[wres$choice == 4] &lt;- 4
+wres$nchoice[wres$choice == 5] &lt;- 5
+wres$nchoice[wres$choice == 6] &lt;- 6
+wres$nchoice[wres$choice == 7] &lt;- 7
+wres$nchoice &lt;- factor(wres$nchoice, levels = c(1,2,3,4,5,6,7),
+                       labels = c("Fre", "Mam", "Caf", "Los", "Win", "Chr", "Mad"))
+View(wres)
+class(wres$nchoice)
+table(wres$nchoice)
+wres &lt;- wres[, -c(1,2,5,8,11,14,17,20,23)]
+head(wres)
+names(wres)
+</code></pre><h4 id="wide-formlong-form轉換" data-id="wide-formlong-form轉換"><a class="anchor hidden-xs" href="#wide-formlong-form轉換" title="wide-formlong-form轉換"><span class="octicon octicon-link"></span></a><span>wide form\long form轉換</span></h4><blockquote>
+<p><span>轉換後的資料 &lt;- mlogit.data(wide-form資料, shape = “wide”, varying =n:m, choice = “表示受訪者選擇的變數”)</span></p>
+</blockquote><pre><code>##  3. Convert data from wide form to long form
+#   data are in wide form
+colnames(wres)[1:14] &lt;- c("p.Fre", "dis.Fre", "p.Mam", "dis.Mam", "p.Caf", "dis.Caf",
+                          "p.Los", "dis.Los", "p.Win", "dis.Win", "p.Chr", "dis.Chr", 
+                          "p.Mad", "dis.Mad")
+head(wres)
+#   convert data from wide form to long form
+library(mlogit)
+llres &lt;- mlogit.data(wres, shape = "wide", varying = 1:14, choice = "nchoice") 
+View(as.data.frame(llres))
+#varying要轉換的是哪幾類
+
+#   list data for the first two cases after reshape
+llres[1:7, ]
+
+</code></pre><h3 id="符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit" data-id="符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit"><a class="anchor hidden-xs" href="#符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit" title="符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit"><span class="octicon octicon-link"></span></a><span>符合IIA假定的無序多分類迴歸模型(Models Based on the IIA Assumption) : MNL, CL, and Combined Logit</span></h3><h4 id="1-多項勝算對數模型-Multinomial-logit-MNL-model" data-id="1-多項勝算對數模型-Multinomial-logit-MNL-model"><a class="anchor hidden-xs" href="#1-多項勝算對數模型-Multinomial-logit-MNL-model" title="1-多項勝算對數模型-Multinomial-logit-MNL-model"><span class="octicon octicon-link"></span></a><span>1. 多項勝算對數模型 Multinomial logit (MNL) model</span></h4><blockquote>
+<p><span>模型名稱 &lt;- mlogit(依變數 ~ 1 | CSV, reflevel = “參照類”, data = 資料名稱, shape = “wide”choice = “表示受訪者選擇的變數”)</span><br>
+<span>資料型態需為wide-form。</span></p>
+</blockquote><pre><code>#   1-1. run a regression model
+MNL &lt;- mlogit(nchoice ~ 1|income, reflevel = "Caf", data = wres, shape = "wide", choice = "nchoice")
+summary(MNL)
+
+#   1-2. interpretation of coefficient estimate: odds ratio
+exp(coef(MNL))
+
+#   b. predicted probabilities-based interpretation: AME
+me.inc.mnl &lt;- effects(MNL, covariate = "income", data = llres)
+summary(me.inc.mnl)
+mean(me.inc.mnl[,1]); mean(me.inc.mnl[,2]); mean(me.inc.mnl[,3]); mean(me.inc.mnl[,4]);
+mean(me.inc.mnl[,5]); mean(me.inc.mnl[,6]); mean(me.inc.mnl[,7])
+</code></pre><h4 id="2-條件勝算對數模型-Conditional-logit-CL-model" data-id="2-條件勝算對數模型-Conditional-logit-CL-model"><a class="anchor hidden-xs" href="#2-條件勝算對數模型-Conditional-logit-CL-model" title="2-條件勝算對數模型-Conditional-logit-CL-model"><span class="octicon octicon-link"></span></a><span>2. 條件勝算對數模型  Conditional logit (CL) model</span></h4><blockquote>
+<p><span>模型名稱 &lt;- mlogit(依變數 ~ ASV, reflevel =“參照類”, data = 資料名稱)</span><br>
+<span>資料型態需為long-form。</span></p>
+</blockquote><pre><code>#   2-1. run a regression model
+CL &lt;- mlogit(nchoice ~ p + dis, data = llres, reflevel = "Caf")
+summary(CL)
+
+#   2-2. predicted probabilities-based interpretation: marginal effect
+#   AME
+me.inc.cl &lt;- effects(CL, covariate = "p", data = lres)
+#收入微亮變畫，選擇某一間餐廳的機率(平均而言:要用mean的那列解讀)
+summary(me.inc.cl)
+mean(me.inc.cl[,1]); mean(me.inc.cl[,2]); mean(me.inc.cl[,3]); mean(me.inc.cl[,4]);
+mean(me.inc.cl[,5]); mean(me.inc.cl[,6]); mean(me.inc.cl[,7])
+#   MEM
+effects(CL, covariate = "p")#只需要平均數的資訊，不需要抓到每個資料，所以只要放模型的名稱就好
+effects(CL, covariate = "dis")
+
+</code></pre><h4 id="3-Combined-logit-model-with-both-ASV-and-CSV" data-id="3-Combined-logit-model-with-both-ASV-and-CSV"><a class="anchor hidden-xs" href="#3-Combined-logit-model-with-both-ASV-and-CSV" title="3-Combined-logit-model-with-both-ASV-and-CSV"><span class="octicon octicon-link"></span></a><span>3. Combined logit model (with both ASV and CSV)</span></h4><blockquote>
+<p><span>模型名稱 &lt;- mlogit(依變數 ~ ASV, reflevel =“參照類”, data = 資料名稱)</span><br>
+<span>資料型態需為long-form。</span></p>
+</blockquote><pre><code>#   3-1. run a regression model
+CmbL &lt;- mlogit(nchoice ~ p + dis | income, data = llres, reflevel = "Caf")
+summary(CmbL)
+
+#   3-2. predicted probabilities-based interpretation: marginal effect
+#   AME
+me.inc.cmbl &lt;- effects(CmbL, covariate = "income", data = llres)
+summary(me.inc.cmbl)
+#   MEM
+effects(CmbL, covariate = "p")
+</code></pre><h3 id="獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test" data-id="獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test"><a class="anchor hidden-xs" href="#獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test" title="獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test"><span class="octicon octicon-link"></span></a><span>獨立不相關選項假定之檢定 Independence of irrelevant alternatives (IIA) test</span></h3><pre><code>##  刪去某一選項，執行模型分析 ex:drop "Fre"
+CmbL_c &lt;- mlogit(nchoice ~ p + dis | income, data = llres, reflevel = "Caf",
+                 alt.subset = c("Mam","Caf", "Los","Win","Chr","Mad"))#alt.subset這個指令可以順便做IIA檢定
+summary(CmbL_c)
+
+##   Hausman-McFadden Test of IIA
+# hmftest(完整模型, 刪去某一選項後的模型)
+hmftest(CmbL, CmbL_c)
+</code></pre><h3 id="放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL" data-id="放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL"><a class="anchor hidden-xs" href="#放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL" title="放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL"><span class="octicon octicon-link"></span></a><span>放寬IIA假定的無序多分類迴歸模型(Models Which Relax the IIA Assumption): NL, MNP,and MXL</span></h3><h4 id="1-套疊勝算對數模型-Nested-logit-NL-model" data-id="1-套疊勝算對數模型-Nested-logit-NL-model"><a class="anchor hidden-xs" href="#1-套疊勝算對數模型-Nested-logit-NL-model" title="1-套疊勝算對數模型-Nested-logit-NL-model"><span class="octicon octicon-link"></span></a><span>1. 套疊勝算對數模型  Nested logit (NL) model</span></h4><blockquote>
+<p><span>模型名稱 &lt;- mlogit(依變數 ~ ASV | CSV, reflevel = “參照類”, data = 資料名稱,nests = list(大類1 = c(“小類1”, “小類2”), 大類2= c(“小類3”, “小類4”)))</span><br>
+<span>資料型態需為long-form。</span></p>
+</blockquote><pre><code>#   1-1. run a regression model
+NL &lt;- mlogit(nchoice ~ p + dis | income, data = llres, reflevel = "Fre", 
+             nests = list(fast = c("Fre", "Mam", "Chr"), family = c("Caf", "Los", "Win", "Mad")))
+summary(NL)
+
+#   1-2. interpretation of coefficient estimate: AME
+me.inc.nl &lt;- effects(NL, covariate = "income", data = llres)
+summary(me.inc.nl)
+mean(me.inc.nl[,1]); mean(me.inc.nl[,2]); mean(me.inc.nl[,3]); mean(me.inc.nl[,4])
+mean(me.inc.nl[,5]); mean(me.inc.nl[,6]); mean(me.inc.nl[,7])
+</code></pre><h4 id="2-Mixed-logit-MXL-model-random-parameters-logit-RPL-model" data-id="2-Mixed-logit-MXL-model-random-parameters-logit-RPL-model"><a class="anchor hidden-xs" href="#2-Mixed-logit-MXL-model-random-parameters-logit-RPL-model" title="2-Mixed-logit-MXL-model-random-parameters-logit-RPL-model"><span class="octicon octicon-link"></span></a><span>2. Mixed logit (MXL) model/ random parameters logit (RPL) model</span></h4><pre><code>CmbL &lt;- mlogit(nchoice ~ p + dis | income, data = llres, reflevel = "Caf")
+summary(CmbL)
+
+</code></pre><h5 id="2-1-mixed-logit-with-uncorrelated-random-parameters" data-id="2-1-mixed-logit-with-uncorrelated-random-parameters"><a class="anchor hidden-xs" href="#2-1-mixed-logit-with-uncorrelated-random-parameters" title="2-1-mixed-logit-with-uncorrelated-random-parameters"><span class="octicon octicon-link"></span></a><span>2-1. mixed logit with uncorrelated random parameters</span></h5><blockquote>
+<p><span>模型名稱&lt;- mlogit(依變數 ~ ASV | CSV, data =資料名稱, rpar = c(ASV 1= ‘n’, ASV 2= ‘n’),correlation = FALSE, halton = NA, R =自訂數值, seed =自訂數值);summary(模型名稱)</span></p>
+</blockquote><pre><code>#   2-1-1. run a regression model
+MXL_u &lt;- mlogit(nchoice ~ p + dis | income, data = llres,
+                rpar = c(p = 'n', dis = 'n'),
+                correlation = FALSE, halton = NA,
+                R = 100, seed = 609)
+summary(MXL_u)
+rpar(MXL_u)
+rpar(MXL_u, "dis")
+summary(rpar(MXL_u, "dis"))
+
+#   2-1-2. interpretation of coefficient estimate: AME
+me.inc.mxlu &lt;- effects(MXL_u, covariate = "income", data = llres)
+summary(me.inc.mxlu)
+mean(me.inc.mxlu[,1]); mean(me.inc.mxlu[,2]); mean(me.inc.mxlu[,3]); mean(me.inc.mxlu[,4]);
+mean(me.inc.mxlu[,5]); mean(me.inc.mxlu[,6]); mean(me.inc.mxlu[,7])
+
+</code></pre><h5 id="2-2-mixed-logit-with-correlated-random-parameters" data-id="2-2-mixed-logit-with-correlated-random-parameters"><a class="anchor hidden-xs" href="#2-2-mixed-logit-with-correlated-random-parameters" title="2-2-mixed-logit-with-correlated-random-parameters"><span class="octicon octicon-link"></span></a><span>2-2. mixed logit with correlated random parameters</span></h5><blockquote>
+<p><span>模型名稱&lt;- mlogit(依變數 ~ ASV | CSV, data =資料名稱, rpar = c(ASV 1= ‘n’, ASV 2= ‘n’),correlation = TRUE, halton = NA, R =自訂數值, seed =自訂數值);summary(模型名稱);</span><br>
+<span>cov.mlogit(模型名稱)</span></p>
+</blockquote><pre><code>
+MXL_c &lt;- mlogit(nchoice ~ p + dis | income, data = llres,
+                rpar = c(p = 'n', dis = 'n'),
+                correlation = TRUE, halton = NA,
+                R = 100, seed = 609)#R simulate次數# p + dis 這兩個設為random
+summary(MXL_c)
+rpar(MXL_c)
+cor.mlogit(MXL_c)
+cov.mlogit(MXL_c)
+rpar(MXL_c, "dis")
+summary(rpar(MXL_c, "dis"))
+
+#   2-2-2. interpretation of coefficient estimate: AME
+me.inc.mxlc &lt;- effects(MXL_c, covariate = "income", data = llres)
+summary(me.inc.mxlc)
+mean(me.inc.mxlc[,1]); mean(me.inc.mxlc[,2]); mean(me.inc.mxlc[,3]); mean(me.inc.mxlc[,4]);
+mean(me.inc.mxlc[,5]); mean(me.inc.mxlc[,6]); mean(me.inc.mxlc[,7])
+
+</code></pre></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li><a href="#R統計語法整理" title="R統計語法整理">R統計語法整理</a><ul class="nav">
+<li><a href="#一、描述統計一descriptive-statistics-I" title="一、描述統計(一)(descriptive statistics I)">一、描述統計(一)(descriptive statistics I)</a><ul class="nav">
+<li><a href="#1-Recode-Varibles" title="1. Recode Varibles">1. Recode Varibles</a></li>
+<li><a href="#2-描述統計Descriptive-Statistics" title="2. 描述統計(Descriptive Statistics)">2. 描述統計(Descriptive Statistics)</a></li>
+</ul>
+</li>
+<li><a href="#二、描述統計二Descriptive-statistics-II" title="二、描述統計(二)(Descriptive statistics II)">二、描述統計(二)(Descriptive statistics II)</a><ul class="nav">
+<li><a href="#1-單一類別變數之描述統計Univariate-Descriptive-Statistics" title="1. 單一類別變數之描述統計(Univariate Descriptive Statistics)">1. 單一類別變數之描述統計(Univariate Descriptive Statistics)</a></li>
+<li><a href="#2-雙變數描述統計Bivariate-Descriptive-Statistics" title="2. 雙變數描述統計(Bivariate Descriptive Statistics)">2. 雙變數描述統計(Bivariate Descriptive Statistics)</a></li>
+</ul>
+</li>
+<li><a href="#三、機率與微積分Probability-and-Calculus" title="三、機率與微積分(Probability and Calculus)">三、機率與微積分(Probability and Calculus)</a><ul class="nav">
+<li><a href="#Part-1-Probability" title="Part 1. Probability">Part 1. Probability</a></li>
+<li><a href="#Part-2-基礎微積分Basic-Calculus" title="Part 2. 基礎微積分(Basic Calculus)">Part 2. 基礎微積分(Basic Calculus)</a></li>
+</ul>
+</li>
+<li><a href="#四、隨機變數與機率分布Random-Variables-and-Probability-Distributions" title="四、隨機變數與機率分布(Random Variables	and	Probability	Distributions)">四、隨機變數與機率分布(Random Variables	and	Probability	Distributions)</a><ul class="nav">
+<li><a href="#Part-A-單變數機率分布Univariate-Probability-Distributions" title="Part A. 單變數機率分布(Univariate Probability Distributions)">Part A. 單變數機率分布(Univariate Probability Distributions)</a></li>
+<li><a href="#Part-B-雙變數機率分布Bivariate-Distributions連續雙變數" title="Part B. 雙變數機率分布(Bivariate Distributions):連續雙變數">Part B. 雙變數機率分布(Bivariate Distributions):連續雙變數</a></li>
+</ul>
+</li>
+<li><a href="#五、參數估計Estimation" title="五、參數估計(Estimation)">五、參數估計(Estimation)</a><ul class="nav">
+<li><a href="#1點估計Point-Estimation" title="1.點估計(Point Estimation)">1.點估計(Point Estimation)</a></li>
+<li><a href="#2區間估計Interval-estimation" title="2.區間估計(Interval estimation)">2.區間估計(Interval estimation)</a></li>
+</ul>
+</li>
+<li><a href="#六、假設檢定Hypothesis-Testing" title="六、假設檢定(Hypothesis Testing)">六、假設檢定(Hypothesis Testing)</a><ul class="nav">
+<li><a href="#1-單一樣本檢定One-Sample-Hypothesis-Testing" title="1. 單一樣本檢定(One Sample Hypothesis Testing)">1. 單一樣本檢定(One Sample Hypothesis Testing)</a></li>
+<li><a href="#2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test" title="2. 符合度檢定:卡方檢定(Goodness of Fit Test: Chi-Square Test)">2. 符合度檢定:卡方檢定(Goodness of Fit Test: Chi-Square Test)</a></li>
+</ul>
+</li>
+<li><a href="#七、兩組間比較Comparison-of-Two-Groups" title="七、兩組間比較(Comparison of Two Groups)">七、兩組間比較(Comparison of Two Groups)</a><ul class="nav">
+<li><a href="#1-兩組獨立樣本Comparison-of-Two-Independent-Samples" title="1. 兩組獨立樣本(Comparison of Two Independent Samples)">1. 兩組獨立樣本(Comparison of Two Independent Samples)</a></li>
+<li><a href="#2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples" title="2. 兩組相依樣本檢定(Comparison of Two Dependent Samples)">2. 兩組相依樣本檢定(Comparison of Two Dependent Samples)</a></li>
+</ul>
+</li>
+<li><a href="#八、交叉表分析Cross-Tabular-Analysis" title="八、交叉表分析(Cross-Tabular Analysis)">八、交叉表分析(Cross-Tabular Analysis)</a><ul class="nav">
+<li><a href="#A-二維交叉表Two-Way-Contingency-Tables" title="A. 二維交叉表(Two-Way Contingency Tables)">A. 二維交叉表(Two-Way Contingency Tables)</a></li>
+<li><a href="#B-多維交叉表Multi-Way-Contingency-Tables" title="B. 多維交叉表(Multi-Way Contingency Tables)">B. 多維交叉表(Multi-Way Contingency Tables)</a></li>
+</ul>
+</li>
+<li><a href="#九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I" title="九、連續變數相關性分析與迴歸(一)(Correlation and Linear	Regression I)">九、連續變數相關性分析與迴歸(一)(Correlation and Linear	Regression I)</a><ul class="nav">
+<li><a href="#1-Correlation-between-two-continuous-variables" title="1. Correlation between two continuous variables">1. Correlation between two continuous variables</a></li>
+<li><a href="#2-簡單線性迴歸Simple-linear-regression" title="2. 簡單線性迴歸(Simple linear regression)">2. 簡單線性迴歸(Simple linear regression)</a></li>
+<li><a href="#3-多元線性迴歸Multiple-linear-regression" title="3. 多元線性迴歸(Multiple linear regression)">3. 多元線性迴歸(Multiple linear regression)</a></li>
+</ul>
+</li>
+<li><a href="#十、線性迴歸二Linear-Regression-II" title="十、線性迴歸(二)(Linear	Regression II)">十、線性迴歸(二)(Linear	Regression II)</a><ul class="nav">
+<li><a href="#A-多元線性迴歸-Multiple-Linear-Regression" title="A. 多元線性迴歸 (Multiple Linear Regression)">A. 多元線性迴歸 (Multiple Linear Regression)</a></li>
+<li><a href="#B-線性迴歸診斷Linear-Regression-Diagnostics" title="B. 線性迴歸診斷(Linear Regression Diagnostics)">B. 線性迴歸診斷(Linear Regression Diagnostics)</a></li>
+<li><a href="#流程示範" title="流程示範">流程示範</a></li>
+</ul>
+</li>
+<li><a href="#十一、時間序列分析Regression-with-Time-Series-Data" title="十一、時間序列分析(Regression	with Time-Series Data)">十一、時間序列分析(Regression	with Time-Series Data)</a><ul class="nav">
+<li><a href="#轉換資料為時間序列" title="轉換資料為時間序列">轉換資料為時間序列</a></li>
+<li><a href="#Regression-with-time-series-data" title="Regression with time-series data">Regression with time-series data</a></li>
+</ul>
+</li>
+<li><a href="#十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable" title="十二、矩陣代數、計次依變數分析(Matrix Algebra and Poisson Regression for Count Dependent Variable)">十二、矩陣代數、計次依變數分析(Matrix Algebra and Poisson Regression for Count Dependent Variable)</a><ul class="nav">
+<li><a href="#Part-A-矩陣代數Matrix-Algebra" title="Part A. 矩陣代數(Matrix Algebra)">Part A. 矩陣代數(Matrix Algebra)</a></li>
+<li><a href="#Part-B-Poisson-Regression-for-Count-Dependent-Variable" title="Part B. Poisson Regression for Count Dependent Variable">Part B. Poisson Regression for Count Dependent Variable</a></li>
+</ul>
+</li>
+<li><a href="#十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables" title="十三、二分類依變數分析(Logistic Regression for Binary Dependent Variables)">十三、二分類依變數分析(Logistic Regression for Binary Dependent Variables)</a><ul class="nav">
+<li><a href="#1-Regression-analysis2" title="1. Regression analysis">1. Regression analysis</a></li>
+<li><a href="#2-Hypothesis-testing" title="2. Hypothesis testing">2. Hypothesis testing</a></li>
+<li><a href="#3-Goodness-of-fit" title="3. Goodness of fit">3. Goodness of fit</a></li>
+<li><a href="#4-Interpretation-of-coefficient-estimate" title="4. Interpretation of coefficient estimate">4. Interpretation of coefficient estimate</a></li>
+</ul>
+</li>
+<li><a href="#十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables" title="十四、有序多分類依變數分析(Regression for Ordinal Dependent Variables)">十四、有序多分類依變數分析(Regression for Ordinal Dependent Variables)</a><ul class="nav">
+<li><a href="#Pre-Analysis" title="Pre-Analysis">Pre-Analysis</a></li>
+<li><a href="#Ordinal-Regression-Models" title="Ordinal Regression Models">Ordinal Regression Models</a></li>
+</ul>
+</li>
+<li><a href="#十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models" title="十五、無序多分類依變數分析(Regression for Nominal Dependent Variables ；Discrete Choice Models)">十五、無序多分類依變數分析(Regression for Nominal Dependent Variables ；Discrete Choice Models)</a><ul class="nav">
+<li><a href="#Pre-Analysis1" title="Pre-Analysis">Pre-Analysis</a></li>
+<li><a href="#符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit" title="符合IIA假定的無序多分類迴歸模型(Models Based on the IIA Assumption) : MNL, CL, and Combined Logit">符合IIA假定的無序多分類迴歸模型(Models Based on the IIA Assumption) : MNL, CL, and Combined Logit</a></li>
+<li><a href="#獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test" title="獨立不相關選項假定之檢定 Independence of irrelevant alternatives (IIA) test">獨立不相關選項假定之檢定 Independence of irrelevant alternatives (IIA) test</a></li>
+<li><a href="#放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL" title="放寬IIA假定的無序多分類迴歸模型(Models Which Relax the IIA Assumption): NL, MNP,and MXL">放寬IIA假定的無序多分類迴歸模型(Models Which Relax the IIA Assumption): NL, MNP,and MXL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li><a href="#R統計語法整理" title="R統計語法整理">R統計語法整理</a><ul class="nav">
+<li><a href="#一、描述統計一descriptive-statistics-I" title="一、描述統計(一)(descriptive statistics I)">一、描述統計(一)(descriptive statistics I)</a><ul class="nav">
+<li><a href="#1-Recode-Varibles" title="1. Recode Varibles">1. Recode Varibles</a></li>
+<li><a href="#2-描述統計Descriptive-Statistics" title="2. 描述統計(Descriptive Statistics)">2. 描述統計(Descriptive Statistics)</a></li>
+</ul>
+</li>
+<li><a href="#二、描述統計二Descriptive-statistics-II" title="二、描述統計(二)(Descriptive statistics II)">二、描述統計(二)(Descriptive statistics II)</a><ul class="nav">
+<li><a href="#1-單一類別變數之描述統計Univariate-Descriptive-Statistics" title="1. 單一類別變數之描述統計(Univariate Descriptive Statistics)">1. 單一類別變數之描述統計(Univariate Descriptive Statistics)</a></li>
+<li><a href="#2-雙變數描述統計Bivariate-Descriptive-Statistics" title="2. 雙變數描述統計(Bivariate Descriptive Statistics)">2. 雙變數描述統計(Bivariate Descriptive Statistics)</a></li>
+</ul>
+</li>
+<li><a href="#三、機率與微積分Probability-and-Calculus" title="三、機率與微積分(Probability and Calculus)">三、機率與微積分(Probability and Calculus)</a><ul class="nav">
+<li><a href="#Part-1-Probability" title="Part 1. Probability">Part 1. Probability</a></li>
+<li><a href="#Part-2-基礎微積分Basic-Calculus" title="Part 2. 基礎微積分(Basic Calculus)">Part 2. 基礎微積分(Basic Calculus)</a></li>
+</ul>
+</li>
+<li><a href="#四、隨機變數與機率分布Random-Variables-and-Probability-Distributions" title="四、隨機變數與機率分布(Random Variables	and	Probability	Distributions)">四、隨機變數與機率分布(Random Variables	and	Probability	Distributions)</a><ul class="nav">
+<li><a href="#Part-A-單變數機率分布Univariate-Probability-Distributions" title="Part A. 單變數機率分布(Univariate Probability Distributions)">Part A. 單變數機率分布(Univariate Probability Distributions)</a></li>
+<li><a href="#Part-B-雙變數機率分布Bivariate-Distributions連續雙變數" title="Part B. 雙變數機率分布(Bivariate Distributions):連續雙變數">Part B. 雙變數機率分布(Bivariate Distributions):連續雙變數</a></li>
+</ul>
+</li>
+<li><a href="#五、參數估計Estimation" title="五、參數估計(Estimation)">五、參數估計(Estimation)</a><ul class="nav">
+<li><a href="#1點估計Point-Estimation" title="1.點估計(Point Estimation)">1.點估計(Point Estimation)</a></li>
+<li><a href="#2區間估計Interval-estimation" title="2.區間估計(Interval estimation)">2.區間估計(Interval estimation)</a></li>
+</ul>
+</li>
+<li><a href="#六、假設檢定Hypothesis-Testing" title="六、假設檢定(Hypothesis Testing)">六、假設檢定(Hypothesis Testing)</a><ul class="nav">
+<li><a href="#1-單一樣本檢定One-Sample-Hypothesis-Testing" title="1. 單一樣本檢定(One Sample Hypothesis Testing)">1. 單一樣本檢定(One Sample Hypothesis Testing)</a></li>
+<li><a href="#2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test" title="2. 符合度檢定:卡方檢定(Goodness of Fit Test: Chi-Square Test)">2. 符合度檢定:卡方檢定(Goodness of Fit Test: Chi-Square Test)</a></li>
+</ul>
+</li>
+<li><a href="#七、兩組間比較Comparison-of-Two-Groups" title="七、兩組間比較(Comparison of Two Groups)">七、兩組間比較(Comparison of Two Groups)</a><ul class="nav">
+<li><a href="#1-兩組獨立樣本Comparison-of-Two-Independent-Samples" title="1. 兩組獨立樣本(Comparison of Two Independent Samples)">1. 兩組獨立樣本(Comparison of Two Independent Samples)</a></li>
+<li><a href="#2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples" title="2. 兩組相依樣本檢定(Comparison of Two Dependent Samples)">2. 兩組相依樣本檢定(Comparison of Two Dependent Samples)</a></li>
+</ul>
+</li>
+<li><a href="#八、交叉表分析Cross-Tabular-Analysis" title="八、交叉表分析(Cross-Tabular Analysis)">八、交叉表分析(Cross-Tabular Analysis)</a><ul class="nav">
+<li><a href="#A-二維交叉表Two-Way-Contingency-Tables" title="A. 二維交叉表(Two-Way Contingency Tables)">A. 二維交叉表(Two-Way Contingency Tables)</a></li>
+<li><a href="#B-多維交叉表Multi-Way-Contingency-Tables" title="B. 多維交叉表(Multi-Way Contingency Tables)">B. 多維交叉表(Multi-Way Contingency Tables)</a></li>
+</ul>
+</li>
+<li><a href="#九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I" title="九、連續變數相關性分析與迴歸(一)(Correlation and Linear	Regression I)">九、連續變數相關性分析與迴歸(一)(Correlation and Linear	Regression I)</a><ul class="nav">
+<li><a href="#1-Correlation-between-two-continuous-variables" title="1. Correlation between two continuous variables">1. Correlation between two continuous variables</a></li>
+<li><a href="#2-簡單線性迴歸Simple-linear-regression" title="2. 簡單線性迴歸(Simple linear regression)">2. 簡單線性迴歸(Simple linear regression)</a></li>
+<li><a href="#3-多元線性迴歸Multiple-linear-regression" title="3. 多元線性迴歸(Multiple linear regression)">3. 多元線性迴歸(Multiple linear regression)</a></li>
+</ul>
+</li>
+<li><a href="#十、線性迴歸二Linear-Regression-II" title="十、線性迴歸(二)(Linear	Regression II)">十、線性迴歸(二)(Linear	Regression II)</a><ul class="nav">
+<li><a href="#A-多元線性迴歸-Multiple-Linear-Regression" title="A. 多元線性迴歸 (Multiple Linear Regression)">A. 多元線性迴歸 (Multiple Linear Regression)</a></li>
+<li><a href="#B-線性迴歸診斷Linear-Regression-Diagnostics" title="B. 線性迴歸診斷(Linear Regression Diagnostics)">B. 線性迴歸診斷(Linear Regression Diagnostics)</a></li>
+<li><a href="#流程示範" title="流程示範">流程示範</a></li>
+</ul>
+</li>
+<li><a href="#十一、時間序列分析Regression-with-Time-Series-Data" title="十一、時間序列分析(Regression	with Time-Series Data)">十一、時間序列分析(Regression	with Time-Series Data)</a><ul class="nav">
+<li><a href="#轉換資料為時間序列" title="轉換資料為時間序列">轉換資料為時間序列</a></li>
+<li><a href="#Regression-with-time-series-data" title="Regression with time-series data">Regression with time-series data</a></li>
+</ul>
+</li>
+<li><a href="#十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable" title="十二、矩陣代數、計次依變數分析(Matrix Algebra and Poisson Regression for Count Dependent Variable)">十二、矩陣代數、計次依變數分析(Matrix Algebra and Poisson Regression for Count Dependent Variable)</a><ul class="nav">
+<li><a href="#Part-A-矩陣代數Matrix-Algebra" title="Part A. 矩陣代數(Matrix Algebra)">Part A. 矩陣代數(Matrix Algebra)</a></li>
+<li><a href="#Part-B-Poisson-Regression-for-Count-Dependent-Variable" title="Part B. Poisson Regression for Count Dependent Variable">Part B. Poisson Regression for Count Dependent Variable</a></li>
+</ul>
+</li>
+<li><a href="#十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables" title="十三、二分類依變數分析(Logistic Regression for Binary Dependent Variables)">十三、二分類依變數分析(Logistic Regression for Binary Dependent Variables)</a><ul class="nav">
+<li><a href="#1-Regression-analysis2" title="1. Regression analysis">1. Regression analysis</a></li>
+<li><a href="#2-Hypothesis-testing" title="2. Hypothesis testing">2. Hypothesis testing</a></li>
+<li><a href="#3-Goodness-of-fit" title="3. Goodness of fit">3. Goodness of fit</a></li>
+<li><a href="#4-Interpretation-of-coefficient-estimate" title="4. Interpretation of coefficient estimate">4. Interpretation of coefficient estimate</a></li>
+</ul>
+</li>
+<li><a href="#十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables" title="十四、有序多分類依變數分析(Regression for Ordinal Dependent Variables)">十四、有序多分類依變數分析(Regression for Ordinal Dependent Variables)</a><ul class="nav">
+<li><a href="#Pre-Analysis" title="Pre-Analysis">Pre-Analysis</a></li>
+<li><a href="#Ordinal-Regression-Models" title="Ordinal Regression Models">Ordinal Regression Models</a></li>
+</ul>
+</li>
+<li><a href="#十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models" title="十五、無序多分類依變數分析(Regression for Nominal Dependent Variables ；Discrete Choice Models)">十五、無序多分類依變數分析(Regression for Nominal Dependent Variables ；Discrete Choice Models)</a><ul class="nav">
+<li><a href="#Pre-Analysis1" title="Pre-Analysis">Pre-Analysis</a></li>
+<li><a href="#符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit" title="符合IIA假定的無序多分類迴歸模型(Models Based on the IIA Assumption) : MNL, CL, and Combined Logit">符合IIA假定的無序多分類迴歸模型(Models Based on the IIA Assumption) : MNL, CL, and Combined Logit</a></li>
+<li><a href="#獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test" title="獨立不相關選項假定之檢定 Independence of irrelevant alternatives (IIA) test">獨立不相關選項假定之檢定 Independence of irrelevant alternatives (IIA) test</a></li>
+<li><a href="#放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL" title="放寬IIA假定的無序多分類迴歸模型(Models Which Relax the IIA Assumption): NL, MNP,and MXL">放寬IIA假定的無序多分類迴歸模型(Models Which Relax the IIA Assumption): NL, MNP,and MXL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
