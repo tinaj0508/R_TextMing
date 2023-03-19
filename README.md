@@ -11,3 +11,5 @@
 ### [附錄二：Python教學與爬蟲應用](https://tinaj0508.github.io/R_TextMing/Python%E6%95%99%E5%AD%B8%E8%88%87%E7%88%AC%E8%9F%B2%E6%87%89%E7%94%A8.html)
 
 ### [附錄三：Python爬蟲(新華網)](https://tinaj0508.github.io/R_TextMing/Python%E7%88%AC%E8%9F%B2(%E6%96%B0%E8%8F%AF%E7%B6%B2).html)
+
+### [附錄四：R統計語法整理](https://tinaj0508.github.io/R_TextMing/R%E7%B5%B1%E8%A8%88%E8%AA%9E%E6%B3%95%E6%95%B4%E7%90%86.html)
