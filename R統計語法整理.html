@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-inner comment-enabled" data-hard-breaks="true"><h1 id="R統計語法整理" data-id="R統計語法整理"><a class="anchor hidden-xs" href="#R統計語法整理" title="R統計語法整理"><span class="octicon octicon-link"></span></a><span>R統計語法整理</span></h1><blockquote>
+    <div id="doc" class="markdown-body container-fluid comment-inner comment-enabled" data-hard-breaks="true" style=""><h1 id="R統計語法整理" data-id="R統計語法整理" style=""><a class="anchor hidden-xs" href="#R統計語法整理" title="R統計語法整理"><span class="octicon octicon-link"></span></a><span>R統計語法整理</span></h1><blockquote>
 <p><span>整理自黃紀老師「社會科學統計方法」PPT以及實習課楊光助教之講義</span></p>
 </blockquote><blockquote>
 <p><span>以下統計分析之前，都需要先導入資料，並針對資料變數進行處理，例如第一章第1點Recode Varibles</span></p>
@@ -42,7 +42,8 @@
 <p><span>除了第一章第1點Recode Varibles中的varible是跟資料檔有關，其餘統計語法中大部分的變數名，都以「VARIBLE」表示。</span></p>
 </blockquote><p><img src="https://i.imgur.com/xZq9ftW.png" alt="" loading="lazy"><br>
 <span>圖片:黃紀老師上課PPT</span></p><p><img src="https://i.imgur.com/EGqIzqQ.png" alt="" loading="lazy"><br>
-<span>圖片:黃紀老師上課PPT</span></p><h2 id="一、描述統計一descriptive-statistics-I" data-id="一、描述統計一descriptive-statistics-I"><a class="anchor hidden-xs" href="#一、描述統計一descriptive-statistics-I" title="一、描述統計一descriptive-statistics-I"><span class="octicon octicon-link"></span></a><span>一、描述統計(一)(descriptive statistics I)</span></h2><h3 id="1-Recode-Varibles" data-id="1-Recode-Varibles"><a class="anchor hidden-xs" href="#1-Recode-Varibles" title="1-Recode-Varibles"><span class="octicon octicon-link"></span></a><span>1. Recode Varibles</span></h3><h4 id="1-1-連續變數Continuous-varibles" data-id="1-1-連續變數Continuous-varibles"><a class="anchor hidden-xs" href="#1-1-連續變數Continuous-varibles" title="1-1-連續變數Continuous-varibles"><span class="octicon octicon-link"></span></a><span>1-1. 連續變數(Continuous varibles)</span></h4><pre><code>##  Install packages: haven, DescTools, &amp; moments
+<span>圖片:黃紀老師上課PPT</span></p><p><img src="https://i.imgur.com/a7bRx2n.png" alt="" loading="lazy"><br>
+<span>圖片:</span><a href="https://drfishstats.com/inferential-stats/hypothesis-testing-steps/" target="_blank" rel="noopener"><span>https://drfishstats.com/inferential-stats/hypothesis-testing-steps/</span></a></p><h2 id="一、描述統計一descriptive-statistics-I" data-id="一、描述統計一descriptive-statistics-I" style=""><a class="anchor hidden-xs" href="#一、描述統計一descriptive-statistics-I" title="一、描述統計一descriptive-statistics-I"><span class="octicon octicon-link"></span></a><span>一、描述統計(一)(descriptive statistics I)</span></h2><h3 id="1-Recode-Varibles" data-id="1-Recode-Varibles" style=""><a class="anchor hidden-xs" href="#1-Recode-Varibles" title="1-Recode-Varibles"><span class="octicon octicon-link"></span></a><span>1. Recode Varibles</span></h3><h4 id="1-1-連續變數Continuous-varibles" data-id="1-1-連續變數Continuous-varibles"><a class="anchor hidden-xs" href="#1-1-連續變數Continuous-varibles" title="1-1-連續變數Continuous-varibles"><span class="octicon octicon-link"></span></a><span>1-1. 連續變數(Continuous varibles)</span></h4><pre><code>##  Install packages: haven, DescTools, &amp; moments
 install.packages("haven")
 install.packages("DescTools") #for MeanAD 計算變數之平均偏差
 install.packages("moments") #for measure of skewness and measure of kurtosis 計算變數的偏度與峰度
@@ -99,7 +100,7 @@ polin &lt;- factor(VARIBLE, levels = c(1,0),
                 labels = c("yes", "no"))
 class(VARIBLE)
 table(VARIBLE)
-</code></pre><h3 id="2-描述統計Descriptive-Statistics" data-id="2-描述統計Descriptive-Statistics"><a class="anchor hidden-xs" href="#2-描述統計Descriptive-Statistics" title="2-描述統計Descriptive-Statistics"><span class="octicon octicon-link"></span></a><span>2. 描述統計(Descriptive Statistics)</span></h3><h4 id="2-1-Summary-statistics" data-id="2-1-Summary-statistics"><a class="anchor hidden-xs" href="#2-1-Summary-statistics" title="2-1-Summary-statistics"><span class="octicon octicon-link"></span></a><span>2-1. Summary statistics</span></h4><pre><code>#   2-1-1. when there is no missing value
+</code></pre><h3 id="2-描述統計Descriptive-Statistics" data-id="2-描述統計Descriptive-Statistics" style=""><a class="anchor hidden-xs" href="#2-描述統計Descriptive-Statistics" title="2-描述統計Descriptive-Statistics"><span class="octicon octicon-link"></span></a><span>2. 描述統計(Descriptive Statistics)</span></h3><h4 id="2-1-Summary-statistics" data-id="2-1-Summary-statistics"><a class="anchor hidden-xs" href="#2-1-Summary-statistics" title="2-1-Summary-statistics"><span class="octicon octicon-link"></span></a><span>2-1. Summary statistics</span></h4><pre><code>#   2-1-1. when there is no missing value
 mean(VARIBLE) #mean
 mean(VARIBLE, trim = 0.04) #trimmed mean(drop 2% values at both ends)
 median(VARIBLE) #median
@@ -163,11 +164,11 @@ boxplot(VARIBLE, main = "distribution of age") #vertical
 boxplot(VARIBLE, main = "distribution of age", horizontal = TRUE) #horizontal
 
 detach(DATA) #取消連接資料檔
-</code></pre><h2 id="二、描述統計二Descriptive-statistics-II" data-id="二、描述統計二Descriptive-statistics-II"><a class="anchor hidden-xs" href="#二、描述統計二Descriptive-statistics-II" title="二、描述統計二Descriptive-statistics-II"><span class="octicon octicon-link"></span></a><span>二、描述統計(二)(Descriptive statistics II)</span></h2><pre><code>##  Install packages: DescTools &amp; vcd
+</code></pre><h2 id="二、描述統計二Descriptive-statistics-II" data-id="二、描述統計二Descriptive-statistics-II" style=""><a class="anchor hidden-xs" href="#二、描述統計二Descriptive-statistics-II" title="二、描述統計二Descriptive-statistics-II"><span class="octicon octicon-link"></span></a><span>二、描述統計(二)(Descriptive statistics II)</span></h2><pre><code>##  Install packages: DescTools &amp; vcd
 install.packages("DescTools")
 install.packages("vcd")
 
-</code></pre><h3 id="1-單一類別變數之描述統計Univariate-Descriptive-Statistics" data-id="1-單一類別變數之描述統計Univariate-Descriptive-Statistics"><a class="anchor hidden-xs" href="#1-單一類別變數之描述統計Univariate-Descriptive-Statistics" title="1-單一類別變數之描述統計Univariate-Descriptive-Statistics"><span class="octicon octicon-link"></span></a><span>1. 單一類別變數之描述統計(Univariate Descriptive Statistics)</span></h3><h4 id="1-1-Summary-statistics" data-id="1-1-Summary-statistics"><a class="anchor hidden-xs" href="#1-1-Summary-statistics" title="1-1-Summary-statistics"><span class="octicon octicon-link"></span></a><span>1-1. Summary statistics</span></h4><pre><code>##  (1) 集中趨勢量數(measures of central tendency)
+</code></pre><h3 id="1-單一類別變數之描述統計Univariate-Descriptive-Statistics" data-id="1-單一類別變數之描述統計Univariate-Descriptive-Statistics" style=""><a class="anchor hidden-xs" href="#1-單一類別變數之描述統計Univariate-Descriptive-Statistics" title="1-單一類別變數之描述統計Univariate-Descriptive-Statistics"><span class="octicon octicon-link"></span></a><span>1. 單一類別變數之描述統計(Univariate Descriptive Statistics)</span></h3><h4 id="1-1-Summary-statistics" data-id="1-1-Summary-statistics"><a class="anchor hidden-xs" href="#1-1-Summary-statistics" title="1-1-Summary-statistics"><span class="octicon octicon-link"></span></a><span>1-1. Summary statistics</span></h4><pre><code>##  (1) 集中趨勢量數(measures of central tendency)
 #   a. 無序多分類之眾數(nominal variables: mode)
 library(DescTools)
 Mode(VARIBLE)
@@ -202,7 +203,7 @@ barplot(height = table(VARIBLE),
 #   (2) pie chart
 pie(table(VARIBLE))
 
-</code></pre><h3 id="2-雙變數描述統計Bivariate-Descriptive-Statistics" data-id="2-雙變數描述統計Bivariate-Descriptive-Statistics"><a class="anchor hidden-xs" href="#2-雙變數描述統計Bivariate-Descriptive-Statistics" title="2-雙變數描述統計Bivariate-Descriptive-Statistics"><span class="octicon octicon-link"></span></a><span>2. 雙變數描述統計(Bivariate Descriptive Statistics)</span></h3><h4 id="2-1-類別變數two-categorical-variables" data-id="2-1-類別變數two-categorical-variables"><a class="anchor hidden-xs" href="#2-1-類別變數two-categorical-variables" title="2-1-類別變數two-categorical-variables"><span class="octicon octicon-link"></span></a><span>2-1. 類別變數(two categorical variables)</span></h4><pre><code>#   3-1-1. 交叉表(cross table)
+</code></pre><h3 id="2-雙變數描述統計Bivariate-Descriptive-Statistics" data-id="2-雙變數描述統計Bivariate-Descriptive-Statistics" style=""><a class="anchor hidden-xs" href="#2-雙變數描述統計Bivariate-Descriptive-Statistics" title="2-雙變數描述統計Bivariate-Descriptive-Statistics"><span class="octicon octicon-link"></span></a><span>2. 雙變數描述統計(Bivariate Descriptive Statistics)</span></h3><h4 id="2-1-類別變數two-categorical-variables" data-id="2-1-類別變數two-categorical-variables"><a class="anchor hidden-xs" href="#2-1-類別變數two-categorical-variables" title="2-1-類別變數two-categorical-variables"><span class="octicon octicon-link"></span></a><span>2-1. 類別變數(two categorical variables)</span></h4><pre><code>#   3-1-1. 交叉表(cross table)
 #   method 1. use built-in function table
 table1 &lt;- table(VARIBLE1, VARIBLE2)
 table1
@@ -221,7 +222,7 @@ mosaic(table1, labeling = labeling_values)
 
 </code></pre><h4 id="2-2-連續變數two-continuous-variables" data-id="2-2-連續變數two-continuous-variables"><a class="anchor hidden-xs" href="#2-2-連續變數two-continuous-variables" title="2-2-連續變數two-continuous-variables"><span class="octicon octicon-link"></span></a><span>2-2. 連續變數(two continuous variables)</span></h4><pre><code># 散布圖(scatter plot)
 plot(VARIBLE1, VARIBLE2)
-</code></pre><h2 id="三、機率與微積分Probability-and-Calculus" data-id="三、機率與微積分Probability-and-Calculus"><a class="anchor hidden-xs" href="#三、機率與微積分Probability-and-Calculus" title="三、機率與微積分Probability-and-Calculus"><span class="octicon octicon-link"></span></a><span>三、機率與微積分(Probability and Calculus)</span></h2><h3 id="Part-1-Probability" data-id="Part-1-Probability"><a class="anchor hidden-xs" href="#Part-1-Probability" title="Part-1-Probability"><span class="octicon octicon-link"></span></a><span>Part 1. Probability</span></h3><h4 id="1-Basic-probability-隨機抽樣random-sampling" data-id="1-Basic-probability-隨機抽樣random-sampling"><a class="anchor hidden-xs" href="#1-Basic-probability-隨機抽樣random-sampling" title="1-Basic-probability-隨機抽樣random-sampling"><span class="octicon octicon-link"></span></a><span>1. Basic probability: 隨機抽樣(random sampling)</span></h4><pre><code>set.seed(20211102)
+</code></pre><h2 id="三、機率與微積分Probability-and-Calculus" data-id="三、機率與微積分Probability-and-Calculus" style=""><a class="anchor hidden-xs" href="#三、機率與微積分Probability-and-Calculus" title="三、機率與微積分Probability-and-Calculus"><span class="octicon octicon-link"></span></a><span>三、機率與微積分(Probability and Calculus)</span></h2><h3 id="Part-1-Probability" data-id="Part-1-Probability" style=""><a class="anchor hidden-xs" href="#Part-1-Probability" title="Part-1-Probability"><span class="octicon octicon-link"></span></a><span>Part 1. Probability</span></h3><h4 id="1-Basic-probability-隨機抽樣random-sampling" data-id="1-Basic-probability-隨機抽樣random-sampling"><a class="anchor hidden-xs" href="#1-Basic-probability-隨機抽樣random-sampling" title="1-Basic-probability-隨機抽樣random-sampling"><span class="octicon octicon-link"></span></a><span>1. Basic probability: 隨機抽樣(random sampling)</span></h4><pre><code>set.seed(20211102)
 sample(1:10)
 sample(1:10, size = 3) 
 sample(1:10, size = 10, replace = TRUE) #sampling with replacement 抽出後放回
@@ -234,7 +235,7 @@ sample(c("H", "T"), size = 10, prob = c(0.3, 0.7),  replace = TRUE) #每個元�
 library(descr)
 CrossTable(VARIBLE1, VARIBLE2) 
 
-</code></pre><h3 id="Part-2-基礎微積分Basic-Calculus" data-id="Part-2-基礎微積分Basic-Calculus"><a class="anchor hidden-xs" href="#Part-2-基礎微積分Basic-Calculus" title="Part-2-基礎微積分Basic-Calculus"><span class="octicon octicon-link"></span></a><span>Part 2. 基礎微積分(Basic Calculus)</span></h3><h4 id="1-定義函數Define-the-function" data-id="1-定義函數Define-the-function"><a class="anchor hidden-xs" href="#1-定義函數Define-the-function" title="1-定義函數Define-the-function"><span class="octicon octicon-link"></span></a><span>1. 定義函數(Define the function)</span></h4><pre><code>#   method 1.
+</code></pre><h3 id="Part-2-基礎微積分Basic-Calculus" data-id="Part-2-基礎微積分Basic-Calculus" style=""><a class="anchor hidden-xs" href="#Part-2-基礎微積分Basic-Calculus" title="Part-2-基礎微積分Basic-Calculus"><span class="octicon octicon-link"></span></a><span>Part 2. 基礎微積分(Basic Calculus)</span></h3><h4 id="1-定義函數Define-the-function" data-id="1-定義函數Define-the-function"><a class="anchor hidden-xs" href="#1-定義函數Define-the-function" title="1-定義函數Define-the-function"><span class="octicon octicon-link"></span></a><span>1. 定義函數(Define the function)</span></h4><pre><code>#   method 1.
 function1 &lt;- expression(x^3 + 2*x^2 + 4*x + 8)
 function1
 #   method 2.
@@ -276,7 +277,7 @@ yac_str("Integrate(x) 3*x^2 + 4*x + 4")
 fx2
 plot(fx2, -4, 3)
 integrate(fx2, lower = 4, upper = 9)
-</code></pre><h2 id="四、隨機變數與機率分布Random-Variables-and-Probability-Distributions" data-id="四、隨機變數與機率分布Random-Variables-and-Probability-Distributions"><a class="anchor hidden-xs" href="#四、隨機變數與機率分布Random-Variables-and-Probability-Distributions" title="四、隨機變數與機率分布Random-Variables-and-Probability-Distributions"><span class="octicon octicon-link"></span></a><span>四、隨機變數與機率分布(Random Variables	and	Probability	Distributions)</span></h2><blockquote>
+</code></pre><h2 id="四、隨機變數與機率分布Random-Variables-and-Probability-Distributions" data-id="四、隨機變數與機率分布Random-Variables-and-Probability-Distributions" style=""><a class="anchor hidden-xs" href="#四、隨機變數與機率分布Random-Variables-and-Probability-Distributions" title="四、隨機變數與機率分布Random-Variables-and-Probability-Distributions"><span class="octicon octicon-link"></span></a><span>四、隨機變數與機率分布(Random Variables	and	Probability	Distributions)</span></h2><blockquote>
 <ul>
 <li><span>單變數機率分佈</span><br>
 <span>類別單變數分佈：柏努力分佈、二項分佈、泊松分佈</span><br>
@@ -290,7 +291,7 @@ integrate(fx2, lower = 4, upper = 9)
 </blockquote><pre><code>##  Install Packages
 install.packages("mosaic")
 install.packages("distrEx")
-</code></pre><h3 id="Part-A-單變數機率分布Univariate-Probability-Distributions" data-id="Part-A-單變數機率分布Univariate-Probability-Distributions"><a class="anchor hidden-xs" href="#Part-A-單變數機率分布Univariate-Probability-Distributions" title="Part-A-單變數機率分布Univariate-Probability-Distributions"><span class="octicon octicon-link"></span></a><span>Part A. 單變數機率分布(Univariate Probability Distributions)</span></h3><h4 id="1-不連續機率分布discrete-probability-distributions" data-id="1-不連續機率分布discrete-probability-distributions"><a class="anchor hidden-xs" href="#1-不連續機率分布discrete-probability-distributions" title="1-不連續機率分布discrete-probability-distributions"><span class="octicon octicon-link"></span></a><span>1. 不連續機率分布(discrete probability distributions)</span></h4><h5 id="1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05" data-id="1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05"><a class="anchor hidden-xs" href="#1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05" title="1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05"><span class="octicon octicon-link"></span></a><span>1-1. 柏努力分佈(Bernoulli distribution: casting a fair coin once) [binom(n=1,p=0.5)]</span></h5><pre><code>#   a. calculating probabilities
+</code></pre><h3 id="Part-A-單變數機率分布Univariate-Probability-Distributions" data-id="Part-A-單變數機率分布Univariate-Probability-Distributions" style=""><a class="anchor hidden-xs" href="#Part-A-單變數機率分布Univariate-Probability-Distributions" title="Part-A-單變數機率分布Univariate-Probability-Distributions"><span class="octicon octicon-link"></span></a><span>Part A. 單變數機率分布(Univariate Probability Distributions)</span></h3><h4 id="1-不連續機率分布discrete-probability-distributions" data-id="1-不連續機率分布discrete-probability-distributions"><a class="anchor hidden-xs" href="#1-不連續機率分布discrete-probability-distributions" title="1-不連續機率分布discrete-probability-distributions"><span class="octicon octicon-link"></span></a><span>1. 不連續機率分布(discrete probability distributions)</span></h4><h5 id="1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05" data-id="1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05"><a class="anchor hidden-xs" href="#1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05" title="1-1-柏努力分佈Bernoulli-distribution-casting-a-fair-coin-once-binomn1p05"><span class="octicon octicon-link"></span></a><span>1-1. 柏努力分佈(Bernoulli distribution: casting a fair coin once) [binom(n=1,p=0.5)]</span></h5><pre><code>#   a. calculating probabilities
 dbinom(c(0, 1), size = 1, prob = 0.5) #機率pdf
 pbinom(c(0, 1), size = 1, prob = 0.5) #累積機率CDF
 cbind(0:1, dbinom(0:1, 1, 0.5), pbinom(0:1, 1, 0.5))
@@ -410,7 +411,7 @@ par(mfrow=c(1, 2))
 curve(df(x, df1 = 3, df2 = 10), 0, 10)
 curve(pf(x, df1 = 3, df2 = 10), 0, 10, col="red")
 
-</code></pre><h3 id="Part-B-雙變數機率分布Bivariate-Distributions連續雙變數" data-id="Part-B-雙變數機率分布Bivariate-Distributions連續雙變數"><a class="anchor hidden-xs" href="#Part-B-雙變數機率分布Bivariate-Distributions連續雙變數" title="Part-B-雙變數機率分布Bivariate-Distributions連續雙變數"><span class="octicon octicon-link"></span></a><span>Part B. 雙變數機率分布(Bivariate Distributions):連續雙變數</span></h3><pre><code>#   i.e. 2004 UN data of fertility and cellphone(Agresti 2018 P.65)
+</code></pre><h3 id="Part-B-雙變數機率分布Bivariate-Distributions連續雙變數" data-id="Part-B-雙變數機率分布Bivariate-Distributions連續雙變數" style=""><a class="anchor hidden-xs" href="#Part-B-雙變數機率分布Bivariate-Distributions連續雙變數" title="Part-B-雙變數機率分布Bivariate-Distributions連續雙變數"><span class="octicon octicon-link"></span></a><span>Part B. 雙變數機率分布(Bivariate Distributions):連續雙變數</span></h3><pre><code>#   i.e. 2004 UN data of fertility and cellphone(Agresti 2018 P.65)
 #   Importing data
 library(readr)
 fc &lt;- read_csv("/Users/lasia/Desktop/2004 UN data.csv")
@@ -427,7 +428,7 @@ cov(fertility,cellphone)/(sd(fertility)*sd(cellphone))
 plot(cellphone, fertility)
 fitline &lt;- lm(fertility~cellphone)
 abline(fitline)
-</code></pre><h2 id="五、參數估計Estimation" data-id="五、參數估計Estimation"><a class="anchor hidden-xs" href="#五、參數估計Estimation" title="五、參數估計Estimation"><span class="octicon octicon-link"></span></a><span>五、參數估計(Estimation)</span></h2><h3 id="1點估計Point-Estimation" data-id="1點估計Point-Estimation"><a class="anchor hidden-xs" href="#1點估計Point-Estimation" title="1點估計Point-Estimation"><span class="octicon octicon-link"></span></a><span>1.點估計(Point Estimation)</span></h3><h4 id="1-1mean" data-id="1-1mean"><a class="anchor hidden-xs" href="#1-1mean" title="1-1mean"><span class="octicon octicon-link"></span></a><span>1-1.mean</span></h4><pre><code>#   method1. use built-in command: mean
+</code></pre><h2 id="五、參數估計Estimation" data-id="五、參數估計Estimation" style=""><a class="anchor hidden-xs" href="#五、參數估計Estimation" title="五、參數估計Estimation"><span class="octicon octicon-link"></span></a><span>五、參數估計(Estimation)</span></h2><h3 id="1點估計Point-Estimation" data-id="1點估計Point-Estimation" style=""><a class="anchor hidden-xs" href="#1點估計Point-Estimation" title="1點估計Point-Estimation"><span class="octicon octicon-link"></span></a><span>1.點估計(Point Estimation)</span></h3><h4 id="1-1mean" data-id="1-1mean"><a class="anchor hidden-xs" href="#1-1mean" title="1-1mean"><span class="octicon octicon-link"></span></a><span>1-1.mean</span></h4><pre><code>#   method1. use built-in command: mean
 est.mean &lt;- mean(VARIBLE, na.rm = TRUE)
 round(est.mean, digits = 2) 
 
@@ -453,7 +454,7 @@ n.VARIBLE &lt;- length(na.omit(VARIBLE))
 est.var &lt;- sum(((na.omit(VARIBLE))-est.mean)^2)/(n.VARIBLE -1)
 est.var
 
-</code></pre><h3 id="2區間估計Interval-estimation" data-id="2區間估計Interval-estimation"><a class="anchor hidden-xs" href="#2區間估計Interval-estimation" title="2區間估計Interval-estimation"><span class="octicon octicon-link"></span></a><span>2.區間估計(Interval estimation)</span></h3><h4 id="2-1mean" data-id="2-1mean"><a class="anchor hidden-xs" href="#2-1mean" title="2-1mean"><span class="octicon octicon-link"></span></a><span>2-1.mean</span></h4><pre><code>#   method1. use built-in command: t.test
+</code></pre><h3 id="2區間估計Interval-estimation" data-id="2區間估計Interval-estimation" style=""><a class="anchor hidden-xs" href="#2區間估計Interval-estimation" title="2區間估計Interval-estimation"><span class="octicon octicon-link"></span></a><span>2.區間估計(Interval estimation)</span></h3><h4 id="2-1mean" data-id="2-1mean"><a class="anchor hidden-xs" href="#2-1mean" title="2-1mean"><span class="octicon octicon-link"></span></a><span>2-1.mean</span></h4><pre><code>#   method1. use built-in command: t.test
 t.test(na.omit(VARIBLE), conf.level = 0.95)
 
 #   method2. use calculation formula of confidence interval of mean
@@ -480,7 +481,7 @@ ci95.var.VARIBLE &lt;- c(sum(((na.omit(VARIBLE))-est.mean)^2)/qchisq(1-alpha/2, 
                   sum(((na.omit(VARIBLE))-est.mean)^2)/qchisq(alpha/2, n.VARIBLE-1))
 ci95.var.VARIBLE
 
-</code></pre><h2 id="六、假設檢定Hypothesis-Testing" data-id="六、假設檢定Hypothesis-Testing"><a class="anchor hidden-xs" href="#六、假設檢定Hypothesis-Testing" title="六、假設檢定Hypothesis-Testing"><span class="octicon octicon-link"></span></a><span>六、假設檢定(Hypothesis Testing)</span></h2><h3 id="1-單一樣本檢定One-Sample-Hypothesis-Testing" data-id="1-單一樣本檢定One-Sample-Hypothesis-Testing"><a class="anchor hidden-xs" href="#1-單一樣本檢定One-Sample-Hypothesis-Testing" title="1-單一樣本檢定One-Sample-Hypothesis-Testing"><span class="octicon octicon-link"></span></a><span>1. 單一樣本檢定(One Sample Hypothesis Testing)</span></h3><blockquote>
+</code></pre><h2 id="六、假設檢定Hypothesis-Testing" data-id="六、假設檢定Hypothesis-Testing" style=""><a class="anchor hidden-xs" href="#六、假設檢定Hypothesis-Testing" title="六、假設檢定Hypothesis-Testing"><span class="octicon octicon-link"></span></a><span>六、假設檢定(Hypothesis Testing)</span></h2><h3 id="1-單一樣本檢定One-Sample-Hypothesis-Testing" data-id="1-單一樣本檢定One-Sample-Hypothesis-Testing" style=""><a class="anchor hidden-xs" href="#1-單一樣本檢定One-Sample-Hypothesis-Testing" title="1-單一樣本檢定One-Sample-Hypothesis-Testing"><span class="octicon octicon-link"></span></a><span>1. 單一樣本檢定(One Sample Hypothesis Testing)</span></h3><blockquote>
 <ul>
 <li><span>語法說明</span><br>
 <span>alternative可放“two.sided/ greater/ less”</span><br>
@@ -509,7 +510,7 @@ prop.test(x = 852, n = 1680, p = 0.5, alternative = "less")
 x &lt;- rnorm(10, 3, 1.2)
 library(TeachingDemos)
 sigma.test(x, sigmasq = 0.81, alternative = "greater", conf.level = 0.95)
-</code></pre><h3 id="2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test" data-id="2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test"><a class="anchor hidden-xs" href="#2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test" title="2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test"><span class="octicon octicon-link"></span></a><span>2. 符合度檢定:卡方檢定(Goodness of Fit Test: Chi-Square Test)</span></h3><h4 id="2-1-適合度檢定goodness-of-fit-to-binomial-distribution" data-id="2-1-適合度檢定goodness-of-fit-to-binomial-distribution"><a class="anchor hidden-xs" href="#2-1-適合度檢定goodness-of-fit-to-binomial-distribution" title="2-1-適合度檢定goodness-of-fit-to-binomial-distribution"><span class="octicon octicon-link"></span></a><span>2-1. 適合度檢定(goodness of fit to binomial distribution)</span></h4><blockquote>
+</code></pre><h3 id="2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test" data-id="2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test" style=""><a class="anchor hidden-xs" href="#2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test" title="2-符合度檢定卡方檢定Goodness-of-Fit-Test-Chi-Square-Test"><span class="octicon octicon-link"></span></a><span>2. 符合度檢定:卡方檢定(Goodness of Fit Test: Chi-Square Test)</span></h3><h4 id="2-1-適合度檢定goodness-of-fit-to-binomial-distribution" data-id="2-1-適合度檢定goodness-of-fit-to-binomial-distribution"><a class="anchor hidden-xs" href="#2-1-適合度檢定goodness-of-fit-to-binomial-distribution" title="2-1-適合度檢定goodness-of-fit-to-binomial-distribution"><span class="octicon octicon-link"></span></a><span>2-1. 適合度檢定(goodness of fit to binomial distribution)</span></h4><blockquote>
 <p><span>舉例:</span><br>
 <span>H0: 此筆資料顯示母體分布是 pi = 0.4的二項分布</span><br>
 <span>H1: 此筆資料顯示母體分布不是 pi = 0.4的二項分布</span></p>
@@ -551,10 +552,10 @@ dimnames(table11.9) &lt;- list(treatment = c("滿意", "不滿意"),
 addmargins(table11.9)
 chisq.test(table11.9, correct = F)
 qchisq(0.95, 1)
-</code></pre><h2 id="七、兩組間比較Comparison-of-Two-Groups" data-id="七、兩組間比較Comparison-of-Two-Groups"><a class="anchor hidden-xs" href="#七、兩組間比較Comparison-of-Two-Groups" title="七、兩組間比較Comparison-of-Two-Groups"><span class="octicon octicon-link"></span></a><span>七、兩組間比較(Comparison of Two Groups)</span></h2><pre><code>##  Install packages
+</code></pre><h2 id="七、兩組間比較Comparison-of-Two-Groups" data-id="七、兩組間比較Comparison-of-Two-Groups" style=""><a class="anchor hidden-xs" href="#七、兩組間比較Comparison-of-Two-Groups" title="七、兩組間比較Comparison-of-Two-Groups"><span class="octicon octicon-link"></span></a><span>七、兩組間比較(Comparison of Two Groups)</span></h2><pre><code>##  Install packages
 library("devtools")
 install_github("kosukeimai/qss-package", build_vignettes = TRUE)
-</code></pre><h3 id="1-兩組獨立樣本Comparison-of-Two-Independent-Samples" data-id="1-兩組獨立樣本Comparison-of-Two-Independent-Samples"><a class="anchor hidden-xs" href="#1-兩組獨立樣本Comparison-of-Two-Independent-Samples" title="1-兩組獨立樣本Comparison-of-Two-Independent-Samples"><span class="octicon octicon-link"></span></a><span>1. 兩組獨立樣本(Comparison of Two Independent Samples)</span></h3><h4 id="1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples" data-id="1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples"><a class="anchor hidden-xs" href="#1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples" title="1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples"><span class="octicon octicon-link"></span></a><span>1-1. 獨立樣本平均數檢定(test of means of two independent samples)</span></h4><blockquote>
+</code></pre><h3 id="1-兩組獨立樣本Comparison-of-Two-Independent-Samples" data-id="1-兩組獨立樣本Comparison-of-Two-Independent-Samples" style=""><a class="anchor hidden-xs" href="#1-兩組獨立樣本Comparison-of-Two-Independent-Samples" title="1-兩組獨立樣本Comparison-of-Two-Independent-Samples"><span class="octicon octicon-link"></span></a><span>1. 兩組獨立樣本(Comparison of Two Independent Samples)</span></h3><h4 id="1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples" data-id="1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples"><a class="anchor hidden-xs" href="#1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples" title="1-1-獨立樣本平均數檢定test-of-means-of-two-independent-samples"><span class="octicon octicon-link"></span></a><span>1-1. 獨立樣本平均數檢定(test of means of two independent samples)</span></h4><blockquote>
 <ul>
 <li><span>t.test(欲檢定平均數的變數~分組變數,var.equal=T/F,alternative=“two.sided/greater/less”, conf.level=信心水準)</span></li>
 <li><span>var.test(第一組變數名稱,第二組變數名稱,var.equal=T/F,alternative=“two.sided/greater/less”, conf.level=信心水準)</span></li>
@@ -583,7 +584,7 @@ prop.test(racetable, alternative = "two.sided", conf.level = 0.95)
 </ul>
 </blockquote><pre><code>var.test(mp1$produce1, mp1$produce2, ratio = 1, alternative = "two.sided", conf.level = 0.95) 
 qf(0.975, 12, 11) #F檢定
-</code></pre><h3 id="2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples" data-id="2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples"><a class="anchor hidden-xs" href="#2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples" title="2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples"><span class="octicon octicon-link"></span></a><span>2. 兩組相依樣本檢定(Comparison of Two Dependent Samples)</span></h3><h4 id="2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-" data-id="2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-"><a class="anchor hidden-xs" href="#2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-" title="2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-"><span class="octicon octicon-link"></span></a><span>2-1. 相依樣本平均數檢定(test of means of two paired samples )</span></h4><blockquote>
+</code></pre><h3 id="2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples" data-id="2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples" style=""><a class="anchor hidden-xs" href="#2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples" title="2-兩組相依樣本檢定Comparison-of-Two-Dependent-Samples"><span class="octicon octicon-link"></span></a><span>2. 兩組相依樣本檢定(Comparison of Two Dependent Samples)</span></h3><h4 id="2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-" data-id="2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-"><a class="anchor hidden-xs" href="#2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-" title="2-1-相依樣本平均數檢定test-of-means-of-two-paired-samples-"><span class="octicon octicon-link"></span></a><span>2-1. 相依樣本平均數檢定(test of means of two paired samples )</span></h4><blockquote>
 <ul>
 <li><span>t.test(變數1 ,變數2, paired=T, alternative=“two.sided/ greater/ less”, conf.level=信心水準)</span></li>
 </ul>
@@ -606,7 +607,7 @@ z
 #   b. McNemar's Chi-squared Test
 mcnemar.test(table7_10, correct = FALSE)
 
-</code></pre><h2 id="八、交叉表分析Cross-Tabular-Analysis" data-id="八、交叉表分析Cross-Tabular-Analysis"><a class="anchor hidden-xs" href="#八、交叉表分析Cross-Tabular-Analysis" title="八、交叉表分析Cross-Tabular-Analysis"><span class="octicon octicon-link"></span></a><span>八、交叉表分析(Cross-Tabular Analysis)</span></h2><h3 id="A-二維交叉表Two-Way-Contingency-Tables" data-id="A-二維交叉表Two-Way-Contingency-Tables"><a class="anchor hidden-xs" href="#A-二維交叉表Two-Way-Contingency-Tables" title="A-二維交叉表Two-Way-Contingency-Tables"><span class="octicon octicon-link"></span></a><span>A. 二維交叉表(Two-Way Contingency Tables)</span></h3><h4 id="1-Contingency-Tables" data-id="1-Contingency-Tables"><a class="anchor hidden-xs" href="#1-Contingency-Tables" title="1-Contingency-Tables"><span class="octicon octicon-link"></span></a><span>1. Contingency Tables</span></h4><blockquote>
+</code></pre><h2 id="八、交叉表分析Cross-Tabular-Analysis" data-id="八、交叉表分析Cross-Tabular-Analysis" style=""><a class="anchor hidden-xs" href="#八、交叉表分析Cross-Tabular-Analysis" title="八、交叉表分析Cross-Tabular-Analysis"><span class="octicon octicon-link"></span></a><span>八、交叉表分析(Cross-Tabular Analysis)</span></h2><h3 id="A-二維交叉表Two-Way-Contingency-Tables" data-id="A-二維交叉表Two-Way-Contingency-Tables" style=""><a class="anchor hidden-xs" href="#A-二維交叉表Two-Way-Contingency-Tables" title="A-二維交叉表Two-Way-Contingency-Tables"><span class="octicon octicon-link"></span></a><span>A. 二維交叉表(Two-Way Contingency Tables)</span></h3><h4 id="1-Contingency-Tables" data-id="1-Contingency-Tables"><a class="anchor hidden-xs" href="#1-Contingency-Tables" title="1-Contingency-Tables"><span class="octicon octicon-link"></span></a><span>1. Contingency Tables</span></h4><blockquote>
 <p><span>table(row變數, column變數)</span><br>
 <span>CrossTable(row變數, column變數) 呈現細格內次數、機率及邊緣次數</span><br>
 <span>表格名稱 &lt;- table(row變數, column變數)</span><br>
@@ -642,7 +643,7 @@ library(vcd)
 loddsratio(t1, log = TRUE)
 #
 log(0.8279869)
-</code></pre><h3 id="B-多維交叉表Multi-Way-Contingency-Tables" data-id="B-多維交叉表Multi-Way-Contingency-Tables"><a class="anchor hidden-xs" href="#B-多維交叉表Multi-Way-Contingency-Tables" title="B-多維交叉表Multi-Way-Contingency-Tables"><span class="octicon octicon-link"></span></a><span>B. 多維交叉表(Multi-Way Contingency Tables)</span></h3><h4 id="1-Contingency-table" data-id="1-Contingency-table"><a class="anchor hidden-xs" href="#1-Contingency-table" title="1-Contingency-table"><span class="octicon octicon-link"></span></a><span>1. Contingency table</span></h4><blockquote>
+</code></pre><h3 id="B-多維交叉表Multi-Way-Contingency-Tables" data-id="B-多維交叉表Multi-Way-Contingency-Tables" style=""><a class="anchor hidden-xs" href="#B-多維交叉表Multi-Way-Contingency-Tables" title="B-多維交叉表Multi-Way-Contingency-Tables"><span class="octicon octicon-link"></span></a><span>B. 多維交叉表(Multi-Way Contingency Tables)</span></h3><h4 id="1-Contingency-table" data-id="1-Contingency-table"><a class="anchor hidden-xs" href="#1-Contingency-table" title="1-Contingency-table"><span class="octicon octicon-link"></span></a><span>1. Contingency table</span></h4><blockquote>
 <p><span>有conditional/partial table，可以畫marginal table，但若只有marginal table，則無法畫出conditional/partial table。</span></p>
 </blockquote><pre><code>#   marginal table
 margintable &lt;- table(polin, vote)
@@ -688,7 +689,7 @@ odds.ratio(partialtable[, , 2], 0.95)
 library(vcd)
 loddsratio(partialtable[, , 1], log = FALSE)
 loddsratio(partialtable[, , 2], log = FALSE)
-</code></pre><h2 id="九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I" data-id="九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I"><a class="anchor hidden-xs" href="#九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I" title="九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I"><span class="octicon octicon-link"></span></a><span>九、連續變數相關性分析與迴歸(一)(Correlation and Linear	Regression I)</span></h2><h3 id="1-Correlation-between-two-continuous-variables" data-id="1-Correlation-between-two-continuous-variables"><a class="anchor hidden-xs" href="#1-Correlation-between-two-continuous-variables" title="1-Correlation-between-two-continuous-variables"><span class="octicon octicon-link"></span></a><span>1. Correlation between two continuous variables</span></h3><pre><code>#   covariance
+</code></pre><h2 id="九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I" data-id="九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I" style=""><a class="anchor hidden-xs" href="#九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I" title="九、連續變數相關性分析與迴歸一Correlation-and-Linear-Regression-I"><span class="octicon octicon-link"></span></a><span>九、連續變數相關性分析與迴歸(一)(Correlation and Linear	Regression I)</span></h2><h3 id="1-Correlation-between-two-continuous-variables" data-id="1-Correlation-between-two-continuous-variables" style=""><a class="anchor hidden-xs" href="#1-Correlation-between-two-continuous-variables" title="1-Correlation-between-two-continuous-variables"><span class="octicon octicon-link"></span></a><span>1. Correlation between two continuous variables</span></h3><pre><code>#   covariance
 cov(food$income, food$food_exp)
 
 #   Pearson’s correlation coefficient
@@ -701,7 +702,7 @@ plot(food$income, food$food_exp,
      xlab = "weekly income in $100", 
      ylab = "weekly food expenditure in $", 
      type = "p")
-</code></pre><h3 id="2-簡單線性迴歸Simple-linear-regression" data-id="2-簡單線性迴歸Simple-linear-regression"><a class="anchor hidden-xs" href="#2-簡單線性迴歸Simple-linear-regression" title="2-簡單線性迴歸Simple-linear-regression"><span class="octicon octicon-link"></span></a><span>2. 簡單線性迴歸(Simple linear regression)</span></h3><blockquote>
+</code></pre><h3 id="2-簡單線性迴歸Simple-linear-regression" data-id="2-簡單線性迴歸Simple-linear-regression" style=""><a class="anchor hidden-xs" href="#2-簡單線性迴歸Simple-linear-regression" title="2-簡單線性迴歸Simple-linear-regression"><span class="octicon octicon-link"></span></a><span>2. 簡單線性迴歸(Simple linear regression)</span></h3><blockquote>
 <p><span>模型名稱 &lt;- lm(依變數 ~ 自變數, data = 資料名稱)</span><br>
 <span>summary(模型名稱)</span></p>
 </blockquote><pre><code>#   run regression model
@@ -717,7 +718,7 @@ plot(food$income, food$food_exp,
      ylab = "weekly food expenditure in $", 
      type = "p")
 abline(mod1)
-</code></pre><h3 id="3-多元線性迴歸Multiple-linear-regression" data-id="3-多元線性迴歸Multiple-linear-regression"><a class="anchor hidden-xs" href="#3-多元線性迴歸Multiple-linear-regression" title="3-多元線性迴歸Multiple-linear-regression"><span class="octicon octicon-link"></span></a><span>3. 多元線性迴歸(Multiple linear regression)</span></h3><blockquote>
+</code></pre><h3 id="3-多元線性迴歸Multiple-linear-regression" data-id="3-多元線性迴歸Multiple-linear-regression" style=""><a class="anchor hidden-xs" href="#3-多元線性迴歸Multiple-linear-regression" title="3-多元線性迴歸Multiple-linear-regression"><span class="octicon octicon-link"></span></a><span>3. 多元線性迴歸(Multiple linear regression)</span></h3><blockquote>
 <p><span>模型名稱 &lt;- lm(依變數 ~ 解釋變數1 + …… + 解釋變數k, data = 資料名稱)</span><br>
 <span>summary(模型名稱)</span></p>
 </blockquote><pre><code>#   run regression model
@@ -726,7 +727,7 @@ summary(mod2)
 
 #   get estimated coefficients
 coef(mod2)
-</code></pre><h2 id="十、線性迴歸二Linear-Regression-II" data-id="十、線性迴歸二Linear-Regression-II"><a class="anchor hidden-xs" href="#十、線性迴歸二Linear-Regression-II" title="十、線性迴歸二Linear-Regression-II"><span class="octicon octicon-link"></span></a><span>十、線性迴歸(二)(Linear	Regression II)</span></h2><h3 id="A-多元線性迴歸-Multiple-Linear-Regression" data-id="A-多元線性迴歸-Multiple-Linear-Regression"><a class="anchor hidden-xs" href="#A-多元線性迴歸-Multiple-Linear-Regression" title="A-多元線性迴歸-Multiple-Linear-Regression"><span class="octicon octicon-link"></span></a><span>A. 多元線性迴歸 (Multiple Linear Regression)</span></h3><h4 id="1-Regression-analysis" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis" title="1-Regression-analysis"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h4><pre><code>#   a. run a regression model with two continuous explanatory variables
+</code></pre><h2 id="十、線性迴歸二Linear-Regression-II" data-id="十、線性迴歸二Linear-Regression-II" style=""><a class="anchor hidden-xs" href="#十、線性迴歸二Linear-Regression-II" title="十、線性迴歸二Linear-Regression-II"><span class="octicon octicon-link"></span></a><span>十、線性迴歸(二)(Linear	Regression II)</span></h2><h3 id="A-多元線性迴歸-Multiple-Linear-Regression" data-id="A-多元線性迴歸-Multiple-Linear-Regression" style=""><a class="anchor hidden-xs" href="#A-多元線性迴歸-Multiple-Linear-Regression" title="A-多元線性迴歸-Multiple-Linear-Regression"><span class="octicon octicon-link"></span></a><span>A. 多元線性迴歸 (Multiple Linear Regression)</span></h3><h4 id="1-Regression-analysis" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis" title="1-Regression-analysis"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h4><pre><code>#   a. run a regression model with two continuous explanatory variables
 mod1 &lt;- lm(price ~ age + sqft, data = utown)
 summary(mod1)
 
@@ -777,7 +778,7 @@ margins(mod4, at = list(age = seq(0, 60, 10)))
 </blockquote><pre><code>library(car)
 linearHypothesis(mod4, c("utown1 = 0", "sqft = 0", "utown1:sqft = 0"))
 
-</code></pre><h3 id="B-線性迴歸診斷Linear-Regression-Diagnostics" data-id="B-線性迴歸診斷Linear-Regression-Diagnostics"><a class="anchor hidden-xs" href="#B-線性迴歸診斷Linear-Regression-Diagnostics" title="B-線性迴歸診斷Linear-Regression-Diagnostics"><span class="octicon octicon-link"></span></a><span>B. 線性迴歸診斷(Linear Regression Diagnostics)</span></h3><blockquote>
+</code></pre><h3 id="B-線性迴歸診斷Linear-Regression-Diagnostics" data-id="B-線性迴歸診斷Linear-Regression-Diagnostics" style=""><a class="anchor hidden-xs" href="#B-線性迴歸診斷Linear-Regression-Diagnostics" title="B-線性迴歸診斷Linear-Regression-Diagnostics"><span class="octicon octicon-link"></span></a><span>B. 線性迴歸診斷(Linear Regression Diagnostics)</span></h3><blockquote>
 <ul>
 <li><span>No influential observations or outliers</span></li>
 <li><span>Assumption 1: Linearity</span></li>
@@ -859,7 +860,7 @@ qqPlot(utown.mod, distribution = "norm")
 #   6-2. formal tests: Jarque-Bera test
 library(tseries)
 jarque.bera.test(utown.mod$residuals)
-</code></pre><h3 id="流程示範" data-id="流程示範"><a class="anchor hidden-xs" href="#流程示範" title="流程示範"><span class="octicon octicon-link"></span></a><span>流程示範</span></h3><h4 id="1-Import-data-file-and-recode-variables" data-id="1-Import-data-file-and-recode-variables"><a class="anchor hidden-xs" href="#1-Import-data-file-and-recode-variables" title="1-Import-data-file-and-recode-variables"><span class="octicon octicon-link"></span></a><span>1. Import data file and recode variables</span></h4><pre><code>#   a. "utown" data: No influential observations or outliers
+</code></pre><h3 id="流程示範" data-id="流程示範" style=""><a class="anchor hidden-xs" href="#流程示範" title="流程示範"><span class="octicon octicon-link"></span></a><span>流程示範</span></h3><h4 id="1-Import-data-file-and-recode-variables" data-id="1-Import-data-file-and-recode-variables"><a class="anchor hidden-xs" href="#1-Import-data-file-and-recode-variables" title="1-Import-data-file-and-recode-variables"><span class="octicon octicon-link"></span></a><span>1. Import data file and recode variables</span></h4><pre><code>#   a. "utown" data: No influential observations or outliers
 #                    Assumption 1: linearity
 #                    Assumption 3: homoscedasticity
 #                    Assumption 6: normality
@@ -899,7 +900,7 @@ library(dynlm)
 phill.dyn &lt;- dynlm(inf ~ diff(u), data = phill.ts)
 summary(phill.dyn)
 
-</code></pre><h2 id="十一、時間序列分析Regression-with-Time-Series-Data" data-id="十一、時間序列分析Regression-with-Time-Series-Data"><a class="anchor hidden-xs" href="#十一、時間序列分析Regression-with-Time-Series-Data" title="十一、時間序列分析Regression-with-Time-Series-Data"><span class="octicon octicon-link"></span></a><span>十一、時間序列分析(Regression	with Time-Series Data)</span></h2><pre><code>### Pre-Analysis
+</code></pre><h2 id="十一、時間序列分析Regression-with-Time-Series-Data" data-id="十一、時間序列分析Regression-with-Time-Series-Data" style=""><a class="anchor hidden-xs" href="#十一、時間序列分析Regression-with-Time-Series-Data" title="十一、時間序列分析Regression-with-Time-Series-Data"><span class="octicon octicon-link"></span></a><span>十一、時間序列分析(Regression	with Time-Series Data)</span></h2><pre><code>### Pre-Analysis
 ##  1. Install new packages
 install.packages("knitr")
 install.packages("dynlm")
@@ -909,7 +910,7 @@ install.packages("forecast")
 data("usmacro", package = "POE5Rdata")
 head(usmacro)
 
-</code></pre><h3 id="轉換資料為時間序列" data-id="轉換資料為時間序列"><a class="anchor hidden-xs" href="#轉換資料為時間序列" title="轉換資料為時間序列"><span class="octicon octicon-link"></span></a><span>轉換資料為時間序列</span></h3><blockquote>
+</code></pre><h3 id="轉換資料為時間序列" data-id="轉換資料為時間序列" style=""><a class="anchor hidden-xs" href="#轉換資料為時間序列" title="轉換資料為時間序列"><span class="octicon octicon-link"></span></a><span>轉換資料為時間序列</span></h3><blockquote>
 <ul>
 <li><span>ts(資料或變數名稱, start= , end= , frequency= )</span></li>
 <li><span>Time lag: lag(變數, -1); lag(變數, -2); ……lag(變數, -k)</span></li>
@@ -954,7 +955,7 @@ acf(usmacro.ts[, "u"], lag.max = 24, type = "correlation")
 #pacf(usmacro.ts[, "g"], lag.max = 48)
 acf(usmacro.ts[, "g"], lag.max = 48, type = "correlation", plot = FALSE)
 acf(usmacro.ts[, "g"], lag.max = 48, type = "correlation")
-</code></pre><h3 id="Regression-with-time-series-data" data-id="Regression-with-time-series-data"><a class="anchor hidden-xs" href="#Regression-with-time-series-data" title="Regression-with-time-series-data"><span class="octicon octicon-link"></span></a><span>Regression with time-series data</span></h3><h4 id="1-Autoregressive-model-AR2-model" data-id="1-Autoregressive-model-AR2-model"><a class="anchor hidden-xs" href="#1-Autoregressive-model-AR2-model" title="1-Autoregressive-model-AR2-model"><span class="octicon octicon-link"></span></a><span>1. Autoregressive model: AR(2) model</span></h4><blockquote>
+</code></pre><h3 id="Regression-with-time-series-data" data-id="Regression-with-time-series-data" style=""><a class="anchor hidden-xs" href="#Regression-with-time-series-data" title="Regression-with-time-series-data"><span class="octicon octicon-link"></span></a><span>Regression with time-series data</span></h3><h4 id="1-Autoregressive-model-AR2-model" data-id="1-Autoregressive-model-AR2-model"><a class="anchor hidden-xs" href="#1-Autoregressive-model-AR2-model" title="1-Autoregressive-model-AR2-model"><span class="octicon octicon-link"></span></a><span>1. Autoregressive model: AR(2) model</span></h4><blockquote>
 <ul>
 <li><span>模型名稱 &lt;- dynlm(依變數 ~ L(依變數, 1:p))</span></li>
 <li><span>kable(模型名稱, captipn=“”)</span></li>
@@ -980,7 +981,7 @@ plot(forecast(ar2u, h = 3))
 </blockquote><pre><code>u.ardl21 &lt;- dynlm(u.ts ~ L(u.ts, 1:2) + L(g.ts, 1))
 tidy(u.ardl21)
 
-</code></pre><h2 id="十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable" data-id="十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable"><a class="anchor hidden-xs" href="#十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable" title="十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable"><span class="octicon octicon-link"></span></a><span>十二、矩陣代數、計次依變數分析(Matrix Algebra and Poisson Regression for Count Dependent Variable)</span></h2><h3 id="Part-A-矩陣代數Matrix-Algebra" data-id="Part-A-矩陣代數Matrix-Algebra"><a class="anchor hidden-xs" href="#Part-A-矩陣代數Matrix-Algebra" title="Part-A-矩陣代數Matrix-Algebra"><span class="octicon octicon-link"></span></a><span>Part A. 矩陣代數(Matrix Algebra)</span></h3><h4 id="1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices" data-id="1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices"><a class="anchor hidden-xs" href="#1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices" title="1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices"><span class="octicon octicon-link"></span></a><span>1. Use matrix inverse to solve simultaneous equations with conformable matrices</span></h4><pre><code>### Pre-Analysis
+</code></pre><h2 id="十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable" data-id="十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable" style=""><a class="anchor hidden-xs" href="#十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable" title="十二、矩陣代數、計次依變數分析Matrix-Algebra-and-Poisson-Regression-for-Count-Dependent-Variable"><span class="octicon octicon-link"></span></a><span>十二、矩陣代數、計次依變數分析(Matrix Algebra and Poisson Regression for Count Dependent Variable)</span></h2><h3 id="Part-A-矩陣代數Matrix-Algebra" data-id="Part-A-矩陣代數Matrix-Algebra" style=""><a class="anchor hidden-xs" href="#Part-A-矩陣代數Matrix-Algebra" title="Part-A-矩陣代數Matrix-Algebra"><span class="octicon octicon-link"></span></a><span>Part A. 矩陣代數(Matrix Algebra)</span></h3><h4 id="1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices" data-id="1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices"><a class="anchor hidden-xs" href="#1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices" title="1-Use-matrix-inverse-to-solve-simultaneous-equations-with-conformable-matrices"><span class="octicon octicon-link"></span></a><span>1. Use matrix inverse to solve simultaneous equations with conformable matrices</span></h4><pre><code>### Pre-Analysis
 ##  Install new packages
 install.packages("matlib")
 
@@ -1011,7 +1012,7 @@ solve(A) %*% b #another way to solve the unknowns x
 X &lt;- matrix(c(5, 7, 8, 4, 5, 5), nrow = 3, ncol = 2, byrow = TRUE); X  # X is a 3x2 matrix  
 Y &lt;- matrix(c(-11, 4, -5), nrow = 3, ncol = 1, byrow = TRUE); Y # Y is a 3x1 column vector
 B &lt;- solve(t(X) %*% X) %*% t(X) %*% Y; B # solve for the unknown B vector
-</code></pre><h3 id="Part-B-Poisson-Regression-for-Count-Dependent-Variable" data-id="Part-B-Poisson-Regression-for-Count-Dependent-Variable"><a class="anchor hidden-xs" href="#Part-B-Poisson-Regression-for-Count-Dependent-Variable" title="Part-B-Poisson-Regression-for-Count-Dependent-Variable"><span class="octicon octicon-link"></span></a><span>Part B. Poisson Regression for Count Dependent Variable</span></h3><h4 id="1-Regression-analysis1" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis1" title="1-Regression-analysis1"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h4><pre><code>### Pre-Analysis
+</code></pre><h3 id="Part-B-Poisson-Regression-for-Count-Dependent-Variable" data-id="Part-B-Poisson-Regression-for-Count-Dependent-Variable" style=""><a class="anchor hidden-xs" href="#Part-B-Poisson-Regression-for-Count-Dependent-Variable" title="Part-B-Poisson-Regression-for-Count-Dependent-Variable"><span class="octicon octicon-link"></span></a><span>Part B. Poisson Regression for Count Dependent Variable</span></h3><h4 id="1-Regression-analysis1" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis1" title="1-Regression-analysis1"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h4><pre><code>### Pre-Analysis
 ##  Import data file and recode variables
 data("rwm88_small", package = "POE5Rdata")
 names(rwm88_small)
@@ -1061,9 +1062,9 @@ margins(rwm.mod, at = list(age = mean(rwm88_small$age)),
                             public = mean(as.numeric(rwm88_small$public)))
 </code></pre><h5 id="3-2-factor-and-percentage-changes-in-expected-count無法用於跨模型比較" data-id="3-2-factor-and-percentage-changes-in-expected-count無法用於跨模型比較"><a class="anchor hidden-xs" href="#3-2-factor-and-percentage-changes-in-expected-count無法用於跨模型比較" title="3-2-factor-and-percentage-changes-in-expected-count無法用於跨模型比較"><span class="octicon octicon-link"></span></a><span>3-2. factor and percentage changes in expected count(無法用於跨模型比較)</span></h5><pre><code>exp(coef(rwm.mod)) #factor changes
 100*(exp(coef(rwm.mod)) - 1) #percentage changes
-</code></pre><h2 id="十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables" data-id="十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables"><a class="anchor hidden-xs" href="#十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables" title="十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables"><span class="octicon octicon-link"></span></a><span>十三、二分類依變數分析(Logistic Regression for Binary Dependent Variables)</span></h2><blockquote>
+</code></pre><h2 id="十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables" data-id="十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables" style=""><a class="anchor hidden-xs" href="#十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables" title="十三、二分類依變數分析Logistic-Regression-for-Binary-Dependent-Variables"><span class="octicon octicon-link"></span></a><span>十三、二分類依變數分析(Logistic Regression for Binary Dependent Variables)</span></h2><blockquote>
 <p><span>二分機率單元模型與二分勝算對數模型的語法差異在於link function不同</span></p>
-</blockquote><h3 id="1-Regression-analysis2" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis2" title="1-Regression-analysis2"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h3><pre><code>install.packages("mfx")
+</blockquote><h3 id="1-Regression-analysis2" data-id="1-Regression-analysis" style=""><a class="anchor hidden-xs" href="#1-Regression-analysis2" title="1-Regression-analysis2"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h3><pre><code>install.packages("mfx")
 
 #   (1) binary logit
 logitmod &lt;- glm(vote ~ gender + nage + Edu, data = data, family = "binomial"(link = "logit"))
@@ -1072,7 +1073,7 @@ summary(logitmod)
 #   (2) binary probit
 probitmod &lt;- glm(vote ~ gender + nage + Edu, data = data, family = "binomial"(link = "probit"))
 summary(probitmod)
-</code></pre><h3 id="2-Hypothesis-testing" data-id="2-Hypothesis-testing"><a class="anchor hidden-xs" href="#2-Hypothesis-testing" title="2-Hypothesis-testing"><span class="octicon octicon-link"></span></a><span>2. Hypothesis testing</span></h3><blockquote>
+</code></pre><h3 id="2-Hypothesis-testing" data-id="2-Hypothesis-testing" style=""><a class="anchor hidden-xs" href="#2-Hypothesis-testing" title="2-Hypothesis-testing"><span class="octicon octicon-link"></span></a><span>2. Hypothesis testing</span></h3><blockquote>
 <p><span>進行LR test前須先確認模型為套疊，且樣本一致</span></p>
 </blockquote><pre><code>#   (1) t-test and likelihood ratio (LR) test of a single coefficient
 library(lmtest)
@@ -1083,7 +1084,7 @@ lrtest(logitmod, "gender")
 library(lmtest)
 lrtest(logitmod, c("gender", "nage"))
 #同時檢定兩個
-</code></pre><h3 id="3-Goodness-of-fit" data-id="3-Goodness-of-fit"><a class="anchor hidden-xs" href="#3-Goodness-of-fit" title="3-Goodness-of-fit"><span class="octicon octicon-link"></span></a><span>3. Goodness of fit</span></h3><p><img src="https://i.imgur.com/4FjvXLI.png" alt="" loading="lazy"></p><pre><code>#   (1)	classification tables
+</code></pre><h3 id="3-Goodness-of-fit" data-id="3-Goodness-of-fit" style=""><a class="anchor hidden-xs" href="#3-Goodness-of-fit" title="3-Goodness-of-fit"><span class="octicon octicon-link"></span></a><span>3. Goodness of fit</span></h3><p><img src="https://i.imgur.com/4FjvXLI.png" alt="" loading="lazy"></p><pre><code>#   (1)	classification tables
 yhat &lt;- fitted(logitmod)
 summary(yhat)
 yhat2 &lt;- c(NA)
@@ -1109,7 +1110,7 @@ PseudoR2(logitmod, which = "McFaddenAdj") #adjusted pseudo-R2
 #   (3) AIC &amp; BIC
 AIC(logitmod)
 BIC(logitmod)
-</code></pre><h3 id="4-Interpretation-of-coefficient-estimate" data-id="4-Interpretation-of-coefficient-estimate"><a class="anchor hidden-xs" href="#4-Interpretation-of-coefficient-estimate" title="4-Interpretation-of-coefficient-estimate"><span class="octicon octicon-link"></span></a><span>4. Interpretation of coefficient estimate</span></h3><pre><code>#   (1) coefficient-based interpretations
+</code></pre><h3 id="4-Interpretation-of-coefficient-estimate" data-id="4-Interpretation-of-coefficient-estimate" style=""><a class="anchor hidden-xs" href="#4-Interpretation-of-coefficient-estimate" title="4-Interpretation-of-coefficient-estimate"><span class="octicon octicon-link"></span></a><span>4. Interpretation of coefficient estimate</span></h3><pre><code>#   (1) coefficient-based interpretations
 #   odds ratio
 exp(coef(logitmod)) #odds ratio
 round(exp(cbind(est = coef(logitmod), confint(logitmod))), 3)
@@ -1134,7 +1135,7 @@ library(margins)
 
 summary(margins(logitmod, variables = "gender"))
 summary(margins(logitmod, variables = "Edu"))
-</code></pre><h2 id="十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables" data-id="十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables"><a class="anchor hidden-xs" href="#十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables" title="十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables"><span class="octicon octicon-link"></span></a><span>十四、有序多分類依變數分析(Regression for Ordinal Dependent Variables)</span></h2><h3 id="Pre-Analysis" data-id="Pre-Analysis"><a class="anchor hidden-xs" href="#Pre-Analysis" title="Pre-Analysis"><span class="octicon octicon-link"></span></a><span>Pre-Analysis</span></h3><pre><code>##  1. Install new package
+</code></pre><h2 id="十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables" data-id="十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables" style=""><a class="anchor hidden-xs" href="#十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables" title="十四、有序多分類依變數分析Regression-for-Ordinal-Dependent-Variables"><span class="octicon octicon-link"></span></a><span>十四、有序多分類依變數分析(Regression for Ordinal Dependent Variables)</span></h2><h3 id="Pre-Analysis" data-id="Pre-Analysis" style=""><a class="anchor hidden-xs" href="#Pre-Analysis" title="Pre-Analysis"><span class="octicon octicon-link"></span></a><span>Pre-Analysis</span></h3><pre><code>##  1. Install new package
 install.packages("MASS")
 install.packages("erer")#舊的margin已經不能算了，要用新套件，但只能算MEM
 install.packages("brant")
@@ -1187,7 +1188,7 @@ mydata &lt;- data.frame(srep, gender, nage, Edu)
 mydata &lt;- na.omit(mydata)
 dim(mydata)
 
-</code></pre><h3 id="Ordinal-Regression-Models" data-id="Ordinal-Regression-Models"><a class="anchor hidden-xs" href="#Ordinal-Regression-Models" title="Ordinal-Regression-Models"><span class="octicon octicon-link"></span></a><span>Ordinal Regression Models</span></h3><h4 id="1-Regression-analysis3" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis3" title="1-Regression-analysis3"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h4><pre><code>#   1-1. ordered logit model
+</code></pre><h3 id="Ordinal-Regression-Models" data-id="Ordinal-Regression-Models" style=""><a class="anchor hidden-xs" href="#Ordinal-Regression-Models" title="Ordinal-Regression-Models"><span class="octicon octicon-link"></span></a><span>Ordinal Regression Models</span></h3><h4 id="1-Regression-analysis3" data-id="1-Regression-analysis"><a class="anchor hidden-xs" href="#1-Regression-analysis3" title="1-Regression-analysis3"><span class="octicon octicon-link"></span></a><span>1. Regression analysis</span></h4><pre><code>#   1-1. ordered logit model
 library(MASS)
 OL &lt;-  polr(srep ~ gender + nage + Edu, data = mydata, method = "logistic")
 summary(OL)
@@ -1217,7 +1218,7 @@ ocME(OL, rev.dum = TRUE, digits = 3)
 </code></pre><h4 id="4-平行迴歸假定之檢定Test-of-parallel-regression-assumption" data-id="4-平行迴歸假定之檢定Test-of-parallel-regression-assumption"><a class="anchor hidden-xs" href="#4-平行迴歸假定之檢定Test-of-parallel-regression-assumption" title="4-平行迴歸假定之檢定Test-of-parallel-regression-assumption"><span class="octicon octicon-link"></span></a><span>4. 平行迴歸假定之檢定(Test of parallel regression assumption)</span></h4><pre><code>#平行回歸假定的檢定，平行回歸假定被違反，ordinal logit行不通，就要用廣義的那個(但R沒有)
 library(brant)
 brant(OL)
-</code></pre><h2 id="十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models" data-id="十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models"><a class="anchor hidden-xs" href="#十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models" title="十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models"><span class="octicon octicon-link"></span></a><span>十五、無序多分類依變數分析(Regression for Nominal Dependent Variables ；Discrete Choice Models)</span></h2><blockquote>
+</code></pre><h2 id="十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models" data-id="十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models" style=""><a class="anchor hidden-xs" href="#十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models" title="十五、無序多分類依變數分析Regression-for-Nominal-Dependent-Variables-；Discrete-Choice-Models"><span class="octicon octicon-link"></span></a><span>十五、無序多分類依變數分析(Regression for Nominal Dependent Variables ；Discrete Choice Models)</span></h2><blockquote>
 <p><span>模型種類:</span></p>
 <ul>
 <li><span>Multinomial logit (MNL) model</span></li>
@@ -1227,7 +1228,7 @@ brant(OL)
 <li><span>Multinomial probit (MNP) model</span></li>
 <li><span>Mixed logit (MXL) model/ Random parameters logit (RPL) model</span></li>
 </ul>
-</blockquote><h3 id="Pre-Analysis1" data-id="Pre-Analysis"><a class="anchor hidden-xs" href="#Pre-Analysis1" title="Pre-Analysis1"><span class="octicon octicon-link"></span></a><span>Pre-Analysis</span></h3><pre><code>##  1. Install new package
+</blockquote><h3 id="Pre-Analysis1" data-id="Pre-Analysis" style=""><a class="anchor hidden-xs" href="#Pre-Analysis1" title="Pre-Analysis1"><span class="octicon octicon-link"></span></a><span>Pre-Analysis</span></h3><pre><code>##  1. Install new package
 install.packages("mlogit")
 
 ##  2. Import and check the data
@@ -1271,7 +1272,7 @@ View(as.data.frame(llres))
 #   list data for the first two cases after reshape
 llres[1:7, ]
 
-</code></pre><h3 id="符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit" data-id="符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit"><a class="anchor hidden-xs" href="#符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit" title="符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit"><span class="octicon octicon-link"></span></a><span>符合IIA假定的無序多分類迴歸模型(Models Based on the IIA Assumption) : MNL, CL, and Combined Logit</span></h3><h4 id="1-多項勝算對數模型-Multinomial-logit-MNL-model" data-id="1-多項勝算對數模型-Multinomial-logit-MNL-model"><a class="anchor hidden-xs" href="#1-多項勝算對數模型-Multinomial-logit-MNL-model" title="1-多項勝算對數模型-Multinomial-logit-MNL-model"><span class="octicon octicon-link"></span></a><span>1. 多項勝算對數模型 Multinomial logit (MNL) model</span></h4><blockquote>
+</code></pre><h3 id="符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit" data-id="符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit" style=""><a class="anchor hidden-xs" href="#符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit" title="符合IIA假定的無序多分類迴歸模型Models-Based-on-the-IIA-Assumption--MNL-CL-and-Combined-Logit"><span class="octicon octicon-link"></span></a><span>符合IIA假定的無序多分類迴歸模型(Models Based on the IIA Assumption) : MNL, CL, and Combined Logit</span></h3><h4 id="1-多項勝算對數模型-Multinomial-logit-MNL-model" data-id="1-多項勝算對數模型-Multinomial-logit-MNL-model"><a class="anchor hidden-xs" href="#1-多項勝算對數模型-Multinomial-logit-MNL-model" title="1-多項勝算對數模型-Multinomial-logit-MNL-model"><span class="octicon octicon-link"></span></a><span>1. 多項勝算對數模型 Multinomial logit (MNL) model</span></h4><blockquote>
 <p><span>模型名稱 &lt;- mlogit(依變數 ~ 1 | CSV, reflevel = “參照類”, data = 資料名稱, shape = “wide”choice = “表示受訪者選擇的變數”)</span><br>
 <span>資料型態需為wide-form。</span></p>
 </blockquote><pre><code>#   1-1. run a regression model
@@ -1317,7 +1318,7 @@ me.inc.cmbl &lt;- effects(CmbL, covariate = "income", data = llres)
 summary(me.inc.cmbl)
 #   MEM
 effects(CmbL, covariate = "p")
-</code></pre><h3 id="獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test" data-id="獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test"><a class="anchor hidden-xs" href="#獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test" title="獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test"><span class="octicon octicon-link"></span></a><span>獨立不相關選項假定之檢定 Independence of irrelevant alternatives (IIA) test</span></h3><pre><code>##  刪去某一選項，執行模型分析 ex:drop "Fre"
+</code></pre><h3 id="獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test" data-id="獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test" style=""><a class="anchor hidden-xs" href="#獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test" title="獨立不相關選項假定之檢定-Independence-of-irrelevant-alternatives-IIA-test"><span class="octicon octicon-link"></span></a><span>獨立不相關選項假定之檢定 Independence of irrelevant alternatives (IIA) test</span></h3><pre><code>##  刪去某一選項，執行模型分析 ex:drop "Fre"
 CmbL_c &lt;- mlogit(nchoice ~ p + dis | income, data = llres, reflevel = "Caf",
                  alt.subset = c("Mam","Caf", "Los","Win","Chr","Mad"))#alt.subset這個指令可以順便做IIA檢定
 summary(CmbL_c)
@@ -1325,7 +1326,7 @@ summary(CmbL_c)
 ##   Hausman-McFadden Test of IIA
 # hmftest(完整模型, 刪去某一選項後的模型)
 hmftest(CmbL, CmbL_c)
-</code></pre><h3 id="放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL" data-id="放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL"><a class="anchor hidden-xs" href="#放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL" title="放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL"><span class="octicon octicon-link"></span></a><span>放寬IIA假定的無序多分類迴歸模型(Models Which Relax the IIA Assumption): NL, MNP,and MXL</span></h3><h4 id="1-套疊勝算對數模型-Nested-logit-NL-model" data-id="1-套疊勝算對數模型-Nested-logit-NL-model"><a class="anchor hidden-xs" href="#1-套疊勝算對數模型-Nested-logit-NL-model" title="1-套疊勝算對數模型-Nested-logit-NL-model"><span class="octicon octicon-link"></span></a><span>1. 套疊勝算對數模型  Nested logit (NL) model</span></h4><blockquote>
+</code></pre><h3 id="放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL" data-id="放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL" style=""><a class="anchor hidden-xs" href="#放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL" title="放寬IIA假定的無序多分類迴歸模型Models-Which-Relax-the-IIA-Assumption-NL-MNPand-MXL"><span class="octicon octicon-link"></span></a><span>放寬IIA假定的無序多分類迴歸模型(Models Which Relax the IIA Assumption): NL, MNP,and MXL</span></h3><h4 id="1-套疊勝算對數模型-Nested-logit-NL-model" data-id="1-套疊勝算對數模型-Nested-logit-NL-model"><a class="anchor hidden-xs" href="#1-套疊勝算對數模型-Nested-logit-NL-model" title="1-套疊勝算對數模型-Nested-logit-NL-model"><span class="octicon octicon-link"></span></a><span>1. 套疊勝算對數模型  Nested logit (NL) model</span></h4><blockquote>
 <p><span>模型名稱 &lt;- mlogit(依變數 ~ ASV | CSV, reflevel = “參照類”, data = 資料名稱,nests = list(大類1 = c(“小類1”, “小類2”), 大類2= c(“小類3”, “小類4”)))</span><br>
 <span>資料型態需為long-form。</span></p>
 </blockquote><pre><code>#   1-1. run a regression model
