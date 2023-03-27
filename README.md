@@ -17,3 +17,5 @@
 ### [附錄三：Python爬蟲(新華網)](https://tinaj0508.github.io/R_TextMing/Python%E7%88%AC%E8%9F%B2(%E6%96%B0%E8%8F%AF%E7%B6%B2).html)
 
 ### [附錄四：R統計語法整理](https://tinaj0508.github.io/R_TextMing/R%E7%B5%B1%E8%A8%88%E8%AA%9E%E6%B3%95%E6%95%B4%E7%90%86.html)
+
+###### [AI 功能彙整](https://tinaj0508.github.io/R_TextMing/AI%E5%A4%A7%E7%B4%80%E5%85%83.html)
