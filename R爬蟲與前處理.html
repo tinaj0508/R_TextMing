@@ -34,11 +34,11 @@
 </head>
 
 <body>
-    <div id="doc" class="markdown-body container-fluid comment-inner comment-enabled" data-hard-breaks="true"><h1 id="R爬蟲與前處理" data-id="R爬蟲與前處理"><a class="anchor hidden-xs" href="#R爬蟲與前處理" title="R爬蟲與前處理"><span class="octicon octicon-link"></span></a><span>R爬蟲與前處理</span></h1><h2 id="一、R爬蟲" data-id="一、R爬蟲"><a class="anchor hidden-xs" href="#一、R爬蟲" title="一、R爬蟲"><span class="octicon octicon-link"></span></a><span>一、R爬蟲</span></h2><blockquote>
+    <div id="doc" class="markdown-body container-fluid comment-inner comment-enabled" data-hard-breaks="true" style=""><h1 id="R爬蟲與前處理" data-id="R爬蟲與前處理" style=""><a class="anchor hidden-xs" href="#R爬蟲與前處理" title="R爬蟲與前處理"><span class="octicon octicon-link"></span></a><span>R爬蟲與前處理</span></h1><h2 id="一、R爬蟲" data-id="一、R爬蟲" style=""><a class="anchor hidden-xs" href="#一、R爬蟲" title="一、R爬蟲"><span class="octicon octicon-link"></span></a><span>一、R爬蟲</span></h2><blockquote>
 <p><span>學習資源:</span><br>
 <a href="http://www.hmwu.idv.tw/web/R/G01-hmwu_R-Crawler.pdf" target="_blank" rel="noopener"><span>http://www.hmwu.idv.tw/web/R/G01-hmwu_R-Crawler.pdf</span></a><br>
 <a href="https://blog.gtwang.org/r/rvest-web-scraping-with-r/" target="_blank" rel="noopener"><span>https://blog.gtwang.org/r/rvest-web-scraping-with-r/</span></a></p>
-</blockquote><h3 id="1-1-rvest套件簡介" data-id="1-1-rvest套件簡介"><a class="anchor hidden-xs" href="#1-1-rvest套件簡介" title="1-1-rvest套件簡介"><span class="octicon octicon-link"></span></a><span>1-1  rvest套件簡介</span></h3><p><span>在rvest中，可以使用CSS選擇器或XPath表達式來定位HTML元素，進而擷取其中的文本內容或其他資訊。以下是一些示範程式碼：</span></p><pre><code>#使用CSS選擇器擷取文本內容：
+</blockquote><h3 id="1-1-rvest套件簡介" data-id="1-1-rvest套件簡介" style=""><a class="anchor hidden-xs" href="#1-1-rvest套件簡介" title="1-1-rvest套件簡介"><span class="octicon octicon-link"></span></a><span>1-1  rvest套件簡介</span></h3><p><span>在rvest中，可以使用CSS選擇器或XPath表達式來定位HTML元素，進而擷取其中的文本內容或其他資訊。以下是一些示範程式碼：</span></p><pre><code>#使用CSS選擇器擷取文本內容：
 library(rvest)
 
 # 擷取百度首頁上的標題文字
@@ -67,7 +67,7 @@ library(httr) # 爬蟲相關套件
 library(dplyr) # 資料處理套件
 library(lubridate) # 處理日期變數的套件
 library(stringr) # 處理字串的套件
-</code></pre><h3 id="1-2-網頁原始碼說明" data-id="1-2-網頁原始碼說明"><a class="anchor hidden-xs" href="#1-2-網頁原始碼說明" title="1-2-網頁原始碼說明"><span class="octicon octicon-link"></span></a><span>1-2  網頁原始碼說明</span></h3><p><span>HTML（HyperText Markup Language）是一種標記語言，用於描述網頁的結構和內容。HTML文件通常由標記（tag）、屬性（attribute）、元素（element）和內容（content）等組成。以下是HTML的基本組成和結構：</span></p><ul>
+</code></pre><h3 id="1-2-網頁原始碼說明" data-id="1-2-網頁原始碼說明" style=""><a class="anchor hidden-xs" href="#1-2-網頁原始碼說明" title="1-2-網頁原始碼說明"><span class="octicon octicon-link"></span></a><span>1-2  網頁原始碼說明</span></h3><p><span>HTML（HyperText Markup Language）是一種標記語言，用於描述網頁的結構和內容。HTML文件通常由標記（tag）、屬性（attribute）、元素（element）和內容（content）等組成。以下是HTML的基本組成和結構：</span></p><ul>
 <li><span>標記（tag）：HTML標記是由一對符號（&lt;&gt;）組成的，通常包括開始標記（opening tag）和結束標記（closing tag）。</span><br>
 <span>例如， &lt;p&gt;是一個開始標記，表示一個段落的開始，&lt;/p&gt;是一個結束標記，表示一個段落的結束。</span></li>
 <li><span>屬性（attribute）：HTML標記可以包含一個或多個屬性，用於指定元素的額外訊息，如ID、Class、Style等。屬性通常位於開始標記中，例如&lt;img src=“image.jpg” alt=“description”&gt;，其中src和alt就是屬性。</span></li>
@@ -90,7 +90,7 @@ library(stringr) # 處理字串的套件
 </blockquote><ul>
 <li><span>STEP3:以迴圈處理，爬取大量網頁</span></li>
 <li><span>STEP4:存放入儲存格</span></li>
-</ul><h3 id="1-3-實戰演練國防部即時軍事" data-id="1-3-實戰演練國防部即時軍事"><a class="anchor hidden-xs" href="#1-3-實戰演練國防部即時軍事" title="1-3-實戰演練國防部即時軍事"><span class="octicon octicon-link"></span></a><span>1-3 實戰演練:國防部即時軍事</span></h3><pre><code># 下載 國防部即時軍事 首頁
+</ul><h3 id="1-3-實戰演練國防部即時軍事" data-id="1-3-實戰演練國防部即時軍事" style=""><a class="anchor hidden-xs" href="#1-3-實戰演練國防部即時軍事" title="1-3-實戰演練國防部即時軍事"><span class="octicon octicon-link"></span></a><span>1-3 實戰演練:國防部即時軍事</span></h3><pre><code># 下載 國防部即時軍事 首頁
 page.source &lt;- read_html("https://www.mnd.gov.tw/PublishTable.aspx?Types=%E5%8D%B3%E6%99%82%E8%BB%8D%E4%BA%8B%E5%8B%95%E6%85%8B&amp;title=%E5%9C%8B%E9%98%B2%E6%B6%88%E6%81%AF")
 #也可以這樣寫
 url &lt;- "https://www.mnd.gov.tw/PublishTable.aspx?Types=%E5%8D%B3%E6%99%82%E8%BB%8D%E4%BA%8B%E5%8B%95%E6%85%8B&amp;title=%E5%9C%8B%E9%98%B2%E6%B6%88%E6%81%AF"
@@ -114,7 +114,7 @@ title.href #取不到連結，觀察網站後發現是動態網頁
 <p><span>遇到動態網頁，可以利用其他套件，模擬人類點擊滑動網頁的動作</span><br>
 <span>譬如用Rselenium：</span><a href="https://hackmd.io/@LHB-0222/RSelenium" target="_blank" rel="noopener"><span>https://hackmd.io/@LHB-0222/RSelenium</span></a><br>
 <span>其他動態網頁案例：</span><a href="http://jhsjk.people.cn/" target="_blank" rel="noopener"><span>http://jhsjk.people.cn/</span></a></p>
-</blockquote><h3 id="1-4-實戰演練：爬取財經新聞" data-id="1-4-實戰演練：爬取財經新聞"><a class="anchor hidden-xs" href="#1-4-實戰演練：爬取財經新聞" title="1-4-實戰演練：爬取財經新聞"><span class="octicon octicon-link"></span></a><span>1-4 實戰演練：爬取財經新聞</span></h3><blockquote>
+</blockquote><h3 id="1-4-實戰演練：爬取財經新聞" data-id="1-4-實戰演練：爬取財經新聞" style=""><a class="anchor hidden-xs" href="#1-4-實戰演練：爬取財經新聞" title="1-4-實戰演練：爬取財經新聞"><span class="octicon octicon-link"></span></a><span>1-4 實戰演練：爬取財經新聞</span></h3><blockquote>
 <p><span>引用:</span><a href="http://rstudio-pubs-static.s3.amazonaws.com/500333_ee4bf68174584d30b6d9a1596e21c6ac.html" target="_blank" rel="noopener"><span>http://rstudio-pubs-static.s3.amazonaws.com/500333_ee4bf68174584d30b6d9a1596e21c6ac.html</span></a></p>
 </blockquote><pre><code>url &lt;- "http://blog.moneydj.com/news/"
 doc &lt;- read_html(url, encoding = "UTF-8")
@@ -156,7 +156,7 @@ for(i in 1:length(link)) {
 df &lt;- data.frame(title = header, content = article.all)
 View(df)
 df$pubtime &lt;- as.data.frame(d)
-</code></pre><h3 id="1-5-練習：爬取中時新聞" data-id="1-5-練習：爬取中時新聞"><a class="anchor hidden-xs" href="#1-5-練習：爬取中時新聞" title="1-5-練習：爬取中時新聞"><span class="octicon octicon-link"></span></a><span>1-5  練習：爬取中時新聞</span></h3><pre><code>url = "https://www.chinatimes.com/search/%E7%8E%8B%E4%B8%96%E5%A0%85?page=1&amp;chdtv"
+</code></pre><h3 id="1-5-練習：爬取中時新聞" data-id="1-5-練習：爬取中時新聞" style=""><a class="anchor hidden-xs" href="#1-5-練習：爬取中時新聞" title="1-5-練習：爬取中時新聞"><span class="octicon octicon-link"></span></a><span>1-5  練習：爬取中時新聞</span></h3><pre><code>url = "https://www.chinatimes.com/search/%E7%8E%8B%E4%B8%96%E5%A0%85?page=1&amp;chdtv"
 
 #首先取得第一頁的所有新聞連結
 links_data &lt;- read_html(url) %&gt;% html_nodes(".title &gt; a") %&gt;% html_attr('href')
@@ -243,7 +243,7 @@ for(w in c(1:86)){ ##最大的迴圈
 }
 df &lt;- data.frame(title = header.all, pubtime = time.all,content = article.all)
 View(df)
-</code></pre><h2 id="前處理" data-id="前處理"><a class="anchor hidden-xs" href="#前處理" title="前處理"><span class="octicon octicon-link"></span></a><span>前處理</span></h2><h3 id="2-1-整理格式" data-id="2-1-整理格式"><a class="anchor hidden-xs" href="#2-1-整理格式" title="2-1-整理格式"><span class="octicon octicon-link"></span></a><span>2-1 整理格式</span></h3><p><span>這是我們剛剛爬的資料，有811筆，因為爬取時總會爬到一些不乾淨，或是資料格式怪怪的內容，我們要進行前處理。</span><br>
+</code></pre><h2 id="二、前處理" data-id="二、前處理" style=""><a class="anchor hidden-xs" href="#二、前處理" title="二、前處理"><span class="octicon octicon-link"></span></a><span>二、前處理</span></h2><h3 id="2-1-整理格式" data-id="2-1-整理格式" style=""><a class="anchor hidden-xs" href="#2-1-整理格式" title="2-1-整理格式"><span class="octicon octicon-link"></span></a><span>2-1 整理格式</span></h3><p><span>這是我們剛剛爬的資料，有811筆，因為爬取時總會爬到一些不乾淨，或是資料格式怪怪的內容，我們要進行前處理。</span><br>
 <img src="https://i.imgur.com/UG9yoaJ.png" alt="" loading="lazy"></p><p><span>想想看這份資料目前有甚麼問題?</span></p><ol>
 <li><span>裡面爬到跟王世堅沒關係的文章</span></li>
 <li><span>時間格式超級怪</span></li>
@@ -258,14 +258,14 @@ duplicated(data)  #有TRUE代表有重複
 data[duplicated(data)] #檢查重複內容
 data[!duplicated(data)] #檢查重複內容
 data[!duplicated(data$content), ]#有重複的話就刪掉
-</code></pre><h3 id="2-2-抓出我們想要的資料" data-id="2-2-抓出我們想要的資料"><a class="anchor hidden-xs" href="#2-2-抓出我們想要的資料" title="2-2-抓出我們想要的資料"><span class="octicon octicon-link"></span></a><span>2-2 抓出我們想要的資料</span></h3><p><span>假設今天我想知道王世堅跟柯文哲之間都發生什麼，送過甚麼禮物，講過甚麼話，我們應該怎麼篩選出王世堅跟柯文哲的資料?</span></p><p><span>可以直接簡單粗暴的蒐柯文哲嗎?只要有柯文哲三個字就能找到所有關於柯文哲的新聞嗎?</span></p><pre><code>List &lt;- grep("柯文哲",df$content)
+</code></pre><h3 id="2-2-抓出我們想要的資料" data-id="2-2-抓出我們想要的資料" style=""><a class="anchor hidden-xs" href="#2-2-抓出我們想要的資料" title="2-2-抓出我們想要的資料"><span class="octicon octicon-link"></span></a><span>2-2 抓出我們想要的資料</span></h3><p><span>假設今天我想知道王世堅跟柯文哲之間都發生什麼，送過甚麼禮物，講過甚麼話，我們應該怎麼篩選出王世堅跟柯文哲的資料?</span></p><p><span>可以直接簡單粗暴的蒐柯文哲嗎?只要有柯文哲三個字就能找到所有關於柯文哲的新聞嗎?</span></p><pre><code>List &lt;- grep("柯文哲",df$content)
 data &lt;- df[c(List),]
 View(data)
 </code></pre><p><span>以研究範圍的設定為準。例如當初我們搜中時，就是以王世堅來搜，不是用鬼娃恰吉之類的綽號，因為新聞平台在每篇新聞中，肯定會提到一次王世堅本名，不然有些民眾會看不懂。</span><br>
 <span>但如果我們想做的是王世堅跟柯文哲之間的互動狀況，王世堅很有可能叫柯文哲柯P、現代施琅之類的有的沒的，所以在蒐的時候，可以多試幾個關鍵詞。</span></p><blockquote>
 <p><span>通常我們會把指涉同一個人，合併為一個名詞，例如習近平、習近平總書記，合併為習近平(避免後續斷詞步驟時，呈現出來的詞頻不夠集中)</span><br>
 <span>其它案例：蔡英文、蔡英文總統、小英總統，三個都是指涉蔡英文，但有親暱之分</span></p>
-</blockquote><h2 id="練習：爬百度上的習近平搜尋結果" data-id="練習：爬百度上的習近平搜尋結果"><a class="anchor hidden-xs" href="#練習：爬百度上的習近平搜尋結果" title="練習：爬百度上的習近平搜尋結果"><span class="octicon octicon-link"></span></a><span>練習：爬百度上的習近平搜尋結果</span></h2><ol>
+</blockquote><h2 id="三、練習：爬百度上的習近平搜尋結果" data-id="三、練習：爬百度上的習近平搜尋結果" style=""><a class="anchor hidden-xs" href="#三、練習：爬百度上的習近平搜尋結果" title="三、練習：爬百度上的習近平搜尋結果"><span class="octicon octicon-link"></span></a><span>三、練習：爬百度上的習近平搜尋結果</span></h2><ol>
 <li><span>爬蟲</span><br>
 <span>請從這個網站</span><br>
 <span>url &lt;- “</span><a href="https://www.baidu.com/s?rtt=1&amp;bsst=1&amp;cl=2&amp;tn=news&amp;ie=utf-8&amp;word=%E7%BF%92%E8%BF%91%E5%B9%B3" target="_blank" rel="noopener"><span>https://www.baidu.com/s?rtt=1&amp;bsst=1&amp;cl=2&amp;tn=news&amp;ie=utf-8&amp;word=習近平</span></a><span>”</span></li>
@@ -281,7 +281,7 @@ abstract &lt;- read_html(url)%&gt;% html_nodes(" span.c-font-normal.c-color-text
   html_text()
 d &lt;- data.frame(title = webtitle, abs = abstract)
 View(d)
-</code></pre><h2 id="回家作業" data-id="回家作業"><a class="anchor hidden-xs" href="#回家作業" title="回家作業"><span class="octicon octicon-link"></span></a><span>回家作業</span></h2><p><span>把剛剛的百度搜尋習近平，加上迴圈，爬10頁的搜尋結果。</span><br>
+</code></pre><h2 id="四、回家作業" data-id="四、回家作業" style=""><a class="anchor hidden-xs" href="#四、回家作業" title="四、回家作業"><span class="octicon octicon-link"></span></a><span>四、回家作業</span></h2><p><span>把剛剛的百度搜尋習近平，加上迴圈，爬10頁的搜尋結果。</span><br>
 <span>一樣爬標題連結就好，無須點進標題內文爬蟲。</span></p><blockquote>
 <p><span>hint:這是第三頁與第四頁的網址，觀察一下差異，再利用不同之處，加上迴圈處理</span><br>
 <a href="https://www.baidu.com/s?rtt=1&amp;bsst=1&amp;cl=2&amp;tn=news&amp;ie=utf-8&amp;word=%E7%BF%92%E8%BF%91%E5%B9%B3&amp;x_bfe_rqs=03E80&amp;x_bfe_tjscore=0.100000&amp;tngroupname=organic_news&amp;newVideo=12&amp;goods_entry_switch=1&amp;rsv_dl=news_b_pn&amp;pn=20" target="_blank" rel="noopener"><span>https://www.baidu.com/s?rtt=1&amp;bsst=1&amp;cl=2&amp;tn=news&amp;ie=utf-8&amp;word=習近平&amp;x_bfe_rqs=03E80&amp;x_bfe_tjscore=0.100000&amp;tngroupname=organic_news&amp;newVideo=12&amp;goods_entry_switch=1&amp;rsv_dl=news_b_pn&amp;pn=20</span></a><br>
@@ -294,22 +294,22 @@ View(d)
             </a>
             <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
                 <div class="toc"><ul class="nav">
-<li class=""><a href="#R爬蟲與前處理" title="R爬蟲與前處理">R爬蟲與前處理</a><ul class="nav">
-<li class=""><a href="#一、R爬蟲" title="一、R爬蟲">一、R爬蟲</a><ul class="nav">
-<li class=""><a href="#1-1-rvest套件簡介" title="1-1  rvest套件簡介">1-1  rvest套件簡介</a></li>
+<li><a href="#R爬蟲與前處理" title="R爬蟲與前處理">R爬蟲與前處理</a><ul class="nav">
+<li><a href="#一、R爬蟲" title="一、R爬蟲">一、R爬蟲</a><ul class="nav">
+<li><a href="#1-1-rvest套件簡介" title="1-1  rvest套件簡介">1-1  rvest套件簡介</a></li>
 <li><a href="#1-2-網頁原始碼說明" title="1-2  網頁原始碼說明">1-2  網頁原始碼說明</a></li>
 <li><a href="#1-3-實戰演練國防部即時軍事" title="1-3 實戰演練:國防部即時軍事">1-3 實戰演練:國防部即時軍事</a></li>
 <li><a href="#1-4-實戰演練：爬取財經新聞" title="1-4 實戰演練：爬取財經新聞">1-4 實戰演練：爬取財經新聞</a></li>
 <li><a href="#1-5-練習：爬取中時新聞" title="1-5  練習：爬取中時新聞">1-5  練習：爬取中時新聞</a></li>
 </ul>
 </li>
-<li><a href="#前處理" title="前處理">前處理</a><ul class="nav">
+<li><a href="#二、前處理" title="二、前處理">二、前處理</a><ul class="nav">
 <li><a href="#2-1-整理格式" title="2-1 整理格式">2-1 整理格式</a></li>
 <li><a href="#2-2-抓出我們想要的資料" title="2-2 抓出我們想要的資料">2-2 抓出我們想要的資料</a></li>
 </ul>
 </li>
-<li><a href="#練習：爬百度上的習近平搜尋結果" title="練習：爬百度上的習近平搜尋結果">練習：爬百度上的習近平搜尋結果</a></li>
-<li><a href="#回家作業" title="回家作業">回家作業</a></li>
+<li><a href="#三、練習：爬百度上的習近平搜尋結果" title="三、練習：爬百度上的習近平搜尋結果">三、練習：爬百度上的習近平搜尋結果</a></li>
+<li><a href="#四、回家作業" title="四、回家作業">四、回家作業</a></li>
 </ul>
 </li>
 </ul>
@@ -319,22 +319,22 @@ View(d)
     </div>
     <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
         <div class="toc"><ul class="nav">
-<li class=""><a href="#R爬蟲與前處理" title="R爬蟲與前處理">R爬蟲與前處理</a><ul class="nav">
-<li class=""><a href="#一、R爬蟲" title="一、R爬蟲">一、R爬蟲</a><ul class="nav">
-<li class=""><a href="#1-1-rvest套件簡介" title="1-1  rvest套件簡介">1-1  rvest套件簡介</a></li>
+<li><a href="#R爬蟲與前處理" title="R爬蟲與前處理">R爬蟲與前處理</a><ul class="nav">
+<li><a href="#一、R爬蟲" title="一、R爬蟲">一、R爬蟲</a><ul class="nav">
+<li><a href="#1-1-rvest套件簡介" title="1-1  rvest套件簡介">1-1  rvest套件簡介</a></li>
 <li><a href="#1-2-網頁原始碼說明" title="1-2  網頁原始碼說明">1-2  網頁原始碼說明</a></li>
 <li><a href="#1-3-實戰演練國防部即時軍事" title="1-3 實戰演練:國防部即時軍事">1-3 實戰演練:國防部即時軍事</a></li>
 <li><a href="#1-4-實戰演練：爬取財經新聞" title="1-4 實戰演練：爬取財經新聞">1-4 實戰演練：爬取財經新聞</a></li>
 <li><a href="#1-5-練習：爬取中時新聞" title="1-5  練習：爬取中時新聞">1-5  練習：爬取中時新聞</a></li>
 </ul>
 </li>
-<li><a href="#前處理" title="前處理">前處理</a><ul class="nav">
+<li><a href="#二、前處理" title="二、前處理">二、前處理</a><ul class="nav">
 <li><a href="#2-1-整理格式" title="2-1 整理格式">2-1 整理格式</a></li>
 <li><a href="#2-2-抓出我們想要的資料" title="2-2 抓出我們想要的資料">2-2 抓出我們想要的資料</a></li>
 </ul>
 </li>
-<li><a href="#練習：爬百度上的習近平搜尋結果" title="練習：爬百度上的習近平搜尋結果">練習：爬百度上的習近平搜尋結果</a></li>
-<li><a href="#回家作業" title="回家作業">回家作業</a></li>
+<li><a href="#三、練習：爬百度上的習近平搜尋結果" title="三、練習：爬百度上的習近平搜尋結果">三、練習：爬百度上的習近平搜尋結果</a></li>
+<li><a href="#四、回家作業" title="四、回家作業">四、回家作業</a></li>
 </ul>
 </li>
 </ul>
