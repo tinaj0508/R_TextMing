@@ -10,6 +10,8 @@
 
 ### [3/27：R爬蟲與前處理](https://tinaj0508.github.io/R_TextMing/R%E7%88%AC%E8%9F%B2%E8%88%87%E5%89%8D%E8%99%95%E7%90%86.html)
 
+### [4/17：R斷詞與關鍵詞分析]()
+
 ### [附錄一：課程大綱與R軟體安裝](https://tinaj0508.github.io/R_TextMing/20230221%20R%E8%88%87%E6%96%87%E5%AD%97%E6%8E%A2%E5%8B%98%E8%AA%B2%E7%A8%8B%E8%A6%8F%E5%8A%83.html?fbclid=IwAR1yijmii8hV9Z0Zdkj8cdw4WFph0X5qYamCtDMeEQyfQ_O1YFUPWwd39h8)
 
 ### [附錄二：Python教學與爬蟲應用](https://tinaj0508.github.io/R_TextMing/Python%E6%95%99%E5%AD%B8%E8%88%87%E7%88%AC%E8%9F%B2%E6%87%89%E7%94%A8.html)
