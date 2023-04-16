@@ -20,4 +20,6 @@
 
 ### [附錄四：R統計語法整理](https://tinaj0508.github.io/R_TextMing/R%E7%B5%B1%E8%A8%88%E8%AA%9E%E6%B3%95%E6%95%B4%E7%90%86.html)
 
+### [附錄五：按職務類別進行關鍵詞「習近平」、「核心」製圖](https://tinaj0508.github.io/R_TextMing/%E6%AD%A3%E9%83%A8%E7%B4%9A%E6%96%87%E5%AD%97%E6%8E%A2%E5%8B%98%E5%88%86%E6%9E%90(%E9%97%9C%E9%8D%B5%E8%A9%9E_%E7%BF%92%E8%BF%91%E5%B9%B3%E3%80%81%E6%A0%B8%E5%BF%83).html)
+
 ###### [AI 功能彙整](https://tinaj0508.github.io/R_TextMing/AI%E5%A4%A7%E7%B4%80%E5%85%83.html)
