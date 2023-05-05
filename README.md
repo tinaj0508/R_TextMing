@@ -1,6 +1,6 @@
-# 111-2寇健文老師R與文字探勘工作坊目錄
+# 111-2寇健文老師R與文字探勘
 
-### [2/23：工作與課程介紹](https://tinaj0508.github.io/R_TextMing/20230223%20R%E8%88%87%E6%96%87%E5%AD%97%E6%8E%A2%E5%8B%98%E8%AA%B2%E7%A8%8B%E4%BB%8B%E7%B4%B9.html)
+### [2/23：介紹](https://tinaj0508.github.io/R_TextMing/20230223%20R%E8%88%87%E6%96%87%E5%AD%97%E6%8E%A2%E5%8B%98%E8%AA%B2%E7%A8%8B%E4%BB%8B%E7%B4%B9.html)
 
 ### [3/6：R基本概念(一)](https://tinaj0508.github.io/R_TextMing/20230226%20R%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5(%E4%B8%80).html)
 
